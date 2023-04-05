@@ -40,6 +40,8 @@ Which (if any) progressive web app feature(s) does your app support?
 
 ![](https://media.giphy.com/media/26ufnwz3wDUli7GU0/giphy.gif)
 
+Figma Wireframe: https://www.figma.com/file/0xv3ZRWf61KXjlvsNLr7UL/BookTok-WireFrame?node-id=0-1&t=gAittDcKbzwDNnEO-0
+
 
 ## Testing Notes
 
