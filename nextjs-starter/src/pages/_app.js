@@ -36,6 +36,10 @@ export default function App({ Component, pageProps }) {
             </li>
 
             <li>
+              <Link href="/camera"> Camera</Link>
+            </li>
+
+            <li>
               <UserButton afterSignOutUrl="/"/> 
             </li>
           </ul>
