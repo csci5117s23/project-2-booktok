@@ -38,11 +38,11 @@ export default function HomePage() {
         setRestaurants(restaurants.concat(newRestaurant));
     }
 
-    if (loading) {
-        console.log(loading);
-        return <span> loading... </span>;
-    } 
-    else {
+    // if (loading) {
+    //     console.log(loading);
+    //     return <span> loading... </span>;
+    // } 
+    // else {
         const restaurantListItems = restaurants.map((restaurant) => {
             if(restaurant.userId == userId) {
             return <>
@@ -108,5 +108,5 @@ export default function HomePage() {
             {/* </ul> */}
         </>
         );
-    }  
+    // }  
 }

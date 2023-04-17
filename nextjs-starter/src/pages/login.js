@@ -18,8 +18,6 @@
   
 
 
-
-
 // // const SignUpPage = () => (
 // //   <SignUp path="/login" routing="path" signInUrl="/login" 
 // //    redirectUrl="/_app.js"/>

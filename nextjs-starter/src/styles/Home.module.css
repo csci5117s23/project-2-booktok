@@ -202,14 +202,6 @@
   }
 }
 
-.timeline {
-  background-color: rgb(172, 191, 192);
-}
-
-#rating {
-  width: 10em;
-}
-
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
