@@ -13,6 +13,14 @@ import jwtDecode from 'jwt-decode';
 //   res.send('CRUD server ready')
 // })
 
+const review = object({
+  name: string().required(),
+  review: string(),
+  rating: number().min(0).max(5),
+  userId: string().required(),
+  dateVisited: date().default(() => new Date()),
+  createdOn: date().default(() => new Date()),
+})
 
 // This can largely be copy-pasted, it just grabs the authorization token and parses it, stashing it on the request.
 const userAuth = async (req, res, next) => {
