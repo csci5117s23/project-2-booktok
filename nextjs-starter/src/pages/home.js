@@ -1,6 +1,9 @@
 import { UserButton } from "@clerk/clerk-react";
 import styles from '@/styles/Home.module.css'
 import { addRestaurant, getRestaurants } from "@/modules/Data";
+import style from '@mui/material/Button';
+import { Typography } from "@mui/material";
+import {Rating} from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 
@@ -75,23 +78,24 @@ export default function HomePage() {
                 onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
             ></input>
             <br></br>
-            <textarea 
-                placeholder="Leave a review..."
-                rows="5" cols="20"
+
+            <br></br>
+            <h2>Write a review:</h2>
+            <input
+                type="textarea"
                 value={newReview}
                 onChange={(e) => setNewReview(e.target.value)}
                 onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
-            ></textarea>
-            <br></br>
-            <input
-                type="number"
-                min="1" max="5"
-                placeholder="Rating (1-5)"
-                id={styles.rating}
-                value={newRating}
-                onChange={(e) => setNewRating(e.target.value)}
-                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
             ></input>
+            <br></br>
+
+            <Typography component="legend">Rating:</Typography>
+            <Rating name="half-rating" 
+                defaultValue={0} 
+                precision={0.5} 
+                onChange={(e) => setNewRating(e.target.value)}
+                onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
+
             <br></br>
             <input
                 type="date"
@@ -100,6 +104,7 @@ export default function HomePage() {
                 onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
             ></input>
             <br></br>
+
             <button onClick={add}>add</button>
 
             {console.log("t1: ", restaurants)}
