@@ -73,6 +73,7 @@ export default function HomePage() {
             {/* <ul> */}
             <h2>Add to your Timeline:</h2>
             <input
+                id = "restaurant"
                 placeholder="Restaurant Name (required)"
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
@@ -83,6 +84,7 @@ export default function HomePage() {
             <br></br>
             <h2>Write a review:</h2>
             <input
+                id = "review"
                 type="textarea"
                 value={newReview}
                 onChange={(e) => setNewReview(e.target.value)}
@@ -92,6 +94,7 @@ export default function HomePage() {
 
             <Typography component="legend">Rating:</Typography>
             <Rating name="half-rating" 
+                id = "rating"
                 defaultValue={0} 
                 precision={0.5} 
                 onChange={(e) => setNewRating(e.target.value)}
@@ -99,6 +102,7 @@ export default function HomePage() {
 
             <br></br>
             <input
+                id = "date"
                 type="date"
                 value={newDate}
                 onChange={(e) => setNewDate(e.target.value)}
