@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn, UserButton } from '@clerk/nextjs'
+import { ClerkProvider, SignedIn, SignedOut, useClerk, UserButton } from '@clerk/nextjs'
 
 export default function Navbar() {
   const [clicked, setClick] = useState(false);
+  const { signOut } = useClerk();
 
   return (
     <header>
@@ -24,7 +25,6 @@ export default function Navbar() {
         {/* Hidden in mobile device */}
         <div id="navbarBasicExample" className={`navbar-menu ${clicked ? "is-active" : ""}`}>
           <div className="navbar-start">
-            {/* <div className='navbar-item'>aaaa</div> */}
             <Link className='navbar-item' href="/search"> Search</Link>
             <Link className='navbar-item' href="/map"> Map</Link>
             <Link className='navbar-item' href="/profile"> Profile</Link>
@@ -34,7 +34,7 @@ export default function Navbar() {
 
           <div className="navbar-end">
             <div className="navbar-item">
-              <button className="button is-small is-success is-outlined">
+              <button className="button is-small is-success is-outlined"  onClick={() => signOut()}>
                 Log out
               </button>
             </div>
