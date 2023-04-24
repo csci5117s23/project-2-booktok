@@ -34,7 +34,7 @@ export default function HomePage() {
     async function add() {
         const token = await getToken({ template: "codehooks" });
         const newRestaurant = await addRestaurant(token, newName, newReview, newRating, newDate, userId);
-        setNewName("");
+        setNewName("");ç
         setNewReview("");
         setNewRating("");
         setNewDate("");
@@ -68,7 +68,8 @@ export default function HomePage() {
         );
 
         return (
-        <>
+        <>  
+            <h1>//NOTE: working on layout of form//</h1>
             {/* <ul> */}
             <h2>Add to your Timeline:</h2>
             <input
