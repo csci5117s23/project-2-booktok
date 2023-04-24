@@ -1,9 +1,9 @@
-import { UserButton } from "@clerk/clerk-react";
+import { ClerkProvider, SignIn, SignedIn, SignedOut, UserButton, UserProfile } from '@clerk/nextjs';
 
-
-export default function ToDos() {
-  return <>
-    <h1>Profile Page?</h1>
-    <UserButton afterSignOutUrl="/"/>
-  </>
+export default function MyAccount() {
+  return (
+    <div>
+        <UserProfile />
+    </div>
+  )
 }
