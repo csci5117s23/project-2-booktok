@@ -1,15 +1,17 @@
-// Should edit Camera related files
+// Code taken from https://blog.openreplay.com/capture-real-time-images-and-videos-with-react-webcam/
+// with some slight modifications for our use in our tech share
 
-import React, { useCallback, useRef, useState } from "react";
+
 import Webcam from "react-webcam";
+import { useCallback, useRef, useState } from "react";
 
 function WebcamImage() {
   const [img, setImg] = useState(null);
   const webcamRef = useRef(null);
 
   const videoConstraints = {
-    width: 420,
-    height: 420,
+    width: 400,
+    height: 400,
     facingMode: "user",
   };
 
@@ -20,27 +22,20 @@ function WebcamImage() {
 
   return (
     <div className="Container">
-      {img === null ? (
-        <>
-          <Webcam
-            audio={false}
-            mirrored={true}
-            height={400}
-            width={400}
-            ref={webcamRef}
-            screenshotFormat="image/jpeg"
-            videoConstraints={videoConstraints}
-          />
-          <button onClick={capture}>Capture photo</button>
-        </>
-      ) : (
-        <>
-          <img src={img} alt="screenshot" />
-          <button onClick={() => setImg(null)}>Retake</button>
-        </>
+      <div className="CameraContainer">
+        <Webcam
+          ref={webcamRef}
+          videoConstraints={videoConstraints}
+          screenshotFormat="image/png"
+        />
+        <button onClick={capture}>Capture photo</button> 
+      </div>
+      {img && (
+          <img src={img} alt="capturedPhoto"/>
       )}
-    </div>
+    </div> 
   );
 }
+
 
 export default WebcamImage;
