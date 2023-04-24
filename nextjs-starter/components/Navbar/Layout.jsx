@@ -13,6 +13,7 @@ export default function Layout({children}) {
       <div className="has-navbar-fixed-top">
         {children}
       </div>
+      
 
     </>
   );

@@ -7,7 +7,7 @@ export default function Navbar() {
 
   return (
     <header>
-      <nav className="navbar is-dark p-3" role="navigation" aria-label="main navigation">
+      <nav className="navbar is-dark is-spaced" role="navigation" aria-label="main navigation">
         <div className="navbar-brand mr-5">
           <Link className="navbar-item has-text-weight-bold is-size-5" href="/">
             YumYumTok
