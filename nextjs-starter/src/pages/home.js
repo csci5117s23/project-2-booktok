@@ -65,7 +65,8 @@ export default function HomePage() {
         );
 
         return (
-        <>
+        <>  
+            <h1>//NOTE: working on layout of form//</h1>
             {/* <ul> */}
             <h2>Add to your Timeline:</h2>
             <input
