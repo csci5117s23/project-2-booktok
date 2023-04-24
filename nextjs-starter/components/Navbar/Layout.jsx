@@ -10,8 +10,10 @@ export default function Layout({children}) {
         <title>BookTok - Project2 </title>
       </Head>
       <Navbar className="navbar is-fixed-top"/>
-      <div className="columns is-centered px-5 mt-5">
-        {children}
+      <div className="columns px-5 mt-5">
+        <div className='column is-centered'>
+          {children}
+        </div>
       </div>
     </>
   );

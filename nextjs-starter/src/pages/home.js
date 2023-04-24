@@ -31,7 +31,7 @@ export default function HomePage() {
     async function add() {
         const token = await getToken({ template: "codehooks" });
         const newRestaurant = await addRestaurant(token, newName, newReview, newRating, newDate, userId);
-        setNewName("");
+        setNewName("");ç
         setNewReview("");
         setNewRating("");
         setNewDate("");
