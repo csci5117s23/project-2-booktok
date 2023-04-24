@@ -34,7 +34,7 @@ export default function HomePage() {
     async function add() {
         const token = await getToken({ template: "codehooks" });
         const newRestaurant = await addRestaurant(token, newName, newReview, newRating, newDate, userId);
-        setNewName("");ç
+        setNewName("");
         setNewReview("");
         setNewRating("");
         setNewDate("");
@@ -97,6 +97,7 @@ export default function HomePage() {
                 id = "rating"
                 defaultValue={0} 
                 precision={0.5} 
+                value = {newRating}
                 onChange={(e) => setNewRating(e.target.value)}
                 onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
 
