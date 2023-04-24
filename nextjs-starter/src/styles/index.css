@@ -5,9 +5,13 @@ body{
     font-weight: bold;
     /* background-color: beige; */
   }
-  
+
+.nav {
+    padding: 5rem 1rem;
+    /* background: wheat; */
+}
   /* Link */
-  a{
+  /* a{
     text-decoration: none;
     color: white;
   }
@@ -53,7 +57,7 @@ body{
   .navbar__icons li {
     padding : 5px 12px;
     text-align: center;
-  }
+  } */
   
   .Webcam{
     padding-top: 50px;
@@ -66,7 +70,7 @@ body{
       justify-content: center;
   }
   
-  @media screen and (max-width: 768px){
+  /* @media screen and (max-width: 768px){
     .navbar{
       flex-direction: column;
       align-items: flex-start;
@@ -86,7 +90,7 @@ body{
       justify-content: center;
       width: 100%;
     }
-  }
+  } */
   
   
   
