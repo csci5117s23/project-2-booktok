@@ -7,10 +7,10 @@ export default function Navbar() {
 
   return (
     <header>
-      <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
-          <Link className="navbar-item" href="/">
-            YumYum Tok
+      <nav className="navbar is-dark p-3" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand mr-5">
+          <Link className="navbar-item has-text-weight-bold is-size-5" href="/">
+            YumYumTok
             {/* NOTE: Have to make a new logo or just use word */}
             {/* <img src="/BookTokLogo.png" alt="BookTok" className='navbar__logo' /> */}
           </Link>
@@ -29,16 +29,14 @@ export default function Navbar() {
             <Link className='navbar-item' href="/map"> Map</Link>
             <Link className='navbar-item' href="/profile"> Profile</Link>
             <Link className='navbar-item' href="/camera"> Camera</Link>
-            <UserButton className='navbar-item' afterSignOutUrl="/" />
+            {/* <UserButton className='navbar-item' afterSignOutUrl="/" /> */}
           </div>
 
           <div className="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-light">
-                  Log out
-                </a>
-              </div>
+            <div className="navbar-item">
+              <button className="button is-small is-success is-outlined">
+                Log out
+              </button>
             </div>
           </div>
         </div>
