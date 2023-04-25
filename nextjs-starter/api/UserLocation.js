@@ -1,11 +1,8 @@
 import { useGeoLocation } from 'use-geo-location';
 
 export default function UserLocation() {
-  const apiKey = 'AIzaSyDNKN0nE-ePLUW9d9lbL9gjPci5S8nsXcI';
-  const { latitude, 
-          longitude, 
-          loading,  
-          googleMapsResults } = useGeoLocation({ apiKey }); // apiKey is optional
+  
+  const {latitude,longitude,loading} = useGeoLocation(); 
   return (
     <>
       {loading ? (

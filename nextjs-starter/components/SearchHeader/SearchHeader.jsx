@@ -12,29 +12,28 @@ export default function SearchHeader() {
 
   const [text, setText] = useState('');
   const [data, setData] = useState(null);
-  const categories = ['Burgers', 'Japanese', 'Korean', 'Chinese', 'Italian', 'Mexican', 'Thai', 'Pizza'];
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // const searchTerm = text.trim();
-    // if (!searchTerm) {
-    //   return;
-    // }
-    // const url = `https://api.yelp.com/v3/businesses/search?term=${searchTerm}`;
+    const searchTerm = text.trim();
+    if (!searchTerm) {
+      return;
+    }
+    const url = `https://api.yelp.com/v3/businesses/search?term=${searchTerm}`;
 
-    // axios.get(url, {
-    //   headers: {
-    //     'Authorization': `Bearer ${apiKey}`
-    //   }
-    // })
-    //   .then(response => {
-    //     setData(response.data);
-    //     console.log(data);
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //   });
+    axios.get(url, {
+      headers: {
+        'Authorization': `Bearer ${apiKey}`
+      }
+    })
+      .then(response => {
+        setData(response.data);
+        console.log(data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
     
@@ -60,7 +59,6 @@ export default function SearchHeader() {
   const handleChange = (e) => setText(e.target.value);
   
   return (
-    <>
     <header className={styles.header}>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
@@ -74,8 +72,6 @@ export default function SearchHeader() {
         </button>
       </form>
     </header>
-      <Categories categories={categories}/>
-    </>
   );
 }
 
