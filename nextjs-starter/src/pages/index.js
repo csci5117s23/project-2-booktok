@@ -28,7 +28,7 @@ export default function Home() {
         </Head>
         <main className={styles.main}>
 
-        <h1>"splash page"</h1>
+        <h1 className={styles.title}>Welcome to YumYumTok!</h1>
 
         <SignIn path="/" routing="path" signUpUrl="/sign-up" redirectUrl='home'/>
 
