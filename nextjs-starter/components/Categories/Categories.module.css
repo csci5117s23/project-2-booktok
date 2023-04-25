@@ -1,0 +1,28 @@
+
+.restaurants{
+ display:grid;
+ text-align: center;
+ padding: 10px;
+ grid-template-columns: repeat(2, 1fr);
+ grid-auto-rows: minmax(100px,auto);
+ grid-gap: 30px;
+ color: white;
+}
+.list{
+  background-color: gray;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: x-large;
+  border: none;
+  cursor: pointer;
+}
+.surprise{
+  display:flex;
+  justify-content: center;
+}
+.list:hover{
+  filter: brightness(0.6);
+}
+
+

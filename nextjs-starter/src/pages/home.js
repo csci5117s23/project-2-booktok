@@ -1,11 +1,11 @@
 import { UserButton } from "@clerk/clerk-react";
 import styles from '@/styles/Home.module.css'
 import { addRestaurant, getRestaurants } from "@/modules/Data";
-import style from '@mui/material/Button';
 import { Typography } from "@mui/material";
 import {Rating} from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
+import {Camera} from './camera.js'
 
 export default function HomePage() {
 
@@ -17,6 +17,9 @@ export default function HomePage() {
     const [newReview, setNewReview] = useState("");
     const [newRating, setNewRating] = useState("");
     const [newDate, setNewDate] = useState("");
+    // const [newImage, setNewImage] = useState("")
+    const [newImage, setNewImage] = useState("");
+
 
     // get restaurant review list
     useEffect(() => {
@@ -38,6 +41,7 @@ export default function HomePage() {
         setNewReview("");
         setNewRating("");
         setNewDate("");
+        setNewImage("");
         setRestaurants(restaurants.concat(newRestaurant));
     }
 
@@ -52,14 +56,17 @@ export default function HomePage() {
             {/* <li key={restaurant._id}>
                 {restaurant.name}
             </li> */}
-            <div className = {styles.timeline}>
-                {restaurant.name}
+            <div className = "box">
+                <span> {restaurant.selectedImage} </span>
+                <span id = {styles.restaurantName}>{restaurant.name}</span>
                 <br></br>
-                {restaurant.review}
+                <span id = {styles.restaurantReview}>{restaurant.review}</span>
                 <br></br>
-                {restaurant.rating}
+                <span id = {styles.restaurantRating}> {restaurant.rating} </span>
                 <br></br>
-                {restaurant.dateVisited}
+                <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
+                <br></br>
+                <button onClick={() => setRestaurants(null)}>Remove</button>
             </div>
             <br></br>
             </>
@@ -69,54 +76,86 @@ export default function HomePage() {
 
         return (
         <>  
+    
             <h1>//NOTE: working on layout of form//</h1>
             {/* <ul> */}
-            <h2>Add to your Timeline:</h2>
-            <input
-                id = "restaurant"
-                placeholder="Restaurant Name (required)"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
-            ></input>
-            <br></br>
+            <div class = "column">
+                <h2>Add to your Timeline:</h2>
+                <input
+                    id = "restaurant"
+                    placeholder="Restaurant Name (required)"
+                    value={newName}
+                    onChange={(e) => setNewName(e.target.value)}
+                    onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                ></input>
+            </div>
 
-            <br></br>
-            <h2>Write a review:</h2>
-            <input
-                id = "review"
-                type="textarea"
-                value={newReview}
-                onChange={(e) => setNewReview(e.target.value)}
-                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
-            ></input>
-            <br></br>
+            <div class = "column">
+                <h2>Write a review:</h2>
+                <input
+                    id = "review"
+                    type="textarea"
+                    value={newReview}
+                    onChange={(e) => setNewReview(e.target.value)}
+                    onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                ></input>
+            </div>
 
-            <Typography component="legend">Rating:</Typography>
-            <Rating name="half-rating" 
-                id = "rating"
-                defaultValue={0} 
-                precision={0.5} 
-                value = {newRating}
-                onChange={(e) => setNewRating(e.target.value)}
-                onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
+            <div class = "column">
+                <Typography component="legend">Rating:</Typography>
+                <Rating name="half-rating" 
+                    id = "rating"
+                    defaultValue={0} 
+                    precision={0.5} 
+                    value = {newRating}
+                    onChange={(e) => setNewRating(e.target.value)}
+                    onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
+            </div>
 
-            <br></br>
-            <input
-                id = "date"
-                type="date"
-                value={newDate}
-                onChange={(e) => setNewDate(e.target.value)}
-                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
-            ></input>
-            <br></br>
+            <div class = "column">
+                <Typography component="legend">Upload an image:</Typography>
+                {newImage && (
+                    <div>
+                    <img
+                        alt="not found"
+                        width={"250px"}
+                        src={URL.createObjectURL(newImage)}
+                    />
+                    <br />
+                    <button onClick={() => setNewImage(null)}>Remove</button>
+                    </div>    
+                )}
+                <input
+                    type="file"
+                    name="myImage"
+                    onChange={(e) => {
+                        console.log(e.target.files[0]);
+                        setNewImage(e.target.files[0])} 
+                    }
+                    // onChange={(e) => setNewImage(e.target.value)}
+                    // onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
+                />
+            </div>
 
-            <button onClick={add}>add</button>
+            <div class = "column">
+                <input
+                    id = "date"
+                    type="date"
+                    value={newDate}
+                    onChange={(e) => setNewDate(e.target.value)}
+                    onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                ></input>
+            </div>
+
+            <div class = "column">
+                <button onClick={add}>add</button>
+            </div>
 
             {console.log("t1: ", restaurants)}
-
             {restaurantListItems}
             {/* </ul> */}
+
+       
         </>
         );
     }  
