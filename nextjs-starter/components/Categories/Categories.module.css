@@ -17,6 +17,10 @@
   border: none;
   cursor: pointer;
 }
+.surprise{
+  display:flex;
+  justify-content: center;
+}
 .list:hover{
   filter: brightness(0.6);
 }

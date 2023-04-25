@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { BsSearch, BsYelp } from 'react-icons/bs';
 import {useState} from 'react';
 import styles from './SearchHeader.module.css'
-import Restaurants from '../Restaurants/Categories';
+import Categories from '../Categories/Categories';
 
 export default function SearchHeader() {
   
@@ -30,7 +30,7 @@ export default function SearchHeader() {
         </button>
       </form>
     </header>
-      <Restaurants categories={categories}/>
+      <Categories categories={categories}/>
     </>
   );
 }
