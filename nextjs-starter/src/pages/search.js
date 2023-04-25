@@ -1,13 +1,11 @@
-import { UserButton } from "@clerk/clerk-react";
 import SearchHeader from '../../components/SearchHeader/SearchHeader';
+import  UserLocation  from '../../api/userLocation'; 
 
-export default function Search() {
-  
-  
-  
+export default function Search() { 
   return (
     <div>
       <SearchHeader />
-    {/* <UserButton afterSignOutUrl="/"/> */}
-    </div>)  
+      <UserLocation />
+    </div>
+  );  
 }
