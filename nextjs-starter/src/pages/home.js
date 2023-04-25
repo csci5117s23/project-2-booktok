@@ -18,7 +18,7 @@ export default function HomePage() {
     const [newRating, setNewRating] = useState("");
     const [newDate, setNewDate] = useState("");
     // const [newImage, setNewImage] = useState("")
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [newImage, setNewImage] = useState("");
 
 
     // get restaurant review list
@@ -41,8 +41,8 @@ export default function HomePage() {
         setNewReview("");
         setNewRating("");
         setNewDate("");
+        setNewImage("");
         setRestaurants(restaurants.concat(newRestaurant));
-        // setNewImage("");
     }
 
     if (loading) {
@@ -57,6 +57,7 @@ export default function HomePage() {
                 {restaurant.name}
             </li> */}
             <div className = "box">
+                <span> {restaurant.selectedImage} </span>
                 <span id = {styles.restaurantName}>{restaurant.name}</span>
                 <br></br>
                 <span id = {styles.restaurantReview}>{restaurant.review}</span>
@@ -64,6 +65,7 @@ export default function HomePage() {
                 <span id = {styles.restaurantRating}> {restaurant.rating} </span>
                 <br></br>
                 <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
+
             </div>
             <br></br>
             </>
@@ -111,24 +113,26 @@ export default function HomePage() {
 
             <div class = "column">
                 <Typography component="legend">Upload an image:</Typography>
-                {selectedImage && (
+                {newImage && (
                     <div>
                     <img
                         alt="not found"
                         width={"250px"}
-                        src={URL.createObjectURL(selectedImage)}
+                        src={URL.createObjectURL(newImage)}
                     />
                     <br />
-                    <button onClick={() => setSelectedImage(null)}>Remove</button>
+                    <button onClick={() => setNewImage(null)}>Remove</button>
                     </div>    
                 )}
                 <input
                     type="file"
                     name="myImage"
-                    onChange={(event) => {
-                    console.log(event.target.files[0]);
-                    setSelectedImage(event.target.files[0]);
-                    }}
+                    onChange={(e) => {
+                        console.log(e.target.files[0]);
+                        setNewImage(e.target.files[0])} 
+                    }
+                    // onChange={(e) => setNewImage(e.target.value)}
+                    // onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
                 />
             </div>
 
