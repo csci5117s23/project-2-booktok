@@ -65,7 +65,8 @@ export default function HomePage() {
                 <span id = {styles.restaurantRating}> {restaurant.rating} </span>
                 <br></br>
                 <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
-
+                <br></br>
+                <button onClick={() => setRestaurants(null)}>Remove</button>
             </div>
             <br></br>
             </>
