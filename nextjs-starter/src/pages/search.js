@@ -1,9 +1,9 @@
 import { UserButton } from "@clerk/clerk-react";
+import SearchHeader from '../../components/SearchHeader/SearchHeader';
 
-
-export default function ToDos() {
-  return <>
-    <h1>Search Page</h1>
-    <UserButton afterSignOutUrl="/"/>
-  </>
+export default function Search() {
+  return <div>
+    <SearchHeader />
+    {/* <UserButton afterSignOutUrl="/"/> */}
+  </div>  
 }
