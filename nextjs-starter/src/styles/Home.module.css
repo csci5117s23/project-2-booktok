@@ -205,11 +205,17 @@
 
 .timeline {
   background-color: rgb(172, 191, 192);
+
+}
+.box{
+  display: inline-block;
 }
 
-#rating {
-  width: 10em;
+
+#restaurantName{
+  font-size: larger;
 }
+
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
