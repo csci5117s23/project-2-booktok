@@ -151,13 +151,12 @@ export default function ReviewPage() {
                 <button onClick={add}>add</button>
             </div>
             <br></br>
-            <div className="column is-two-thirds is-centered">
-                <h1 className={styles.titleTimeline}>Timeline</h1>
-
-                <div className="box">
-                    {console.log("t1: ", restaurants)}
-                    {restaurantListItems}
-                </div>                  
+            <div className="columns is-centered">
+                <div className="column is-two-thirds">
+                    <h1 className={styles.titleTimeline}>Timeline</h1>
+                        {console.log("t1: ", restaurants)}
+                        {restaurantListItems}
+                </div>
             </div>
 
        
