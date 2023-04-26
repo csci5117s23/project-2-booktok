@@ -1,13 +1,13 @@
-import { UserButton } from "@clerk/clerk-react";
 import SearchHeader from '../../components/SearchHeader/SearchHeader';
+import Categories from '../../components/Categories/Categories';
 
-export default function Search() {
-  
-  
+export default function Search() { 
+  const categories = ['Burgers', 'Japanese', 'Korean', 'Chinese', 'Italian', 'Mexican', 'Thai', 'Pizza'];
   
   return (
     <div>
-      <SearchHeader />
-    {/* <UserButton afterSignOutUrl="/"/> */}
-    </div>)  
+      <SearchHeader/>
+      <Categories categories={categories} />
+    </div>
+  );  
 }

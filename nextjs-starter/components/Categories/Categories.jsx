@@ -1,17 +1,18 @@
-import styles from './Categories.module.css'
+import styles from './Categories.module.css';
+import Link from 'next/link';
 
-export default function Categories({ categories }) {
-  
+export default function Categories({ categories}) {
+
   return (
-      <div className={styles.restaurants}>
-        {categories.map((value,index)=>(
-          <button 
-            key = {index}
-            className={styles.list}>
+    <ul className={styles.restaurants}>
+      {categories.map((value, index) => (
+        <Link key={index} href={`/view/${value}`}>
+          <li className={styles.list} 
+            >
             {value}
-          </button>
-        ))}
-      </div>
+          </li>
+        </Link>
+      ))}
+    </ul>
   );
 }
-
