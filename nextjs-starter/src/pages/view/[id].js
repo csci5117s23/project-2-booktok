@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getData } from '../../../api/Data';
 import { useGeoLocation } from 'use-geo-location';
-import Restaurant from '../../../components/Restaurant/Restaurant';
+import Restaurant from '../../components/Restaurant/Restaurant';
 
 const Post = () => {
   const { latitude, longitude } = useGeoLocation();
