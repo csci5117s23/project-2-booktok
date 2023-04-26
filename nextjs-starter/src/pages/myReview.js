@@ -76,83 +76,109 @@ export default function ReviewPage() {
 
         return (
         <>  
-    
-            <h1>//NOTE: working on layout of form//</h1>
-            {/* <ul> */}
-            <div class = "column">
-                <h2>Add to your Timeline:</h2>
-                <input
-                    id = "restaurant"
-                    placeholder="Restaurant Name (required)"
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
-                    onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
-                ></input>
-            </div>
+            {/* Review Form */}
+            {/* <h2>Add to your Timeline:</h2> */}
+            <form className="box">
+                <div className="field">
+                    <label className="label">Restaurant</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="text"
+                            id = "restaurant"
+                            placeholder="Restaurant Name"
+                            value={newName}
+                            onChange={(e) => setNewName(e.target.value)}
+                            onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                        ></input>
+                    </div>
+                    <p class="help is-success">This field is required</p>
+                </div>
 
-            <div class = "column">
-                <h2>Write a review:</h2>
-                <input
-                    id = "review"
-                    type="textarea"
-                    value={newReview}
-                    onChange={(e) => setNewReview(e.target.value)}
-                    onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
-                ></input>
-            </div>
+                <div className="field">
+                    <label className="label">Review</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            id = "review"
+                            type="textarea"
+                            value={newReview}
+                            onChange={(e) => setNewReview(e.target.value)}
+                            onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                        ></input>
+                    </div>
+                </div>
 
-            <div class = "column">
-                <Typography component="legend">Rating:</Typography>
-                <Rating name="half-rating" 
-                    id = "rating"
-                    defaultValue={0} 
-                    precision={0.5} 
-                    value = {newRating}
-                    onChange={(e) => setNewRating(e.target.value)}
-                    onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
-            </div>
+                <div className="field">
+                    <label className="label">Rating</label>
+                    <div className="control">
+                        {/* <Typography component="legend">Rating:</Typography> */}
+                        <Rating name="half-rating" 
+                            id = "rating"
+                            defaultValue={0} 
+                            precision={0.5} 
+                            value = {newRating}
+                            onChange={(e) => setNewRating(e.target.value)}
+                            onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
+                    </div>
+                    <p class="help is-success">This field is required</p>
+                </div>
 
-            <div class = "column">
-                <Typography component="legend">Upload an image:</Typography>
-                {newImage && (
-                    <div>
-                    <img
-                        alt="not found"
-                        width={"250px"}
-                        src={URL.createObjectURL(newImage)}
+                <div className="field">
+                    <label className="label">Image</label>
+                    <div className="control">
+                    {/* <Typography component="legend">Upload an image:</Typography> */}
+                    {newImage && (
+                        <div>
+                            <img
+                                alt="not found"
+                                width={"250px"}
+                                src={URL.createObjectURL(newImage)}
+                            />
+                        <br />
+                        <button onClick={() => setNewImage(null)}>Remove</button>
+                        </div>    
+                    )}
+                    <input
+                        type="file"
+                        name="myImage"
+                        onChange={(e) => {
+                            console.log(e.target.files[0]);
+                            setNewImage(e.target.files[0])} 
+                        }
+                        // onChange={(e) => setNewImage(e.target.value)}
+                        // onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
                     />
-                    <br />
-                    <button onClick={() => setNewImage(null)}>Remove</button>
-                    </div>    
-                )}
-                <input
-                    type="file"
-                    name="myImage"
-                    onChange={(e) => {
-                        console.log(e.target.files[0]);
-                        setNewImage(e.target.files[0])} 
-                    }
-                    // onChange={(e) => setNewImage(e.target.value)}
-                    // onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
-                />
-            </div>
+                    </div>
+                </div>
 
-            <div class = "column">
-                <input
-                    id = "date"
-                    type="date"
-                    value={newDate}
-                    onChange={(e) => setNewDate(e.target.value)}
-                    onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
-                ></input>
-            </div>
+                <div className="field">
+                    <label className="label">Date of the visit</label>
+                    <div className="control">
+                        <input
+                            id = "date"
+                            type="date"
+                            value={newDate}
+                            onChange={(e) => setNewDate(e.target.value)}
+                            onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                        ></input>
+                    </div>
+                </div>
 
-            <div class = "column">
-                <button onClick={add}>add</button>
-            </div>
+                <div className="field is-grouped">
+                    <div className="control">
+                        <button className="button is-success" onClick={add}>Add</button>
+                    </div>
+                </div>
+            </form>
+            
+
+
+            {/* Loading review timeline */}
             <br></br>
             <div className="columns is-centered">
-                <div className="column is-two-thirds">
+                <div className="column is-half">
+                {/* <div className="column is-two-thirds"> */}
                     <h1 className={styles.titleTimeline}>Timeline</h1>
                         {console.log("t1: ", restaurants)}
                         {restaurantListItems}
