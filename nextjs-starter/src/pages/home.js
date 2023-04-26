@@ -79,8 +79,9 @@ export default function HomePage() {
             {/* {console.log("t1: ", restaurants)}
             {restaurantListItems} */}
             <div className="columns is-centered">
-                <div className="column is-two-thirds">
-                    {/* <h1 className={styles.titleTimeline}>Timeline</h1> */}
+                <div className="column is-half">
+                {/* <div className="column is-two-thirds"> */}
+                    <h1 className={styles.titleTimeline}>Timeline</h1>
                     {/* <div className="box"> */}
                         {console.log("t1: ", restaurants)}
                         {restaurantListItems}
