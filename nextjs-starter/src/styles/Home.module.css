@@ -16,6 +16,14 @@
   margin-bottom: 10px;
 }
 
+.titleTimeline {
+  font-size: 50px;
+  font-style: bold;
+  font-family: 'Ubuntu', sans-serif;
+  color: rgb(0, 0, 0);
+  margin-bottom: 10px;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;

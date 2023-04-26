@@ -27,6 +27,7 @@ export default function Navbar() {
           <div className="navbar-start">
             <Link className='navbar-item' href="/search"> Search</Link>
             <Link className='navbar-item' href="/map"> Map</Link>
+            <Link className='navbar-item' href="/myReview"> Add Review</Link>
             <Link className='navbar-item' href="/profile"> Profile</Link>
             <Link className='navbar-item' href="/camera"> Camera</Link>
             {/* <UserButton className='navbar-item' afterSignOutUrl="/" /> */}

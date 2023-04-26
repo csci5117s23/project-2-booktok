@@ -7,7 +7,7 @@ import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import {Camera} from './camera.js'
 
-export default function HomePage() {
+export default function ReviewPage() {
 
     const [loading, setLoading] = useState(true);
     const [restaurants, setRestaurants] = useState([]);
@@ -76,16 +76,90 @@ export default function HomePage() {
 
         return (
         <>  
-            {/* {console.log("t1: ", restaurants)}
-            {restaurantListItems} */}
+    
+            <h1>//NOTE: working on layout of form//</h1>
+            {/* <ul> */}
+            <div class = "column">
+                <h2>Add to your Timeline:</h2>
+                <input
+                    id = "restaurant"
+                    placeholder="Restaurant Name (required)"
+                    value={newName}
+                    onChange={(e) => setNewName(e.target.value)}
+                    onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                ></input>
+            </div>
 
+            <div class = "column">
+                <h2>Write a review:</h2>
+                <input
+                    id = "review"
+                    type="textarea"
+                    value={newReview}
+                    onChange={(e) => setNewReview(e.target.value)}
+                    onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                ></input>
+            </div>
+
+            <div class = "column">
+                <Typography component="legend">Rating:</Typography>
+                <Rating name="half-rating" 
+                    id = "rating"
+                    defaultValue={0} 
+                    precision={0.5} 
+                    value = {newRating}
+                    onChange={(e) => setNewRating(e.target.value)}
+                    onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
+            </div>
+
+            <div class = "column">
+                <Typography component="legend">Upload an image:</Typography>
+                {newImage && (
+                    <div>
+                    <img
+                        alt="not found"
+                        width={"250px"}
+                        src={URL.createObjectURL(newImage)}
+                    />
+                    <br />
+                    <button onClick={() => setNewImage(null)}>Remove</button>
+                    </div>    
+                )}
+                <input
+                    type="file"
+                    name="myImage"
+                    onChange={(e) => {
+                        console.log(e.target.files[0]);
+                        setNewImage(e.target.files[0])} 
+                    }
+                    // onChange={(e) => setNewImage(e.target.value)}
+                    // onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
+                />
+            </div>
+
+            <div class = "column">
+                <input
+                    id = "date"
+                    type="date"
+                    value={newDate}
+                    onChange={(e) => setNewDate(e.target.value)}
+                    onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                ></input>
+            </div>
+
+            <div class = "column">
+                <button onClick={add}>add</button>
+            </div>
+            <br></br>
             <div className="column is-two-thirds is-centered">
-                {/* <h1 className={styles.titleTimeline}>Timeline</h1> */}
+                <h1 className={styles.titleTimeline}>Timeline</h1>
+
                 <div className="box">
                     {console.log("t1: ", restaurants)}
                     {restaurantListItems}
                 </div>                  
             </div>
+
        
         </>
         );
