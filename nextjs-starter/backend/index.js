@@ -18,6 +18,8 @@ const review = object({
   review: string(),
   rating: number().min(0).max(5),
   userId: string().required(),
+  imageName: string(),
+  imageContent: string(),
   dateVisited: date().default(() => new Date()),
   createdOn: date().default(() => new Date()),
 })

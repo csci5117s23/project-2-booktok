@@ -33,8 +33,23 @@ export default function ReviewPage() {
         process();
     }, [isLoaded]);
     
+    // image base64 encoding
+    function imageEncoding() {
+        const selectedFile = target.files;
+        if(selectedFile.length > 0) {
+            const [imageFile] = selectedFile;
+            const fileReader = new FileReader();
+            fileReader.onload = () => {
+                const srcData = fileReader.result;
+                console.log("img encoding: ", srcData);
+            };
+            fileReader.readAsDataURL(imageFile);
+        }
+    }
+
     // add restaurant review to list
     async function add() {
+        // imageEncoding();
         const token = await getToken({ template: "codehooks" });
         const newRestaurant = await addRestaurant(token, newName, newReview, newRating, newDate, userId);
         setNewName("");
@@ -57,7 +72,7 @@ export default function ReviewPage() {
                 {restaurant.name}
             </li> */}
             <div className = "box">
-                <span> {restaurant.selectedImage} </span>
+                {/* <span> {restaurant.selectedImage} </span> */}
                 <span id = {styles.restaurantName}>{restaurant.name}</span>
                 <br></br>
                 <span id = {styles.restaurantReview}>{restaurant.review}</span>
@@ -66,7 +81,7 @@ export default function ReviewPage() {
                 <br></br>
                 <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
                 <br></br>
-                <button onClick={() => setRestaurants(null)}>Remove</button>
+                {/* <button onClick={() => setRestaurants(null)}>Remove</button> */}
             </div>
             <br></br>
             </>
@@ -79,8 +94,9 @@ export default function ReviewPage() {
             {/* Review Form */}
             {/* <h2>Add to your Timeline:</h2> */}
 
+            {/* 'form' to add new restaurant to your timeline */}
             <div className="columns is-centered">
-                <form className="box mx-5">
+                <div className="box mx-5">
                     <div className="field">
                         <label className="label">Restaurant</label>
                         <div className="control">
@@ -130,7 +146,7 @@ export default function ReviewPage() {
                         <label className="label">Image</label>
                         <div className="control">
                         {/* <Typography component="legend">Upload an image:</Typography> */}
-                        {newImage && (
+                        {newImage ? (
                             <div>
                                 <img
                                     alt="not found"
@@ -140,17 +156,18 @@ export default function ReviewPage() {
                             <br />
                             <button onClick={() => setNewImage(null)}>Remove</button>
                             </div>    
-                        )}
+                        ):
                         <input
                             type="file"
                             name="myImage"
+                            id="imageField"
                             onChange={(e) => {
                                 console.log(e.target.files[0]);
                                 setNewImage(e.target.files[0])} 
                             }
                             // onChange={(e) => setNewImage(e.target.value)}
                             // onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
-                        />
+                        />}
                         </div>
                     </div>
 
@@ -172,7 +189,7 @@ export default function ReviewPage() {
                             <button className="button is-success" onClick={add}>Add</button>
                         </div>
                     </div>
-                </form>
+                </div>
             
 
 
