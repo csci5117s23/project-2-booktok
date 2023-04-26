@@ -8,7 +8,7 @@ export default function Navbar() {
 
   return (
     <header>
-      <nav className="navbar is-dark is-spaced" role="navigation" aria-label="main navigation">
+      <nav className="navbar is-success is-spaced" role="navigation" aria-label="main navigation">
         <div className="navbar-brand mr-5">
           <Link className="navbar-item has-text-weight-bold is-size-5" href="/">
             YumYumTok
@@ -35,7 +35,7 @@ export default function Navbar() {
 
           <div className="navbar-end">
             <div className="navbar-item">
-              <button className="button is-small is-success is-outlined"  onClick={() => signOut()}>
+              <button className="button is-small is-success is-light"  onClick={() => signOut()}>
                 Log out
               </button>
             </div>
