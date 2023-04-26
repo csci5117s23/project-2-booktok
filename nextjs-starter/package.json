@@ -30,6 +30,7 @@
     "react-webcam": "^7.0.1",
     "styled-components": "^5.3.10",
     "use-geo-location": "^1.0.1",
+    "yelp-api": "^1.0.3",
     "yup": "^1.1.1"
   }
 }

@@ -7,18 +7,13 @@ import { getData } from '../../api/Data';
 export default function SearchHeader({latitude, longitude}) {
 
   const router = useRouter();
+  
   const [value, setValue] = useState('');
   
   const handleSubmit = (e,value) => {
     e.preventDefault();
 
-    getData(longitude, latitude,value)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    router.push(`/view/${value}`);
   }
   const handleChange = (e) => setValue(e.target.value);
   
