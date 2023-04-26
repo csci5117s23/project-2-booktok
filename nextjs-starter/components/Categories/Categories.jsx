@@ -1,5 +1,4 @@
 import styles from './Categories.module.css';
-import { getData } from '../../api/Data';
 import Link from 'next/link';
 
 export default function Categories({ categories}) {

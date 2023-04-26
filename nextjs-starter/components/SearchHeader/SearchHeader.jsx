@@ -4,7 +4,7 @@ import styles from './SearchHeader.module.css'
 import { useRouter } from 'next/router'
 import { getData } from '../../api/Data';
 
-export default function SearchHeader({latitude, longitude}) {
+export default function SearchHeader() {
 
   const router = useRouter();
   

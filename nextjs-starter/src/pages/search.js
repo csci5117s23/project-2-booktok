@@ -8,13 +8,8 @@ export default function Search() {
   
   return (
     <div>
-      <SearchHeader latitude={latitude}
-                    longitude={longitude}   
-      />
-      <Categories categories={categories} 
-                  latitude = {latitude}
-                  longitude = {longitude}
-      />
+      <SearchHeader/>
+      <Categories categories={categories} />
     </div>
   );  
 }
