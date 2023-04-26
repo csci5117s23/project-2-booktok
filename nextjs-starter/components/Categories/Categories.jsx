@@ -1,10 +1,10 @@
 import styles from './Categories.module.css';
 import { getData } from '../../api/Data';
 
-export default function Categories({ categories }) {
+export default function Categories({ categories,latitude,longitude }) {
 
-  const handleClick = () => {
-    getData()
+  const handleClick = (value) => {
+    getData(longitude,latitude,value)
       .then(function (response) {
         console.log(response.data);
       })
@@ -19,7 +19,7 @@ export default function Categories({ categories }) {
         <li
           key={index}
           className={styles.list}
-          onClick={handleClick}
+          onClick={()=>handleClick(value)}
         >
           {value}
         </li>

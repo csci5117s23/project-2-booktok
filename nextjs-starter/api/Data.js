@@ -1,20 +1,18 @@
 // api/Data.js
-
 import axios from 'axios';
 
-export function getData() {
+export function getData(longitude,latitude,value) {
   
   const apiKey = process.env.NEXT_PUBLIC_YELP_API_KEY;
-  const baseUrl = 'https://api.yelp.com/v3/businesses/search';
   const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
   
   const options = {
     method: 'GET',
     url: proxyUrl + 'https://api.yelp.com/v3/businesses/search',
     params: {
-      latitude: '44.9735232',
-      longitude: '-93.22502',
-      term: 'Korean',
+      latitude: `${latitude}`,
+      longitude: `${longitude}`,
+      term: `${value}`,
       sort_by: 'best_match',
       limit: '20'
     },

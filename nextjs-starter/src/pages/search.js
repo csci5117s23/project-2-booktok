@@ -1,17 +1,18 @@
 import SearchHeader from '../../components/SearchHeader/SearchHeader';
-import UserLocation  from '../../api/userLocation'; 
 import Categories from '../../components/Categories/Categories';
+import { useGeoLocation } from 'use-geo-location';
 
 export default function Search() { 
-
+  const { latitude, longitude, loading } = useGeoLocation(); 
   const categories = ['Burgers', 'Japanese', 'Korean', 'Chinese', 'Italian', 'Mexican', 'Thai', 'Pizza'];
   
   return (
     <div>
       <SearchHeader />
-        <Categories categories={categories} />
-
-        <UserLocation />
+      <Categories categories={categories} 
+                  latitude = {latitude}
+                  longitude = {longitude}
+      />
     </div>
   );  
 }
