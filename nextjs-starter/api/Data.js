@@ -24,7 +24,5 @@ export function getData(longitude,latitude,value) {
     }
   };
 
-  console.log(options);
-
   return axios.request(options);
 }

@@ -3,12 +3,14 @@ import Categories from '../../components/Categories/Categories';
 import { useGeoLocation } from 'use-geo-location';
 
 export default function Search() { 
-  const { latitude, longitude, loading } = useGeoLocation(); 
+  const { latitude, longitude} = useGeoLocation(); 
   const categories = ['Burgers', 'Japanese', 'Korean', 'Chinese', 'Italian', 'Mexican', 'Thai', 'Pizza'];
   
   return (
     <div>
-      <SearchHeader />
+      <SearchHeader latitude={latitude}
+                    longitude={longitude}   
+      />
       <Categories categories={categories} 
                   latitude = {latitude}
                   longitude = {longitude}
