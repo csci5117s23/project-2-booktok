@@ -14,8 +14,9 @@ export default function Restaurant({data}) {
         <img src={image_url} alt={name} />
       </div>
       <div>
-        <strong> name: {name}</strong> <br />
-  
+      
+      <strong> name: {name}</strong> <br />
+
         {is_closed &&<p>Open</p> } close <br />
         location : {location.address1},{location.city},{location.zip_code} <br />
         phone: {phone}  <br />
