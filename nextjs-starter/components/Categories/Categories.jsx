@@ -7,8 +7,7 @@ export default function Categories({ categories}) {
     <ul className={styles.restaurants}>
       {categories.map((value, index) => (
         <Link key={index} href={`/view/${value}`}>
-          <li className={styles.list} 
-            >
+          <li className={styles.list}>
             {value}
           </li>
         </Link>

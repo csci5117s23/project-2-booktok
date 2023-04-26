@@ -7,7 +7,7 @@ import Restaurant from '../../../components/Restaurant/Restaurant';
 const Post = () => {
   const { latitude, longitude } = useGeoLocation();
   const [loading, setLoading] = useState(true);
-  const [Restaurants, setRestaurant] = useState({});
+  const [Restaurants, setRestaurant] = useState([]);
 
   const router = useRouter();
   const { id } = router.query;
@@ -19,10 +19,6 @@ const Post = () => {
         .then(function (response) {
           console.log(response);
           setRestaurant(response.data.businesses);
-
-          console.log("test");
-          console.log(item);
-
           setLoading(false);
         })
         .catch(function (error) {
