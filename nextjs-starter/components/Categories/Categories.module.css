@@ -16,6 +16,7 @@
   font-size: x-large;
   border: none;
   cursor: pointer;
+  padding : 3rem;
 }
 .surprise{
   display:flex;
