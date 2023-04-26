@@ -1,5 +1,5 @@
 
-export default function Item({data}) {
+export default function Restaurant({data}) {
   const {image_url, 
          name, 
          is_closed,  

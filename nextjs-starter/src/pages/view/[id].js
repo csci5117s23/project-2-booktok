@@ -2,12 +2,12 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getData } from '../../../api/Data';
 import { useGeoLocation } from 'use-geo-location';
-import Item from '../../../components/Item/Item';
+import Restaurant from '../../../components/Restaurant/Restaurant';
 
 const Post = () => {
   const { latitude, longitude } = useGeoLocation();
   const [loading, setLoading] = useState(true);
-  const [item, setItem] = useState({});
+  const [Restaurants, setRestaurant] = useState({});
 
   const router = useRouter();
   const { id } = router.query;
@@ -18,7 +18,7 @@ const Post = () => {
       getData(longitude, latitude, id)
         .then(function (response) {
           console.log(response);
-          setItem(response.data.businesses);
+          setRestaurant(response.data.businesses);
 
           console.log("test");
           console.log(item);
@@ -42,8 +42,8 @@ const Post = () => {
 
   return (
     <ul>
-      {item.map((data) => (
-        <Item key={data.id} data={data}/>
+      {Restaurants.map((data) => (
+        <Restaurant key={data.id} data={data}/>
     ))}
     </ul>
   )
