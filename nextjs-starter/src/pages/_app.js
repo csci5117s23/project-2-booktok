@@ -1,7 +1,7 @@
 import '@/styles/index.css'
 import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn,UserButton } from '@clerk/nextjs'
 import { useRouter } from 'next/router';
-import Layout from '../../components/Navbar/Layout';
+import Layout from '../components/Navbar/Layout';
 
 // pages that don't require a login
 const publicPages = ["/", "/sign-up"];

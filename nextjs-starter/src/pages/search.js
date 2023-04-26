@@ -1,5 +1,5 @@
-import SearchHeader from '../../components/SearchHeader/SearchHeader';
-import Categories from '../../components/Categories/Categories';
+import SearchHeader from '../components/SearchHeader/SearchHeader';
+import Categories from '../components/Categories/Categories';
 
 export default function Search() { 
   const categories = ['Burgers', 'Japanese', 'Korean', 'Chinese', 'Italian', 'Mexican', 'Thai', 'Pizza'];
