@@ -1,7 +1,6 @@
 import { useGeoLocation } from 'use-geo-location';
 
 export default function UserLocation() {
-  
   const {latitude,longitude,loading} = useGeoLocation(); 
   return (
     <>
