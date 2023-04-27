@@ -16,7 +16,7 @@ import jwtDecode from 'jwt-decode';
 const review = object({
   name: string().required(),
   review: string(),
-  rating: number().min(0).max(5),
+  rating: number().min(0).max(5).required(),
   userId: string().required(),
   imageName: string(),
   imageContent: string(),

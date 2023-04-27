@@ -11,66 +11,17 @@ body{
 .nav {
   font-size: 30px;
 }
-
-  /* Link */
-  /* a{
-    text-decoration: none;
-    color: white;
-  }
-   .navbar {
-    font-size: x-large;
-    display : flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #263343;
-    padding: 8px 12px;
-    
-  } 
-  .navbar__logo{
-    height: 85px;
-    width: 85px;
-  }
-  .navbar__menu {
-    display : flex;
-    list-style: none;
-    padding-left: 0;
-  }
-  .navbar__menu li{
-    padding: 8px 12px;
-    text-decoration:none;
-    color: white;
-  }
   
-  .navbar__menu li:hover{
-    background-color: #d49466;
-    border-radius: 4px;
-    transform: rotate(3deg) scale(1.1);
-    
-  }
-  
-  .navbar__icons{
-    display:flex;
-    list-style: none;
-    color:white;
-    height: 30px;
-    width: 30px;
-    padding-left: 0;
-  }
-  .navbar__icons li {
-    padding : 5px 12px;
-    text-align: center;
-  } */
-  
-  .Webcam{
-    padding-top: 50px;
+.Webcam{
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+.Captured{
+  padding-top: 50px;
     display: flex;
     justify-content: center;
-  }
-  .Captured{
-    padding-top: 50px;
-      display: flex;
-      justify-content: center;
-  }
+}
   
   /* @media screen and (max-width: 768px){
     .navbar{

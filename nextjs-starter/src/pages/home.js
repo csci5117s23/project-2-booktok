@@ -1,8 +1,8 @@
 import { UserButton } from "@clerk/clerk-react";
 import styles from '@/styles/Home.module.css'
-import { addRestaurant, getRestaurants } from "@/modules/Data";
+import { addRestaurant, getRestaurants, deleteRestaurant } from "@/modules/Data";
 import { Typography } from "@mui/material";
-import {Rating} from "@mui/material";
+import { Rating } from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import {Camera} from './camera.js'
@@ -13,22 +13,26 @@ export default function ReviewPage() {
     const [restaurants, setRestaurants] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
 
-    const [newName, setNewName] = useState("");
+    const [newName, setNewName] = useState(null);
     const [newReview, setNewReview] = useState("");
-    const [newRating, setNewRating] = useState("");
+    const [newRating, setNewRating] = useState(null);
     const [newDate, setNewDate] = useState("");
     // const [newImage, setNewImage] = useState("")
     const [newImage, setNewImage] = useState("");
 
 
+    const [delName, setDelName] = useState("");
+    const [delRating, setDelRating] = useState(null);
+
+
     // get restaurant review list
     useEffect(() => {
         async function process() {
-        if (userId) {
-            const token = await getToken({ template: "codehooks" });
-            setRestaurants(await getRestaurants(token));
-            setLoading(false);
-        }
+            if (userId) {
+                const token = await getToken({ template: "codehooks" });
+                setRestaurants(await getRestaurants(token, userId));
+                setLoading(false);
+            }
         }
         process();
     }, [isLoaded]);
@@ -59,10 +63,23 @@ export default function ReviewPage() {
         setNewImage("");
         setRestaurants(restaurants.concat(newRestaurant));
     }
+    
+    // delete restaurant review from list
+    async function deleteReview(name, rating) {
+        const token = await getToken({ template: "codehooks" });
+        setDelName(name);
+        setDelRating(rating);
+        try {
+          await deleteRestaurant(token, userId, delName, delRating);
+        } catch (e) {
+          console.log(e);
+        }
+        setRestaurants(await getRestaurants(token, userId));
+    }
 
     if (loading) {
         console.log(loading);
-        return <span> loading... </span>;
+        return <span> loading your reviews... </span>;
     } 
     else {
         const restaurantListItems = restaurants.map((restaurant) => {
@@ -81,7 +98,9 @@ export default function ReviewPage() {
                 <br></br>
                 <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
                 <br></br>
-                {/* <button onClick={() => setRestaurants(null)}>Remove</button> */}
+                <button onClick={() => {deleteReview(restaurant.name, restaurant.rating);}}>
+                    Delete
+                </button>
             </div>
             <br></br>
             </>
@@ -91,10 +110,7 @@ export default function ReviewPage() {
 
         return (
         <>  
-            {/* Review Form */}
-            {/* <h2>Add to your Timeline:</h2> */}
-
-            {/* 'form' to add new restaurant to your timeline */}
+            {/* Review Form to add new restaurant to your timeline*/}
             <div className="columns is-centered">
                 <div className="box mx-5">
                     <div className="field">
@@ -110,7 +126,7 @@ export default function ReviewPage() {
                                 onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
                             ></input>
                         </div>
-                        <p class="help is-success">This field is required</p>
+                        <p className="help is-success">This field is required</p>
                     </div>
 
                     <div className="field">
@@ -130,7 +146,6 @@ export default function ReviewPage() {
                     <div className="field">
                         <label className="label">Rating</label>
                         <div className="control">
-                            {/* <Typography component="legend">Rating:</Typography> */}
                             <Rating name="half-rating" 
                                 id = "rating"
                                 defaultValue={0} 
@@ -139,13 +154,12 @@ export default function ReviewPage() {
                                 onChange={(e) => setNewRating(e.target.value)}
                                 onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
                         </div>
-                        <p class="help is-success">This field is required</p>
+                        <p className="help is-success">This field is required</p>
                     </div>
 
                     <div className="field">
                         <label className="label">Image</label>
                         <div className="control">
-                        {/* <Typography component="legend">Upload an image:</Typography> */}
                         {newImage ? (
                             <div>
                                 <img
@@ -191,19 +205,19 @@ export default function ReviewPage() {
                     </div>
                 </div>
             
-
-
+            
             {/* Loading review timeline */}
                 <br></br>
             {/* <div className="columns is-centered"> */}
                 <div className="column is-half">
                 {/* <div className="column is-two-thirds"> */}
                     <h1 className={styles.titleTimeline}>Timeline</h1>
-                        {console.log("t1: ", restaurants)}
+                        {console.log("timeline: ", restaurants)}
                         {restaurantListItems}
                 </div>
             </div>
-
+            
+            {console.log("delete: ", delName)}
        
         </>
         );

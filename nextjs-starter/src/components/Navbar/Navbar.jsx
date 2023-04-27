@@ -25,13 +25,11 @@ export default function Navbar() {
         {/* Hidden in mobile device */}
         <div id="navbarBasicExample" className={`navbar-menu ${clicked ? "is-active" : ""}`}>
           <div className="navbar-start">
-            <Link className='navbar-item' href="/search"> Search</Link>
+            <Link className='navbar-item' href="/search"> Restaurants</Link>
             <Link className='navbar-item' href="/map"> Map</Link>
-            <Link className='navbar-item' href="/profile"> Profile</Link>
+            <Link className='navbar-item' href="/profile"> My Account</Link>
             <Link className='navbar-item' href="/camera"> Camera</Link>
-            {/* <UserButton className='navbar-item' afterSignOutUrl="/" /> */}
           </div>
-
           <div className="navbar-end">
             <div className="navbar-item">
               <button className="button is-small is-success is-light"  onClick={() => signOut()}>
