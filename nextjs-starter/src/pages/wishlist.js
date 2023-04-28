@@ -3,7 +3,7 @@ import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function WishListPage() {
@@ -69,6 +69,7 @@ export default function WishListPage() {
             </li> */}
             <div className = "box">
                 {/* <span> {wishItem.selectedImage} </span> */}
+                <FontAwesomeIcon icon={faLocationDot} /><span>&nbsp;&nbsp;</span>
                 <span id = {styles.restaurantName}>{wishItem.name}</span>
                 <br></br>
                 <span id = {styles.restaurantReview}>{wishItem.note}</span>

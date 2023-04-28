@@ -7,7 +7,7 @@ import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import {Camera} from './camera.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen, faUtensils, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faUtensils, faComment, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function ReviewPage() {
@@ -93,6 +93,7 @@ export default function ReviewPage() {
             </li> */}
             <div className = "box">
                 {/* <span> {restaurant.selectedImage} </span> */}
+                <FontAwesomeIcon icon={faLocationDot} /><span>&nbsp;&nbsp;</span>
                 <span id = {styles.restaurantName}>{restaurant.name}</span>
                 <br></br>
                 <span id = {styles.restaurantReview}>{restaurant.review}</span>
