@@ -65,12 +65,12 @@ export default function ReviewPage() {
     }
     
     // delete restaurant review from list
-    async function deleteReview(name, rating) {
+    async function deleteReview(restaurant) {
         const token = await getToken({ template: "codehooks" });
-        setDelName(name);
-        setDelRating(rating);
+        setDelName(restaurant.name);
+        setDelRating(restaurant.rating);
         try {
-          await deleteRestaurant(token, userId, delName, delRating);
+          await deleteRestaurant(token, restaurant._id);
         } catch (e) {
           console.log(e);
         }
@@ -98,7 +98,7 @@ export default function ReviewPage() {
                 <br></br>
                 <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
                 <br></br>
-                <button onClick={() => {deleteReview(restaurant.name, restaurant.rating);}}>
+                <button onClick={() => {deleteReview(restaurant);}}>
                     Delete
                 </button>
             </div>
@@ -217,7 +217,7 @@ export default function ReviewPage() {
                 </div>
             </div>
             
-            {console.log("delete: ", delName)}
+            {console.log("delete: ", delName, "&&", delRating)}
        
         </>
         );

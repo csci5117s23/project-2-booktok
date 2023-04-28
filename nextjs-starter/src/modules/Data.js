@@ -27,10 +27,9 @@ export async function addRestaurant(authToken, restaurantName, restaurantReview,
     return await result.json();
 }
 
-// token, userId, name, rating
-export async function deleteRestaurant(authToken, userName, restaurantName, restaurantRating) {
-    const result = await fetch(backend_base+"/home?userId="+userName+"&name="+restaurantName, {
-    // const result = await fetch(backend_base+"/home?userId="+userName+"&name="+restaurantName+"&rating="+restaurantRating, {
+// delete review
+export async function deleteRestaurant(authToken, restaurantId) {
+    const result = await fetch(backend_base+"/home/"+restaurantId, {
         'method':'DELETE',
         'headers': {
             'Authorization': 'Bearer ' + authToken
@@ -39,17 +38,6 @@ export async function deleteRestaurant(authToken, userName, restaurantName, rest
     return await result.json();
 }
 
-
-// export async function deleteCategory(authToken, userId, categoryId) {
-//     const result = await fetch(`${backend_base}/deleteCategory?userId=${userId}&_id=${categoryId}`,{
-//         'method':'DELETE',
-//         'headers': {
-//             'Authorization': 'Bearer ' + authToken,
-//             'Content-Type': 'application/json'
-//         }
-//     })
-//     return await result.json();
-// }
 
 
 
