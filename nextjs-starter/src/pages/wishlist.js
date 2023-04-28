@@ -3,7 +3,7 @@ import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function WishListPage() {
@@ -168,7 +168,11 @@ export default function WishListPage() {
             {/* <div className="columns is-centered"> */}
                 <div className="column is-half">
                 {/* <div className="column is-two-thirds"> */}
-                    <h1 className={styles.titleTimeline}>Wish List</h1>
+                    <h1 className={styles.titleTimeline}>
+                        Wish List
+                        <span>&nbsp;&nbsp;</span>
+                        <FontAwesomeIcon icon={faHeart} bounce style={{color: "#ffc038",}} />
+                    </h1>
                         {console.log("timeline: ", wishList)}
                         {wishListItems}
                 </div>

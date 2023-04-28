@@ -7,7 +7,7 @@ import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import {Camera} from './camera.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faUtensils, faComment } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function ReviewPage() {
@@ -221,7 +221,11 @@ export default function ReviewPage() {
             {/* <div className="columns is-centered"> */}
                 <div className="column is-half">
                 {/* <div className="column is-two-thirds"> */}
-                    <h1 className={styles.titleTimeline}>Timeline</h1>
+                    <h1 className={styles.titleTimeline}>
+                        Timeline
+                        <span>&nbsp;&nbsp;</span>
+                        <FontAwesomeIcon icon={faUtensils} spin style={{color: "#48c38b",}} />
+                    </h1>
                         {console.log("timeline: ", restaurants)}
                         {restaurantListItems}
                 </div>
