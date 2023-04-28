@@ -14,8 +14,7 @@ export default function Home() {
   const { userID, getToken, isLoaded, isSignedIn } = useAuth();
 
   const router = useRouter()
-
-
+  
   //logged in, so redirect to /todos
   if(isSignedIn) {
     // console.log("userID", userID);

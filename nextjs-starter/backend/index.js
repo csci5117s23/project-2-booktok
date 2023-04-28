@@ -24,6 +24,17 @@ const review = object({
   createdOn: date().default(() => new Date()),
 })
 
+const wishList = object({
+  name: string().required(),
+  note: string(),
+  userId: string().required(),
+  imageName: string(),
+  imageContent: string(),
+  // createdOn: date().default(() => new Date()),
+
+  createdOn: date().default(Date.now),
+})
+
 // This can largely be copy-pasted, it just grabs the authorization token and parses it, stashing it on the request.
 const userAuth = async (req, res, next) => {
   try {
