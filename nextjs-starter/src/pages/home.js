@@ -6,6 +6,8 @@ import { Rating } from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import {Camera} from './camera.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 export default function ReviewPage() {
 
@@ -98,9 +100,12 @@ export default function ReviewPage() {
                 <br></br>
                 <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
                 <br></br>
-                <button onClick={() => {deleteReview(restaurant);}}>
-                    Delete
-                </button>
+                <div className="buttons is-right">
+                    <button className="button is-inverted is-small" onClick={() => {deleteReview(restaurant);}}>
+                        {/* Delete */}
+                        <FontAwesomeIcon icon={faTrashCan} />
+                    </button>
+                </div>
             </div>
             <br></br>
             </>
