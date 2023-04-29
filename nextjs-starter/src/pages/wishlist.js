@@ -1,110 +1,87 @@
-import { UserButton } from "@clerk/clerk-react";
 import styles from '@/styles/Home.module.css'
-import { addReview, getReviews, deleteReview } from "@/modules/Data";
-import { Typography } from "@mui/material";
-import { Rating } from "@mui/material";
+import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
-import { Camera } from './camera.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen, faUtensils, faComment, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 
-
-
-export default function ReviewPage() {
+export default function WishListPage() {
 
     const [loading, setLoading] = useState(true);
-    const [restaurants, setRestaurants] = useState([]);
+    const [wishList, setWishList] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
 
     const [newName, setNewName] = useState("");
-    const [newReview, setNewReview] = useState("");
-    const [newRating, setNewRating] = useState(null);
-    const [newDate, setNewDate] = useState("");
-    const [newImage64, setNewImage64] = useState("")
+    const [newNote, setNewNote] = useState("");
     const [newImage, setNewImage] = useState("");
 
 
-
-    // get restaurant review list
+    // get restaurant wish list
     useEffect(() => {
         async function process() {
             if (userId) {
                 const token = await getToken({ template: "codehooks" });
-                setRestaurants(await getReviews(token, userId));
+                setWishList(await getWishList(token, userId));
                 setLoading(false);
             }
         }
         process();
     }, [isLoaded]);
     
-    // if image exists, add it to timeline
-    function addImage(imageString64) {
-        console.log("adding image...");
 
-        return <img src={imageString64} alt="restaurant image" width="200"></img>
-    }
-
+    // add restaurant wish list
     async function add() {
+        // imageEncoding();
         const token = await getToken({ template: "codehooks" });
-        const newRestaurant = await addReview(token, newName, newReview, newRating, newDate, newImage64, userId);
+        const newWish = await addWishList(token, newName, newNote, userId);
         setNewName("");
-        setNewReview("");
-        setNewRating("");
-        setNewDate("");
+        setNewNote("");
         setNewImage("");
-        setNewImage64("");
-        setRestaurants(restaurants.concat(newRestaurant));
+        setWishList(wishList.concat(newWish));
     }
     
     // delete restaurant review from list
-    async function delReview(restaurant) {
+    async function delWishList(wishItem) {
         const token = await getToken({ template: "codehooks" });
         try {
-          await deleteReview(token, restaurant._id);
+          await deleteWishList(token, wishItem._id);
         } catch (e) {
           console.log(e);
         }
-        setRestaurants(await getReviews(token, userId));
+        setWishList(await getWishList(token, userId));
     }
 
     // edit restaurant review
-    // async function editReview(restaurant){
-
+    // async function editWishList(wishItem){
     // }
 
     if (loading) {
         console.log(loading);
-        return <span> loading your reviews... </span>;
+        return <span> loading your wish list... </span>;
     } 
     else {
-        const restaurantListItems = restaurants.map((restaurant) => {
-            if(restaurant.userId == userId) {
+        const wishListItems = wishList.map((wishItem) => {
+            if(wishItem.userId == userId) {
             return <>
-            {/* <li key={restaurant._id}>
-                {restaurant.name}
+            {/* <li key={wishItem._id}>
+                {wishItem.name}
             </li> */}
             <div className = "box">
-                {/* <span> {restaurant.selectedImage} </span> */}
+                {/* <span> {wishItem.selectedImage} </span> */}
                 <FontAwesomeIcon icon={faLocationDot} /><span>&nbsp;&nbsp;</span>
-                <span id = {styles.restaurantName}>{restaurant.name}</span>
+                <span id = {styles.restaurantName}>{wishItem.name}</span>
                 <br></br>
-                <span id = {styles.restaurantReview}>{restaurant.review}</span>
+                <span id = {styles.restaurantReview}>{wishItem.note}</span>
                 <br></br>
-                <span id = {styles.restaurantRating}> {restaurant.rating} </span>
+                <span id = {styles.restaurantReview}>{wishItem.createdOn}</span>
                 <br></br>
-                <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
-                <br></br>
-
-                {typeof restaurant.imageContent === "undefined" ? console.log("No image available.") : addImage(restaurant.imageContent)}
-
                 <div className="buttons is-right">
-                    <button className="button is-inverted is-small" onClick={() => {editReview(restaurant);}}>
+                    <button className="button is-inverted is-small" onClick={() => {editWishList(wishItem);}}>
                         <FontAwesomeIcon icon={faPen} />
                     </button>
                     {/* Edit function is not made */}
-                    <button className="button is-inverted is-small" onClick={() => {delReview(restaurant);}}>
+                    <button className="button is-inverted is-small" onClick={() => {delWishList(wishItem);}}>
                         <FontAwesomeIcon icon={faTrashCan} />
                     </button>
                 </div>
@@ -117,7 +94,7 @@ export default function ReviewPage() {
 
         return (
         <>  
-            {/* Review Form to add new restaurant to your timeline*/}
+            {/* Wish List Form to add new restaurant */}
             <div className="columns is-centered">
                 <div className="box mx-5">
                     <div className="field">
@@ -137,32 +114,18 @@ export default function ReviewPage() {
                     </div>
 
                     <div className="field">
-                        <label className="label">Review</label>
+                        <label className="label">Notes</label>
                         <div className="control">
                             <textarea
                                 className="textarea is-primary"
                                 id = "review"
                                 type="textarea"
                                 rows="5"
-                                value={newReview}
-                                onChange={(e) => setNewReview(e.target.value)}
+                                value={newNote}
+                                onChange={(e) => setNewNote(e.target.value)}
                                 onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
                             ></textarea>
                         </div>
-                    </div>
-
-                    <div className="field">
-                        <label className="label">Rating</label>
-                        <div className="control">
-                            <Rating name="half-rating" 
-                                id = "rating"
-                                defaultValue={0} 
-                                precision={0.5} 
-                                value = {newRating}
-                                onChange={(e) => setNewRating(e.target.value)}
-                                onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
-                        </div>
-                        <p className="help is-success">This field is required</p>
                     </div>
 
                     <div className="field">
@@ -182,41 +145,14 @@ export default function ReviewPage() {
                         <input
                             type="file"
                             name="myImage"
-                            id="imageFileId"
-                            class="imageClass"
+                            id="imageField"
                             onChange={(e) => {
                                 console.log(e.target.files[0]);
-                                setNewImage(e.target.files[0])
-                                
-                                // image base64 encoding
-                                const selectedFile = e.target.files;
-                                if(selectedFile.length > 0) {
-                                    const [imageFile] = selectedFile;
-                                    const fileReader = new FileReader();
-                                    fileReader.onload = () => {
-                                        const srcData = fileReader.result;
-                                        setNewImage64(srcData);
-                                        console.log("img encoding: ", srcData);
-                                    };
-                                    fileReader.readAsDataURL(imageFile);
-                                }}
+                                setNewImage(e.target.files[0])} 
                             }
                             // onChange={(e) => setNewImage(e.target.value)}
                             // onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
                         />}
-                        </div>
-                    </div>
-
-                    <div className="field">
-                        <label className="label">Date of the visit</label>
-                        <div className="control">
-                            <input
-                                id = "date"
-                                type="date"
-                                value={newDate}
-                                onChange={(e) => setNewDate(e.target.value)}
-                                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
-                            ></input>
                         </div>
                     </div>
 
@@ -234,12 +170,12 @@ export default function ReviewPage() {
                 <div className="column is-half">
                 {/* <div className="column is-two-thirds"> */}
                     <h1 className={styles.titleTimeline}>
-                        Timeline
+                        Wish List
                         <span>&nbsp;&nbsp;</span>
-                        <FontAwesomeIcon icon={faUtensils} spin style={{color: "#48c38b",}} />
+                        <FontAwesomeIcon icon={faHeart} bounce style={{color: "#ffc038",}} />
                     </h1>
-                        {console.log("timeline: ", restaurants)}
-                        {restaurantListItems}
+                        {console.log("timeline: ", wishList)}
+                        {wishListItems}
                 </div>
             </div>
             
@@ -247,6 +183,5 @@ export default function ReviewPage() {
        
         </>
         );
-  
     }  
 }

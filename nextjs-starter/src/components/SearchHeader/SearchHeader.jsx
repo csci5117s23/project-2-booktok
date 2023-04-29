@@ -1,13 +1,12 @@
 import { BsSearch } from 'react-icons/bs';
 import {useState} from 'react';
-import styles from './SearchHeader.module.css'
-import { useRouter } from 'next/router'
-import { getData } from '../../../api/Data';
+import { useRouter } from 'next/router';
+import styles from '../SearchHeader/SearchHeader.module.css';
+
 
 export default function SearchHeader() {
 
   const router = useRouter();
-  
   const [value, setValue] = useState('');
   
   const handleSubmit = (e,value) => {
@@ -18,16 +17,15 @@ export default function SearchHeader() {
   const handleChange = (e) => setValue(e.target.value);
   
   return (
-    <header className={styles.header}>
-      <form className={styles.form} onSubmit={(e)=>handleSubmit(e,value)}>
+    <header className={styles.header__name}>
+      <form onSubmit={(e) => handleSubmit(e, value)} className={styles.header}>
         <input
-          className={styles.search} 
+          className={styles.search}
           type="text"
           placeholder="Search..."
           onChange={handleChange}  
         />
-        <button 
-          className={styles.button_click}>
+        <button className={styles.button_click}>
           <BsSearch />
         </button>
       </form>

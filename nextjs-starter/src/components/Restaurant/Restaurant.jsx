@@ -1,20 +1,19 @@
+import styles from '../Restaurant/Restaurant.module.css';
+import {FcLike} from 'react-icons/fc'
 
 export default function Restaurant({data}) {
   const {image_url, name,location,phone,rating} = data;
          
   return (
-    <>
-      <div>
-        <img src={image_url} alt={name} />
-      </div>
-      <div>
-      
-      <strong> name: {name}</strong> <br />
-        location : {location.address1},{location.city},{location.zip_code} <br />
-        phone: {phone}  <br />
-        rating: {rating} <br />
-      </div>
-    </>
+    <li className={styles.lists}>
+      <img src={image_url} alt={name} className={styles.image} /><br/>
+               {name} <br/>
+               {location.address1} <br />
+               {phone || "No phone number"} <br/>
+       rating: {rating} / 5<br />
+
+      <button className={styles.button}> click<FcLike /></button>
+    </li>
   );
 }
 

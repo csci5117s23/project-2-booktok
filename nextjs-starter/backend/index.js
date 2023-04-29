@@ -16,11 +16,22 @@ import jwtDecode from 'jwt-decode';
 const review = object({
   name: string().required(),
   review: string(),
-  rating: number().min(0).max(5),
+  rating: number().min(0).max(5).required(),
   userId: string().required(),
   imageContent: string(),
   dateVisited: date().default(() => new Date()),
   createdOn: date().default(() => new Date()),
+})
+
+const wishList = object({
+  name: string().required(),
+  note: string(),
+  userId: string().required(),
+  imageName: string(),
+  imageContent: string(),
+  // createdOn: date().default(() => new Date()),
+
+  createdOn: date().default(Date.now),
 })
 
 // This can largely be copy-pasted, it just grabs the authorization token and parses it, stashing it on the request.

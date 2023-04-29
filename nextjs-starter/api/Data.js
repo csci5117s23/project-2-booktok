@@ -15,7 +15,7 @@ export function getData(longitude,latitude,id) {
       longitude: `${longitude}`,
       term: `${id}`,
       sort_by: 'best_match',
-      limit: '20'
+      limit: '16'
     },
     headers: {
       'Authorization': `Bearer ${apiKey}`,
