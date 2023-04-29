@@ -21,7 +21,7 @@ export default function ReviewPage() {
     const [newReview, setNewReview] = useState("");
     const [newRating, setNewRating] = useState(null);
     const [newDate, setNewDate] = useState("");
-    // const [newImage, setNewImage] = useState("");
+    const [newImage64, setNewImage64] = useState("")
     const [newImage, setNewImage] = useState("");
 
 
@@ -38,30 +38,22 @@ export default function ReviewPage() {
         process();
     }, [isLoaded]);
     
-    // image base64 encoding
-    function imageEncoding() {
-        const selectedFile = target.files;
-        if(selectedFile.length > 0) {
-            const [imageFile] = selectedFile;
-            const fileReader = new FileReader();
-            fileReader.onload = () => {
-                const srcData = fileReader.result;
-                console.log("img encoding: ", srcData);
-            };
-            fileReader.readAsDataURL(imageFile);
-        }
+    // if image exists, add it to timeline
+    function addImage(imageString64) {
+        console.log("adding image...");
+
+        return <img src={imageString64} alt="restaurant image" width="200"></img>
     }
 
-    // add restaurant review to list
     async function add() {
-        // imageEncoding();
         const token = await getToken({ template: "codehooks" });
-        const newRestaurant = await addReview(token, newName, newReview, newRating, newDate, userId);
+        const newRestaurant = await addReview(token, newName, newReview, newRating, newDate, newImage64, userId);
         setNewName("");
         setNewReview("");
         setNewRating("");
         setNewDate("");
         setNewImage("");
+        setNewImage64("");
         setRestaurants(restaurants.concat(newRestaurant));
     }
     
@@ -103,6 +95,9 @@ export default function ReviewPage() {
                 <br></br>
                 <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
                 <br></br>
+
+                {typeof restaurant.imageContent === "undefined" ? console.log("No image available.") : addImage(restaurant.imageContent)}
+
                 <div className="buttons is-right">
                     <button className="button is-inverted is-small" onClick={() => {editReview(restaurant);}}>
                         <FontAwesomeIcon icon={faPen} />
@@ -186,10 +181,24 @@ export default function ReviewPage() {
                         <input
                             type="file"
                             name="myImage"
-                            id="imageField"
+                            id="imageFileId"
+                            class="imageClass"
                             onChange={(e) => {
                                 console.log(e.target.files[0]);
-                                setNewImage(e.target.files[0])} 
+                                setNewImage(e.target.files[0])
+                                
+                                // image base64 encoding
+                                const selectedFile = e.target.files;
+                                if(selectedFile.length > 0) {
+                                    const [imageFile] = selectedFile;
+                                    const fileReader = new FileReader();
+                                    fileReader.onload = () => {
+                                        const srcData = fileReader.result;
+                                        setNewImage64(srcData);
+                                        console.log("img encoding: ", srcData);
+                                    };
+                                    fileReader.readAsDataURL(imageFile);
+                                }}
                             }
                             // onChange={(e) => setNewImage(e.target.value)}
                             // onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
@@ -237,5 +246,6 @@ export default function ReviewPage() {
        
         </>
         );
+  
     }  
 }
