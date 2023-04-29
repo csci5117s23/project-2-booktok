@@ -13,7 +13,7 @@ const Post = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  function dataFetch() {
+  async function dataFetch() {
     if (latitude && longitude) {
   
       getData(longitude, latitude, id)
@@ -31,7 +31,7 @@ const Post = () => {
 
   useEffect(() => {
     dataFetch();
-  }, [latitude,longitude]);
+  }, [longitude, latitude]);
 
   if (loading) {
     return <p>Loading...</p>;
