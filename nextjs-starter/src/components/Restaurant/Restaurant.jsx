@@ -12,7 +12,7 @@ export default function Restaurant({data}) {
                {phone || "No phone number"} <br/>
        rating: {rating} / 5<br />
 
-      <button className={styles.button}>If you like click: <FcLike /></button>
+      <button className={styles.button}> click<FcLike /></button>
     </li>
   );
 }
