@@ -75,7 +75,7 @@ export default function ReviewPage() {
 
     if (loading) {
         console.log(loading);
-        return <span> loading your reviews... </span>;
+        return <span className={styles.loading}> loading your reviews... </span>;
     } 
     else {
         const restaurantListItems = restaurants.map((restaurant) => {

@@ -20,7 +20,7 @@ export default function SearchHeader() {
     <header>
       <form onSubmit={(e) => handleSubmit(e, value)}>
         <div className='field has-addons'>
-          <div className='control'>
+          <div className='control is-expanded'>
             <input
               className="input is-success is-medium"
               type="text"
