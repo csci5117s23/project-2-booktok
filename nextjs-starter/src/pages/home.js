@@ -11,7 +11,6 @@ import { faTrashCan, faPen, faUtensils, faComment, faLocationDot } from '@fortaw
 
 
 
-
 export default function ReviewPage() {
 
     const [loading, setLoading] = useState(true);

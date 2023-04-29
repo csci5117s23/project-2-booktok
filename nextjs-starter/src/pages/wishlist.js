@@ -114,7 +114,7 @@ export default function WishListPage() {
                     </div>
 
                     <div className="field">
-                        <label className="label">Notes</label>
+                        <label className="label">Note</label>
                         <div className="control">
                             <textarea
                                 className="textarea is-primary"
@@ -155,7 +155,7 @@ export default function WishListPage() {
                         />}
                         </div>
                     </div>
-
+                    
                     <div className="field is-grouped">
                         <div className="control">
                             <button className="button is-success" onClick={add}>Add</button>

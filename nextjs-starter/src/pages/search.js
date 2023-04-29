@@ -6,8 +6,19 @@ export default function Search() {
   
   return (
     <div>
+      <h2>search restaurant to leave review or add to wish list</h2>
+      <h2>^^^ grammar/expression check plz</h2>
       <SearchHeader/>
+      
       <Categories categories={categories} />
+      {/* <div className='tile is-ancestor'>
+        <div className='tile'>
+          <SearchHeader/>
+        </div>
+        <div className='tile'>
+          <Categories categories={categories} />
+        </div>
+      </div> */}
     </div>
   );  
 }

@@ -17,17 +17,23 @@ export default function SearchHeader() {
   const handleChange = (e) => setValue(e.target.value);
   
   return (
-    <header className={styles.header__name}>
-      <form onSubmit={(e) => handleSubmit(e, value)} className={styles.header}>
-        <input
-          className={styles.search}
-          type="text"
-          placeholder="Search..."
-          onChange={handleChange}  
-        />
-        <button className={styles.button_click}>
-          <BsSearch />
-        </button>
+    <header>
+      <form onSubmit={(e) => handleSubmit(e, value)}>
+        <div className='field has-addons'>
+          <div className='control'>
+            <input
+              className="input is-success is-medium"
+              type="text"
+              placeholder="Search..."
+              onChange={handleChange}  
+            />
+          </div>
+          <div className='control'>
+            <button className="button is-success is-medium">
+              <BsSearch />
+            </button>
+          </div>
+        </div>
       </form>
     </header>
   );
