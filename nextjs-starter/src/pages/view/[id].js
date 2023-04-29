@@ -31,7 +31,7 @@ const Post = () => {
 
   useEffect(() => {
     dataFetch();
-  }, []);
+  }, [longitude]);
 
   if (loading) {
     return <p>Loading...</p>;
