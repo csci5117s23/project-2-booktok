@@ -1,7 +1,7 @@
 // api/Data.js
 import axios from 'axios';
 
-export function getData(longitude,latitude,id) {
+export async function getData(longitude,latitude,id) {
   
   const apiKey = process.env.NEXT_PUBLIC_YELP_API_KEY;
 
