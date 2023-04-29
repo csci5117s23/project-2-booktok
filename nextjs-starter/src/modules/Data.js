@@ -10,12 +10,12 @@ export async function getRestaurants(authToken) {
 }
 
 // add new review
-export async function addRestaurant(authToken, restaurantName, restaurantReview, restaurantRating, restaurantDate, userName) {
+export async function addRestaurant(authToken, restaurantName, restaurantReview, restaurantRating, restaurantDate, restaurantImage, userName) {
     const result = await fetch(backend_base+"/home",{
         'method':'POST',
         'headers': {'Authorization': 'Bearer ' + authToken,
         'Content-Type': 'application/json'},
-        'body': JSON.stringify({name: restaurantName, review: restaurantReview, rating: restaurantRating, userId: userName, dateVisited: restaurantDate})
+        'body': JSON.stringify({name: restaurantName, review: restaurantReview, rating: restaurantRating, userId: userName, imageContent: restaurantImage, dateVisited: restaurantDate})
     })
     return await result.json();
 }
