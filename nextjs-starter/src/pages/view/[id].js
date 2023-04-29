@@ -7,7 +7,7 @@ import styles from '../view/id.module.css';
 
 const Post = () => {
   const { latitude, longitude } = useGeoLocation();
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [Restaurants, setRestaurant] = useState([]);
 
   const router = useRouter();
@@ -20,11 +20,11 @@ const Post = () => {
         .then(function (response) {
           console.log(response);
           setRestaurant(response.data.businesses);
-          setLoading(false);
+          // setLoading(false);
         })
         .catch(function (error) {
           console.error(error);
-          setLoading(false);
+          // setLoading(false);
         });
     }
   }
@@ -33,9 +33,9 @@ const Post = () => {
     dataFetch();
   }, [longitude]);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  // if (loading) {
+  //   return <p>Loading...</p>;
+  // }
 
   return (
     <ul className={styles.restaurants}>
