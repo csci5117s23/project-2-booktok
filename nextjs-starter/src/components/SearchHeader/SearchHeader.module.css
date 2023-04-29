@@ -6,13 +6,14 @@
   line-height: 2rem; /* 32px */
   border-color: rgb(39 39 42);
   margin-bottom: 1rem;
+  justify-content: center;
 }
-/* .header__name{
+.header__name{
   font-weight: bold;
   margin-left: 0.5rem;
   font-size: 1.875rem;
   line-height: 2.25rem;
-} */
+} 
 .link{
   display:flex;
   align-items: center;

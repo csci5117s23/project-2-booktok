@@ -5,9 +5,11 @@ import { Typography } from "@mui/material";
 import { Rating } from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
-import {Camera} from './camera.js'
+import { Camera } from './camera.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faPen, faUtensils, faComment, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+
+
 
 
 export default function ReviewPage() {

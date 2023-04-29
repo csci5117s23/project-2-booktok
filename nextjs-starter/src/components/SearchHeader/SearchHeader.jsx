@@ -1,6 +1,8 @@
 import { BsSearch } from 'react-icons/bs';
 import {useState} from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import styles from '../SearchHeader/SearchHeader.module.css';
+
 
 export default function SearchHeader() {
 
@@ -15,15 +17,15 @@ export default function SearchHeader() {
   const handleChange = (e) => setValue(e.target.value);
   
   return (
-    <header className='is-flex-mobile-touch'>
-      <form onSubmit={(e) => handleSubmit(e, value)} className='is-flex is-justify-content-center'>
+    <header className={styles.header__name}>
+      <form onSubmit={(e) => handleSubmit(e, value)} className={styles.header}>
         <input
-          className='input is-primary is-medium is-rounded '
+          className={styles.search}
           type="text"
           placeholder="Search..."
           onChange={handleChange}  
         />
-        <button className="button is-small is-success">
+        <button className={styles.button_click}>
           <BsSearch />
         </button>
       </form>

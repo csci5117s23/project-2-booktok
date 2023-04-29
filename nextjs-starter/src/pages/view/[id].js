@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { getData } from '../../../api/Data';
 import { useGeoLocation } from 'use-geo-location';
 import Restaurant from '../../components/Restaurant/Restaurant';
+import styles from '../view/id.module.css';
 
 const Post = () => {
   const { latitude, longitude } = useGeoLocation();
@@ -37,7 +38,7 @@ const Post = () => {
   }
 
   return (
-    <ul>
+    <ul className={styles.restaurants}>
       {Restaurants.map((data) => (
         <Restaurant key={data.id} data={data}/>
     ))}
