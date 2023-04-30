@@ -9,10 +9,10 @@ export default function Restaurant({data}) {
   return (
     // <li className={styles.lists}>
     <div className='box has-text-centered'>
-      <section class="hero is-small">
-        <div class="hero-body">
-          <p class="title">{name}</p>
-          <p class="subtitle">
+      <section className='hero is-small'>
+        <div className="hero-body">
+          <p className="title">{name}</p>
+          <p className="subtitle">
               <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b"}} /><span>&nbsp;&nbsp;</span>
               {location.address1}
           </p>

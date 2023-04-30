@@ -38,11 +38,13 @@ const Post = () => {
   }, [longitude, latitude]);
 
   if (loading) {
-    console.log(loading);
     return <span className={homeStyles.loading}> 
     Loading your search... &nbsp;
     <FontAwesomeIcon icon={faPersonRunning} bounce style={{color: "#139a54",}} />
     </span>;
+
+    // console.log("Restaurants check");
+    // console.log(Restaurants.businesses);
 } 
 
   return (

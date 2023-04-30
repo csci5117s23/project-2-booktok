@@ -2,6 +2,7 @@ import GoogleMapReact from 'google-map-react';
 import { Marker } from 'google-map-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPerson } from '@fortawesome/free-solid-svg-icons';
+import RestaurantsMarker from './RestaurantsMarker/RestaurantsMarker';
 
 const mapKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
 
@@ -9,8 +10,8 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export default function Map(props) {
 
-  const {latitude,longitude,Restaurants} = props
-  
+  const { latitude, longitude, Restaurants } = props
+
   const defaultProps = {
     center: {
       lat: latitude,
@@ -18,21 +19,24 @@ export default function Map(props) {
     },
     zoom: 11
   };
-
+ 
   return (
     // Important! Always set the container height explicitly
     <div style={{ height: '100vh', width: '60%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: mapKey }}
         defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
-
-      >
+        defaultZoom={defaultProps.zoom}>
         <AnyReactComponent
-          lat={props.latitude}
-          lng={props.longitude}
-        />
-        <FontAwesomeIcon icon={faPerson} bounce size="2xl" style={{ color: "#fc0303", }} />
+          lat={latitude}
+          lng={longitude}/>
+        <FontAwesomeIcon icon={faPerson} 
+                         bounce size="2xl" 
+                         style={{ color: "#fc0303", }} />
+        {/* <ul>
+          {Restaurants.map((data)=>( */}
+        <RestaurantsMarker Restaurants={Restaurants} />
+        {/* </ul> */}
       </GoogleMapReact>
     </div>
   );
