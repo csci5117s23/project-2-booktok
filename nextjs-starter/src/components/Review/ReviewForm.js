@@ -6,7 +6,7 @@ import React, { useState, useEffect, useCallback } from "react";
 
 export default function ReviewPage() {
 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [restaurants, setRestaurants] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
 
@@ -16,34 +16,48 @@ export default function ReviewPage() {
     const [newDate, setNewDate] = useState("");
     const [newImage64, setNewImage64] = useState("")
     const [newImage, setNewImage] = useState("");
-
-
+    const [newAddress, setNewAddress] = useState("");
 
     // get restaurant review list
-    useEffect(() => {
-        async function process() {
-            if (userId) {
-                const token = await getToken({ template: "codehooks" });
-                // setRestaurants(await getReviews(token, userId));
-                setLoading(false);
-            }
-        }
-        process();
-    }, [isLoaded]);
+    // useEffect(() => {
+    //     async function process() {
+    //         if (userId) {
+    //             const token = await getToken({ template: "codehooks" });
+    //             // setRestaurants(await getReviews(token, userId));
+    //             setLoading(false);
+    //         }
+    //     }
+    //     process();
+    // }, [isLoaded]);
     
     
     async function add() {
+        // name and date visited are required inputs -> check to make sure they've been filled
+        if(newName == ""){
+            document.getElementById("requiredInputWarning").innerHTML = "Restaurant name is required.";
+            return;
+        }
+        else if (newDate == "") {
+            document.getElementById("requiredInputWarning").innerHTML = "Date of visit is required.";
+            return;
+        }
+
+        // once name and date are filled in, send data to database
         const token = await getToken({ template: "codehooks" });
-        const newRestaurant = await addReview(token, newName, newReview, newRating, newDate, newImage64, userId);
+        const newRestaurant = await addReview(token, newName, newReview, newRating, newDate, newImage64, newAddress, userId);
         setNewName("");
         setNewReview("");
         setNewRating("");
         setNewDate("");
         setNewImage("");
         setNewImage64("");
+        setNewAddress("");
         setRestaurants(restaurants.concat(newRestaurant));
+
+        document.getElementById("requiredInputWarning").innerHTML = "";
     }
     
+    // we can delete the if/else part of this
     if (loading) {
         console.log(loading);
         return <span className={styles.loading}> loading your reviews... </span>;
@@ -54,8 +68,9 @@ export default function ReviewPage() {
             {/* Review Form to add new restaurant to your timeline*/}
             <div className="columns is-centered">
                 <div className="box mx-5">
+                    <h4 id = "requiredInputWarning"></h4>
                     <div className="field">
-                        <label className="label">Restaurant</label>
+                        <label className="label">Restaurant:</label>
                         <div className="control">
                             <input
                                 className="input is-primary"
@@ -67,16 +82,47 @@ export default function ReviewPage() {
                                 onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
                             ></input>
                         </div>
-                        <p className="help is-success">This field is required</p>
+                        <p className="help is-success">*This field is required</p>
                     </div>
 
                     <div className="field">
-                        <label className="label">Review</label>
+                        <label className="label">Date of Visit:</label>
+                        <div className="control">
+                            <input
+                                className="input is-primary"
+                                id = "date"
+                                type="date"
+                                value={newDate}
+                                onChange={(e) => setNewDate(e.target.value)}
+                                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                            ></input>
+                        </div>
+                        <p className="help is-success">*This field is required</p>
+                    </div>
+
+                    <div className="field">
+                        <label className="label">Address:</label>
+                        <div className="control">
+                            <input
+                                className="input"
+                                type="text"
+                                id = "address"
+                                placeholder="Restaurant Address"
+                                value={newAddress}
+                                onChange={(e) => setNewAddress(e.target.value)}
+                                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                            ></input>
+                        </div>
+                    </div>
+
+                    <div className="field">
+                        <label className="label">Review:</label>
                         <div className="control">
                             <textarea
-                                className="textarea is-primary"
+                                className="textarea"
                                 id = "review"
                                 type="textarea"
+                                placeholder="Write a review..."
                                 rows="5"
                                 value={newReview}
                                 onChange={(e) => setNewReview(e.target.value)}
@@ -86,7 +132,7 @@ export default function ReviewPage() {
                     </div>
 
                     <div className="field">
-                        <label className="label">Rating</label>
+                        <label className="label">Rating:</label>
                         <div className="control">
                             <Rating name="half-rating" 
                                 id = "rating"
@@ -96,11 +142,10 @@ export default function ReviewPage() {
                                 onChange={(e) => setNewRating(e.target.value)}
                                 onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
                         </div>
-                        <p className="help is-success">This field is required</p>
                     </div>
 
                     <div className="field">
-                        <label className="label">Image</label>
+                        <label className="label">Image:</label>
                         <div className="control">
                         {newImage ? (
                             <div>
@@ -140,19 +185,8 @@ export default function ReviewPage() {
                         />}
                         </div>
                     </div>
-
-                    <div className="field">
-                        <label className="label">Date of the visit</label>
-                        <div className="control">
-                            <input
-                                id = "date"
-                                type="date"
-                                value={newDate}
-                                onChange={(e) => setNewDate(e.target.value)}
-                                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
-                            ></input>
-                        </div>
-                    </div>
+                    
+                    
 
                     <div className="field is-grouped">
                         <div className="control">

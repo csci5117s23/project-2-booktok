@@ -29,8 +29,6 @@ export default function Navbar() {
             <Link className='navbar-item' href="/review"> Review(Temp)</Link>
             <Link className='navbar-item' href="/wishlist"> Wish List</Link>
             <Link className='navbar-item' href="/map"> Map</Link>
-            <Link className='navbar-item' href="/profile"> My Account</Link>
-            <Link className='navbar-item' href="/camera"> Camera</Link>
           </div>
           <div className="navbar-end">
             <div className="navbar-item">

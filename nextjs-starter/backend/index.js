@@ -16,11 +16,11 @@ import jwtDecode from 'jwt-decode';
 const review = object({
   name: string().required(),
   review: string(),
-  rating: number().min(0).max(5).required(),
+  rating: number().min(0).max(5),
   userId: string().required(),
   imageContent: string(),
-  dateVisited: date().default(() => new Date()),
-  createdOn: date().default(() => new Date()),
+  dateVisited: date().required(),
+  address: string(),
 })
 
 const wishList = object({

@@ -12,7 +12,7 @@ body{
   font-size: 30px;
 }
   
-.Webcam{
+/* .Webcam{
   padding-top: 50px;
   display: flex;
   justify-content: center;
@@ -21,8 +21,11 @@ body{
   padding-top: 50px;
     display: flex;
     justify-content: center;
-}
+} */
   
+#requiredInputWarning {
+  color:red;
+}
   /* @media screen and (max-width: 768px){
     .navbar{
       flex-direction: column;

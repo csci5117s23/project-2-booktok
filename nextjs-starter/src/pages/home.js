@@ -38,9 +38,11 @@ export default function TimelinePage() {
     
     // if image exists for a review, add it to the review timeline
     function addImage(imageString64) {
-        console.log("adding image...");
+        // console.log("adding image...");
 
-        return <img src={imageString64} alt="restaurant image" width="200"></img>
+        return <>
+            <img src={imageString64} alt="restaurant image" width="200"></img><br></br>
+        </>
     }
     
     // delete restaurant review from list
@@ -69,7 +71,7 @@ export default function TimelinePage() {
     else {
         // sort restaurant reviews in descending order (latest date to oldest date)
         restaurants.sort((p1, p2) => (p1.dateVisited > p2.dateVisited) ? -1 : (p1.dateVisited < p2.dateVisited) ? 1 : 0);
-        // console.log("Sorted timeline: ", restaurants);
+        console.log("Sorted timeline: ", restaurants);
 
         // return review data (restaurant name, image, review, rating, date visited) for timeline page
         const restaurantListItems = restaurants.map((restaurant) => {
@@ -82,16 +84,19 @@ export default function TimelinePage() {
                         <section class="hero is-small">
                             <div class="hero-body">
                                 <p class="title">{restaurant.name}</p>
-                                <p class="subtitle">
+                                {/* <p class="subtitle">
                                     <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
                                     address
-                                </p>
+                                </p> */}
                             </div>
                         </section>
-                        
-                        {/* image */}
-                        {typeof restaurant.imageContent === "undefined" ? console.log("No image available.") : addImage(restaurant.imageContent)}
+
+                        <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
+                        <span>{restaurant.address}</span><span>&nbsp;&nbsp;</span>
                         <br></br>
+
+                        {/* image */}
+                        {typeof restaurant.imageContent === "undefined" || restaurant.imageContent == "" ? console.log("No image available.") : addImage(restaurant.imageContent)}
 
                         {/* review */}
                         <FontAwesomeIcon icon={faQuoteLeft} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
