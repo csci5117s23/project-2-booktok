@@ -8,7 +8,7 @@ import styles from '../view/id.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPersonRunning } from '@fortawesome/free-solid-svg-icons';
 import SideNavbar from '@/components/SideNavbar/SideNavbar';
-import Map from '@/components/Map/Map'
+
 
 const Post = () => {
   const { latitude, longitude } = useGeoLocation();
@@ -55,9 +55,6 @@ const Post = () => {
           <Restaurant key={data.id} data={data}/>
         ))}
       </ul>
-      <Map latitude={latitude} 
-           longitude={longitude} 
-           Restaurants={Restaurants}/>
     </div>
   )
 };

@@ -10,7 +10,7 @@ export async function getReviews(authToken, userName) {
 }
 
 // add new review
-export async function addReview(authToken, restaurantName, restaurantReview, restaurantRating, restaurantDate, restaurantImage, userName) {
+export async function addReview(authToken, restaurantName, restaurantReview, restaurantRating, restaurantDate, restaurantImage, restaurantAddress, userName) {
     const result = await fetch(backend_base+"/home",{
         'method':'POST',
         'headers': {
@@ -23,7 +23,8 @@ export async function addReview(authToken, restaurantName, restaurantReview, res
             rating: restaurantRating, 
             userId: userName, 
             imageContent: restaurantImage, 
-            dateVisited: restaurantDate})
+            dateVisited: restaurantDate,
+            address: restaurantAddress})
     })
     return await result.json();
 }

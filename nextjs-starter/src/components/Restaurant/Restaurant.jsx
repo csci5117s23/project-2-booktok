@@ -39,7 +39,6 @@ export default function Restaurant({data}) {
       </button>
     </div>
 
-    
   );
 }
 
