@@ -73,9 +73,9 @@ export default function TimelinePage() {
                 return <>
                     {/* restaurant name */}
                     <div className = "box has-text-centered">
-                        <section class="hero is-small">
-                            <div class="hero-body">
-                                <p class="title">{restaurant.name}</p>
+                        <section className="hero is-small">
+                            <div className="hero-body">
+                                <p className="title">{restaurant.name}</p>
                                 {/* <p class="subtitle">
                                     <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
                                     address
