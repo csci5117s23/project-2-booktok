@@ -16,14 +16,6 @@ export default function TimelinePage() {
     const [restaurants, setRestaurants] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
 
-    // const [newName, setNewName] = useState("");
-    // const [newReview, setNewReview] = useState("");
-    // const [newRating, setNewRating] = useState(null);
-    // const [newDate, setNewDate] = useState("");
-    // const [newImage64, setNewImage64] = useState("")
-    // const [newImage, setNewImage] = useState("");
-
-
     // get only user's restaurant review list
     useEffect(() => {
         async function process() {
