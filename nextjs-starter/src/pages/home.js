@@ -7,7 +7,7 @@ import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import { Camera } from './camera.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen, faUtensils, faComment, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faUtensils, faStar, faLocationDot, faQuoteLeft, faQuoteRight, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -84,19 +84,29 @@ export default function ReviewPage() {
             {/* <li key={restaurant._id}>
                 {restaurant.name}
             </li> */}
-            <div className = "box">
-                {/* <span> {restaurant.selectedImage} </span> */}
-                <FontAwesomeIcon icon={faLocationDot} /><span>&nbsp;&nbsp;</span>
-                <span id = {styles.restaurantName}>{restaurant.name}</span>
+            <div className = "box has-text-centered">
+                <section class="hero is-small">
+                    <div class="hero-body">
+                        <p class="title">{restaurant.name}</p>
+                        <p class="subtitle">
+                            <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
+                            address
+                        </p>
+                    </div>
+                </section>
+                
+                {typeof restaurant.imageContent === "undefined" ? console.log("No image available.") : addImage(restaurant.imageContent)}
                 <br></br>
-                <span id = {styles.restaurantReview}>{restaurant.review}</span>
+                <FontAwesomeIcon icon={faQuoteLeft} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
+                <span id = {styles.restaurantReview}>{restaurant.review}</span><span>&nbsp;&nbsp;</span>
+                <FontAwesomeIcon icon={faQuoteRight} style={{color: "#48c38b",}} />
                 <br></br>
+                <FontAwesomeIcon icon={faStar} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
                 <span id = {styles.restaurantRating}> {restaurant.rating} </span>
                 <br></br>
+                <FontAwesomeIcon icon={faCalendarDays} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
                 <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
                 <br></br>
-
-                {typeof restaurant.imageContent === "undefined" ? console.log("No image available.") : addImage(restaurant.imageContent)}
 
                 <div className="buttons is-right">
                     <button className="button is-inverted is-small" onClick={() => {editReview(restaurant);}}>
@@ -235,7 +245,7 @@ export default function ReviewPage() {
                     <h1 className={styles.titleTimeline}>
                         Timeline
                         <span>&nbsp;&nbsp;</span>
-                        <FontAwesomeIcon icon={faUtensils} spin style={{color: "#48c38b",}} />
+                        <FontAwesomeIcon icon={faUtensils} spin style={{color: "#ffc038",}} />
                     </h1>
                         {console.log("timeline: ", restaurants)}
                         {restaurantListItems}
