@@ -1,7 +1,6 @@
 import { BsSearch } from 'react-icons/bs';
 import {useState} from 'react';
 import { useRouter } from 'next/router';
-import styles from '../SearchHeader/SearchHeader.module.css';
 
 
 export default function SearchHeader() {
