@@ -13,7 +13,7 @@ export default function Restaurant({data}) {
         <div class="hero-body">
           <p class="title">{name}</p>
           <p class="subtitle">
-              <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
+              <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b"}} /><span>&nbsp;&nbsp;</span>
               {location.address1}
           </p>
         </div>
