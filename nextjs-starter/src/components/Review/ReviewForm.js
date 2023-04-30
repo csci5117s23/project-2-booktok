@@ -162,7 +162,7 @@ export default function ReviewPage() {
                             type="file"
                             name="myImage"
                             id="imageFileId"
-                            class="imageClass"
+                            className="imageClass"
                             onChange={(e) => {
                                 console.log(e.target.files[0]);
                                 setNewImage(e.target.files[0])
