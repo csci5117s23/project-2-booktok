@@ -45,7 +45,7 @@ const Post = () => {
 
     // console.log("Restaurants check");
     // console.log(Restaurants.businesses);
-} 
+  } 
 
   return (
     <div className={styles.container}>  

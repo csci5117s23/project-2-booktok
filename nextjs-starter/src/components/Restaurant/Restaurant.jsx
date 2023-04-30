@@ -2,10 +2,12 @@ import styles from '../Restaurant/Restaurant.module.css';
 import {FcLike} from 'react-icons/fc'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faPhone, faUtensils, faComment, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
+
 
 export default function Restaurant({data}) {
   const {image_url, name,location,phone,rating} = data;
-         
+  
   return (
     // <li className={styles.lists}>
     <div className='box has-text-centered'>
@@ -26,7 +28,17 @@ export default function Restaurant({data}) {
                 
       rating: {rating} / 5<br />
 
-      <button className="button"> click<FcLike /></button>
+      {/* <button className="button"> click<FcLike /></button> */}
+      <button className='button is-success is-light'>
+        <Link key={location.address1} href={`/addReview/${location.address1}`}>
+          add review
+        </Link>
+      </button>
+      <button className='button is-success is-light'>
+        <Link key={location.address1} href={`/addWish/${location.address1}`}>
+          add wish
+        </Link>
+      </button>
     </div>
 
     

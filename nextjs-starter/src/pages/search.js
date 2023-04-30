@@ -7,8 +7,6 @@ export default function Search() {
   
   return (
     <div>
-      {/* <SearchHeader/>
-      <Categories categories={categories} /> */}
       <div className='columns is-centered'>
         <div className='column has-text-centered is-three-quarters'>
           <h2 className={styles.searchInstruction}>search restaurant to leave review or add to wish list</h2>
