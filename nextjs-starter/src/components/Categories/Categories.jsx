@@ -4,14 +4,15 @@ import Link from 'next/link';
 export default function Categories({ categories}) {
 
   return (
-    <ul className={styles.restaurants}>
+    <div className={styles.restaurants}>
       {categories.map((value, index) => (
         <Link key={index} href={`/view/${value}`}>
-          <li className={styles.list}>
-            {value}
-          </li>
+            <div className="box has-text-success is-size-4">
+              {value}
+            </div>
         </Link>
       ))}
-    </ul>
+    </div>
+
   );
 }

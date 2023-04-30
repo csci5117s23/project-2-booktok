@@ -2,7 +2,7 @@ const backend_base = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 
 // get visited restaurant list
 export async function getReviews(authToken, userName) {
-    const result = await fetch(backend_base+"/home?userId="+userName,{
+    const result = await fetch(backend_base+"/home?userId="+userName, {
         'method':'GET',
         'headers': {'Authorization': 'Bearer ' + authToken}
     })
