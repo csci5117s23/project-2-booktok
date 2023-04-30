@@ -6,7 +6,7 @@ import { Rating } from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen, faUtensils, faStar, faLocationDot, faQuoteLeft, faQuoteRight, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faUtensils, faStar, faLocationDot, faQuoteLeft, faQuoteRight, faCalendarDays, faPersonRunning } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -61,7 +61,10 @@ export default function TimelinePage() {
 
     if (loading) {
         console.log(loading);
-        return <span className={styles.loading}> loading your reviews... </span>;
+        return <span className={styles.loading}> 
+        Loading your reviews... &nbsp;
+        <FontAwesomeIcon icon={faPersonRunning} bounce style={{color: "#139a54",}} />
+        </span>;
     } 
     else {
         const restaurantListItems = restaurants.map((restaurant) => {

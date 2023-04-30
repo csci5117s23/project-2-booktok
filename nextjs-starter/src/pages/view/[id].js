@@ -1,9 +1,12 @@
 import { useRouter } from 'next/router';
+import homeStyles from '@/styles/Home.module.css'
 import { useEffect, useState } from 'react';
 import { getData } from '../../../api/Data';
 import { useGeoLocation } from 'use-geo-location';
 import Restaurant from '../../components/Restaurant/Restaurant';
 import styles from '../view/id.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPersonRunning } from '@fortawesome/free-solid-svg-icons';
 
 const Post = () => {
   const { latitude, longitude } = useGeoLocation();
@@ -34,8 +37,12 @@ const Post = () => {
   }, [longitude, latitude]);
 
   if (loading) {
-    return <p>Loading...</p>;
-  }
+    console.log(loading);
+    return <span className={homeStyles.loading}> 
+    Loading your search... &nbsp;
+    <FontAwesomeIcon icon={faPersonRunning} bounce style={{color: "#139a54",}} />
+    </span>;
+} 
 
   return (
     <ul className={styles.restaurants}>
