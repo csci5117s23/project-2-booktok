@@ -16,15 +16,15 @@ export default function TimelinePage() {
     const [restaurants, setRestaurants] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
 
-    const [newName, setNewName] = useState("");
-    const [newReview, setNewReview] = useState("");
-    const [newRating, setNewRating] = useState(null);
-    const [newDate, setNewDate] = useState("");
-    const [newImage64, setNewImage64] = useState("")
-    const [newImage, setNewImage] = useState("");
+    // const [newName, setNewName] = useState("");
+    // const [newReview, setNewReview] = useState("");
+    // const [newRating, setNewRating] = useState(null);
+    // const [newDate, setNewDate] = useState("");
+    // const [newImage64, setNewImage64] = useState("")
+    // const [newImage, setNewImage] = useState("");
 
 
-    // get restaurant review list
+    // get only user's restaurant review list
     useEffect(() => {
         async function process() {
             if (userId) {
@@ -36,7 +36,7 @@ export default function TimelinePage() {
         process();
     }, [isLoaded]);
     
-    // if image exists, add it to timeline
+    // if image exists for a review, add it to the review timeline
     function addImage(imageString64) {
         console.log("adding image...");
 
@@ -67,51 +67,64 @@ export default function TimelinePage() {
         </span>;
     } 
     else {
-        const restaurantListItems = restaurants.map((restaurant) => {
-            if(restaurant.userId == userId) {
-            return <>
-            {/* <li key={restaurant._id}>
-                {restaurant.name}
-            </li> */}
-            <div className = "box has-text-centered">
-                <section class="hero is-small">
-                    <div class="hero-body">
-                        <p class="title">{restaurant.name}</p>
-                        <p class="subtitle">
-                            <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                            address
-                        </p>
-                    </div>
-                </section>
-                
-                {typeof restaurant.imageContent === "undefined" ? console.log("No image available.") : addImage(restaurant.imageContent)}
-                <br></br>
-                <FontAwesomeIcon icon={faQuoteLeft} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                <span id = {styles.restaurantReview}>{restaurant.review}</span><span>&nbsp;&nbsp;</span>
-                <FontAwesomeIcon icon={faQuoteRight} style={{color: "#48c38b",}} />
-                <br></br>
-                <FontAwesomeIcon icon={faStar} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                <span id = {styles.restaurantRating}> {restaurant.rating} </span>
-                <br></br>
-                <FontAwesomeIcon icon={faCalendarDays} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
-                <br></br>
+        // sort restaurant reviews in descending order (latest date to oldest date)
+        restaurants.sort((p1, p2) => (p1.dateVisited > p2.dateVisited) ? -1 : (p1.dateVisited < p2.dateVisited) ? 1 : 0);
+        // console.log("Sorted timeline: ", restaurants);
 
-                <div className="buttons is-right">
-                    <button className="button is-inverted is-small" onClick={() => {editReview(restaurant);}}>
-                        <FontAwesomeIcon icon={faPen} />
-                    </button>
-                    {/* Edit function is not made */}
-                    <button className="button is-inverted is-small" onClick={() => {delReview(restaurant);}}>
-                        <FontAwesomeIcon icon={faTrashCan} />
-                    </button>
-                </div>
-            </div>
-            <br></br>
-            </>
-            }
-        }
+        // return review data (restaurant name, image, review, rating, date visited) for timeline page
+        const restaurantListItems = restaurants.map((restaurant) => {
+
+            // double check to make sure only the correct user's information is being displayed
+            if(restaurant.userId == userId) {
+                return <>
+                    {/* restaurant name */}
+                    <div className = "box has-text-centered">
+                        <section class="hero is-small">
+                            <div class="hero-body">
+                                <p class="title">{restaurant.name}</p>
+                                <p class="subtitle">
+                                    <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
+                                    address
+                                </p>
+                            </div>
+                        </section>
+                        
+                        {/* image */}
+                        {typeof restaurant.imageContent === "undefined" ? console.log("No image available.") : addImage(restaurant.imageContent)}
+                        <br></br>
+
+                        {/* review */}
+                        <FontAwesomeIcon icon={faQuoteLeft} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
+                        <span id = {styles.restaurantReview}>{restaurant.review}</span><span>&nbsp;&nbsp;</span>
+                        <FontAwesomeIcon icon={faQuoteRight} style={{color: "#48c38b",}} />
+                        <br></br>
+
+                        {/* rating */}
+                        <FontAwesomeIcon icon={faStar} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
+                        <span id = {styles.restaurantRating}> {restaurant.rating} </span>
+                        <br></br>
+
+                        {/* date visited */}
+                        <FontAwesomeIcon icon={faCalendarDays} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
+                        <span id = {styles.dateVisited}>{restaurant.dateVisited}</span>
+                        <br></br>
+
+                        {/* edit and delete review buttons */}
+                        <div className="buttons is-right">
+                            <button className="button is-inverted is-small" onClick={() => {editReview(restaurant);}}>
+                                <FontAwesomeIcon icon={faPen} />
+                            </button>
+                            {/* Edit function is not made */}
+                            <button className="button is-inverted is-small" onClick={() => {delReview(restaurant);}}>
+                                <FontAwesomeIcon icon={faTrashCan} />
+                            </button>
+                        </div>
+                    </div>
+                    <br></br>
+                </>
+            }}
         );
+        
 
         return (
         <> 
@@ -124,7 +137,6 @@ export default function TimelinePage() {
                         <span>&nbsp;&nbsp;</span>
                         <FontAwesomeIcon icon={faUtensils} spin style={{color: "#ffc038",}} />
                     </h1>
-                        {console.log("timeline: ", restaurants)}
                         {restaurantListItems}
                 </div>
             </div>
@@ -133,6 +145,5 @@ export default function TimelinePage() {
        
         </>
         );
-  
     }  
 }
