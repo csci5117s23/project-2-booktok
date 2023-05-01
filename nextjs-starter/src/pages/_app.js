@@ -6,6 +6,9 @@ import Layout from '../components/Navbar/Layout';
 // pages that don't require a login
 const publicPages = ["/", "/sign-up"];
 
+const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
+const placesLibrary = "https://maps.googleapis.com/maps/api/js?key=" + apiKey + "&libraries=places";
+
 export default function App({ Component, pageProps }) {
   // Get the pathname
   const { pathname } = useRouter();
@@ -15,12 +18,18 @@ export default function App({ Component, pageProps }) {
 
   return <>
     <ClerkProvider>
+      {/* load client-side google places library */}
+      <script async
+            src={placesLibrary}>
+      </script>
+
       {isPublicPage ? (
         <Component {...pageProps} />
       ) : (
         <>
           <SignedIn>
             <Layout>
+              <div id="map"></div>
               <Component {...pageProps} />
             </Layout>
           </SignedIn>
