@@ -26,7 +26,6 @@ export default function Navbar() {
         <div id="navbarBasicExample" className={`navbar-menu ${clicked ? "is-active" : ""}`}>
           <div className="navbar-start">
             <Link className='navbar-item' href="/find"> Find Restaurants</Link>
-            <Link className='navbar-item' href="/review"> Add Restaurant</Link>
             <Link className='navbar-item' href="/wishlist"> Wish List</Link>
             {/* <Link className='navbar-item' href="/map"> Map</Link> */}
           </div>
