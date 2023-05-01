@@ -129,17 +129,13 @@ export default function TimelinePage() {
                 <br></br>
             <div className="columns is-centered">
                 <div className="column is-half">
-                {/* <div className="column is-two-thirds"> */}
                     <h1 className={styles.titleTimeline}>
                         <span>&nbsp;&nbsp;</span>
                         <FontAwesomeIcon icon={faUtensils} spin style={{color: "#ffc038",}} />
                     </h1>
                         {restaurantListItems}
                 </div>
-            </div>
-            
-            {/* {console.log("delete: ", delName, "&&", delRating)} */}
-       
+            </div>   
         </>
         );
     }  

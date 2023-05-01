@@ -34,13 +34,8 @@ export default function Restaurant({data}) {
       
 
       <button className='button is-success is-light'>
-        <Link key={location.address1} href={`/addReview/${location.address1}`}>
-          add review
-        </Link>
-      </button>
-      <button className='button is-success is-light'>
-        <Link key={location.address1} href={`/addWish/${data}`}>
-          add wish
+        <Link key={location.address1} href={`/addReview/${name}::${location.address1}`}>
+          Add place
         </Link>
       </button>
     </div>
