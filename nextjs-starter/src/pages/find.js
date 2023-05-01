@@ -5,6 +5,7 @@ import { useRef, useEffect } from "react";
 import { useRouter } from 'next/router';
 import { BsSearch } from 'react-icons/bs';
 import Categories from '../components/Categories/Categories';
+import Link from 'next/link';
 import styles from '@/styles/Home.module.css';
 
 
@@ -38,7 +39,8 @@ export default function AutoComplete() {
             }
 
             // if a suggestion is taken, push to a different page where only the selected restaurant info is shown
-            console.log({ place });
+            console.log(place.place_id);
+            router.push(`/viewrestaurant/${place.place_id}`)
         });
 
     }, []);
@@ -73,6 +75,12 @@ export default function AutoComplete() {
                     </button>
                 </div>
             </div>
+
+            <button className='button is-success-light has-text-success-dark is-light'>
+                <Link href="/review">
+                    *Manually add a review or to your wish list.
+                </Link>
+            </button>
 
             <Categories categories={categories} />
             </div>

@@ -142,7 +142,8 @@ export default function TimelinePage() {
                     <h1 className={styles.titleTimeline}>
                         <span>&nbsp;&nbsp;</span>
                         <FontAwesomeIcon icon={faUtensils} spin style={{color: "#ffc038",}} />
-                    </h1>
+                        <span>    Timeline</span>
+                    </h1> <br></br>
                         {restaurantListItems}
                 </div>
             )}

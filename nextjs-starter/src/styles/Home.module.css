@@ -29,6 +29,7 @@
   font-family: 'Ubuntu', sans-serif;
   color: rgb(0, 0, 0);
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .searchInstruction {
@@ -246,6 +247,10 @@
 
 #restaurantName{
   font-size: larger;
+}
+
+.homeTimeline{
+  text-align: center;
 }
 
 
