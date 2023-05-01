@@ -1,53 +1,48 @@
-import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
+import styles from '@/styles/Home.module.css'
+import { editWishList } from "@/modules/Data";
+import { Rating } from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
-import React, { useState, useEffect, useCallback } from "react";
 import Link from 'next/link';
+import React, { useState, useEffect, useCallback } from "react";
 
 
-export default function WishForm() {
+export default function EditWishlistPage({info}) {
 
-    const [loading, setLoading] = useState(true);
-    const [wishList, setWishList] = useState([]);
+    const [currName, currAddress, currNote, resId] = info;
+
+    const [loading, setLoading] = useState(false);
+    const [restaurants, setRestaurants] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
     const [submitted, setSubmitted] = useState(false);
 
-    const [newName, setNewName] = useState("");
-    const [newNote, setNewNote] = useState("");
-    const [newAddress, setNewAddress] = useState("");
-
-
-    // get restaurant wish list
-    useEffect(() => {
-        async function process() {
-            if (userId) {
-                const token = await getToken({ template: "codehooks" });
-                // setWishList(await getWishList(token, userId));
-                setLoading(false);
-            }
-        }
-        process();
-    }, [isLoaded]);
+    const [newName, setNewName] = useState(currName);
+    const [newNote, setNewNote] = useState(currNote);
+    const [newAddress, setNewAddress] = useState(currAddress);
     
-
-    // add restaurant wish list
-    async function add() {
+    
+    async function saveEdit() {
         if(newName == ""){
             document.getElementById("requiredInputWarning").innerHTML = "Restaurant name is required.";
             return;
         }
 
         const token = await getToken({ template: "codehooks" });
-        const newWish = await addWishList(token, newName, newNote, newAddress, userId);
-        setNewName("");
-        setNewNote("");
-        setNewAddress("");
-        setWishList(wishList.concat(newWish));
+        const newRestaurant = await editWishList(token, newName, newNote, newAddress, resId, userId);
         setSubmitted(true);
+        document.getElementById("requiredInputWarning").innerHTML = "";
     }
-
+    
+    const refresh = () => window.location.reload(true)
+    
+    if (loading) {
+        console.log(loading);
+        return <span className={styles.loading}> Loading... </span>;
+    } 
+    else {
         return (
         <>  
-            {/* Wish List Form to add new restaurant */}
+            {console.log("info=",{info})} 
+
             <div className="container is-centered">
             {!submitted && (
                 <div className="box mx-5">
@@ -100,20 +95,22 @@ export default function WishForm() {
                     
                     <div className="field is-grouped">
                         <div className="control">
-                            <button className="button is-success" onClick={add}>Add</button>
+                            <button className="button is-primary" onClick={saveEdit} >Save</button>
                         </div>
                     </div>
                 </div>
-                )}
-                {submitted && 
-                    <div className="box mx-5">
-                        <label className="label has-text-link">Successfully added!</label>
-                        <button className="button is-link is-light">
-                            <Link className="has-text-link" href="/wishlist"> Go to your Wish List</Link>
-                        </button>
-                    </div>
-                }
-            </div>
+            )}
+            {submitted && 
+                <div className="box mx-5">
+                    <label className="label has-text-link">Successfully edited!</label>
+                    <button className="button is-link is-light" onClick={refresh}>
+                        Go back to your Wish List
+                    </button>
+                </div>
+            }
+        </div>
         </>
         );
+  
     }  
+}

@@ -1,6 +1,7 @@
 import styles from '@/styles/Home.module.css'
 import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
 import { useAuth } from "@clerk/nextjs";
+import Link from 'next/link';
 import React, { useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faPen, faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +14,7 @@ export default function WishForm({info}) {
     const [loading, setLoading] = useState(true);
     const [wishList, setWishList] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
+    const [submitted, setSubmitted] = useState(false);
 
     const [newName, setNewName] = useState(sName);
     const [newNote, setNewNote] = useState("");
@@ -40,12 +42,14 @@ export default function WishForm({info}) {
         setNewNote("");
         setNewAddress(sAddress);
         setWishList(wishList.concat(newWish));
+        setSubmitted(true);
     }
 
         return (
         <>  
             {/* Wish List Form to add new restaurant */}
             <div className="container is-centered">
+            {!submitted && (
                 <div className="container mx-5">
                     <div className="field">
                         <label className="label">Restaurant</label>
@@ -81,6 +85,15 @@ export default function WishForm({info}) {
                         </div>
                     </div>
                 </div>
+            )}
+            {submitted && 
+                    <div className="box mx-5">
+                        <label className="label has-text-link">Successfully added!</label>
+                        <button className="button is-link is-light">
+                            <Link className="has-text-link" href="/wishlist"> Go to your Wish List</Link>
+                        </button>
+                    </div>
+                }
             </div>
         </>
         );

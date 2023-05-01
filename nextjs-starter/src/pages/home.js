@@ -1,13 +1,11 @@
-import { UserButton } from "@clerk/clerk-react";
 import styles from '@/styles/Home.module.css'
-import { getReviews, deleteReview } from "@/modules/Data";
-import { Typography } from "@mui/material";
+import { getReviews, deleteReview, editReview } from "@/modules/Data";
 import { Rating } from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faPen, faUtensils, faStar, faLocationDot, faQuoteLeft, faQuoteRight, faCalendarDays, faPersonRunning } from '@fortawesome/free-solid-svg-icons';
-
+import EditReviewForm from '../components/Review/EditReview';
 
 
 export default function TimelinePage() {
@@ -15,6 +13,8 @@ export default function TimelinePage() {
     const [loading, setLoading] = useState(true);
     const [restaurants, setRestaurants] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
+    const [editing, setEditing] = useState(false);
+    const [editInfo, setEditInfo] = useState([]);
 
     // get only user's restaurant review list
     useEffect(() => {
@@ -33,12 +33,12 @@ export default function TimelinePage() {
         // console.log("adding image...");
 
         return <>
-            <img src={imageString64} alt="restaurant image" width="200"></img><br></br>
+            <img src={imageString64} alt="restaurant image" width="300"></img><br></br>
         </>
     }
     
     // delete restaurant review from list
-    async function delReview(restaurant) {
+    async function del(restaurant) {
         const token = await getToken({ template: "codehooks" });
         try {
           await deleteReview(token, restaurant._id);
@@ -49,9 +49,10 @@ export default function TimelinePage() {
     }
 
     // edit restaurant review
-    // async function editReview(restaurant){
-
-    // }
+    async function edit(restaurant){
+        setEditing(true);
+        setEditInfo([restaurant.name, restaurant.address, restaurant.review, restaurant.rating, restaurant.dateVisited, restaurant.imageContent, restaurant._id]);
+    }
 
     if (loading) {
         console.log(loading);
@@ -117,11 +118,11 @@ export default function TimelinePage() {
 
                         {/* edit and delete review buttons */}
                         <div className="buttons is-right">
-                            <button className="button is-inverted is-small" onClick={() => {editReview(restaurant);}}>
+                            <button className="button is-inverted is-small" onClick={() => {edit(restaurant);}}>
                                 <FontAwesomeIcon icon={faPen} />
                             </button>
                             {/* Edit function is not made */}
-                            <button className="button is-inverted is-small" onClick={() => {delReview(restaurant);}}>
+                            <button className="button is-inverted is-small" onClick={() => {del(restaurant);}}>
                                 <FontAwesomeIcon icon={faTrashCan} />
                             </button>
                         </div>
@@ -135,8 +136,8 @@ export default function TimelinePage() {
         return (
         <> 
             {/* Loading review timeline */}
-                <br></br>
             <div className="columns is-centered">
+            {!editing && (
                 <div className="column is-half">
                     <h1 className={styles.titleTimeline}>
                         <span>&nbsp;&nbsp;</span>
@@ -144,6 +145,13 @@ export default function TimelinePage() {
                     </h1>
                         {restaurantListItems}
                 </div>
+            )}
+            {console.log(editInfo)}
+            {editing &&
+                <div>
+                    <EditReviewForm info={editInfo}></EditReviewForm>
+                </div>
+            }
             </div>   
         </>
         );

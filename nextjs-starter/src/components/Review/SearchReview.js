@@ -2,6 +2,7 @@ import styles from '@/styles/Home.module.css'
 import { addReview } from "@/modules/Data";
 import { Rating } from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
+import Link from 'next/link';
 import React, { useState, useEffect, useCallback } from "react";
 
 export default function SearchReviewPage({info}) {
@@ -11,6 +12,7 @@ export default function SearchReviewPage({info}) {
     const [loading, setLoading] = useState(false);
     const [restaurants, setRestaurants] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
+    const [submitted, setSubmitted] = useState(false);
 
     const [newName, setNewName] = useState(sName);
     const [newReview, setNewReview] = useState("");
@@ -43,6 +45,7 @@ export default function SearchReviewPage({info}) {
         setNewImage64("");
         setNewAddress(sAddress);
         setRestaurants(restaurants.concat(newRestaurant));
+        setSubmitted(true);
 
         document.getElementById("requiredInputWarning").innerHTML = "";
     }
@@ -55,9 +58,9 @@ export default function SearchReviewPage({info}) {
     else {
         return (
         <>  
-            {console.log(info)}
             {/* Review Form to add new restaurant to your timeline*/}
             <div className="container is-centered">
+            {!submitted && (
                 <div className="container mx-5">
                     <h4 id = "requiredInputWarning"></h4>
                     <div className="field">
@@ -166,7 +169,16 @@ export default function SearchReviewPage({info}) {
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
+            {submitted && 
+                <div className="box mx-5">
+                    <label className="label has-text-link">Successfully added!</label>
+                    <button className="button is-link is-light">
+                        <Link className="has-text-link" href="/home"> Go to your Timeline</Link>
+                    </button>
+                </div>
+            }
+        </div>
         </>
         );
   
