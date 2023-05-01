@@ -140,9 +140,10 @@ export default function TimelinePage() {
             {!editing && (
                 <div className="column is-half">
                     <h1 className={styles.titleTimeline}>
+                        <span>    Timeline</span>
                         <span>&nbsp;&nbsp;</span>
                         <FontAwesomeIcon icon={faUtensils} spin style={{color: "#ffc038",}} />
-                        <span>    Timeline</span>
+                        {/* <span>    Timeline</span> */}
                     </h1> <br></br>
                         {restaurantListItems}
                 </div>
