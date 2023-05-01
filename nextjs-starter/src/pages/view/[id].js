@@ -18,16 +18,16 @@ const Post = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  async function dataFetch(){
-    if(latitude && longitude){
-      const data = await getData(longitude, latitude, id);
-      setRestaurant(data.results)
-
-      console.log("data checking...");
-      console.log(Restaurants);
-      setLoading(false);
+  async function dataFetch() {
+    const data = await getData(longitude, latitude, id);
+      if (data && data.results) {
+        setRestaurant(data.results);
+        setLoading(false);
+      } else {
+        setRestaurant([]);
+        setLoading(false);
+      }
     
-    }
   }
 
 
