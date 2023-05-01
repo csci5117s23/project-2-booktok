@@ -25,10 +25,10 @@ export default function Navbar() {
         {/* Hidden in mobile device */}
         <div id="navbarBasicExample" className={`navbar-menu ${clicked ? "is-active" : ""}`}>
           <div className="navbar-start">
-            <Link className='navbar-item' href="/search"> Find Restaurants</Link>
-            <Link className='navbar-item' href="/review"> Review(Temp)</Link>
+            <Link className='navbar-item' href="/find"> Find Restaurants</Link>
+            <Link className='navbar-item' href="/review"> Add Restaurant</Link>
             <Link className='navbar-item' href="/wishlist"> Wish List</Link>
-            <Link className='navbar-item' href="/map"> Map</Link>
+            {/* <Link className='navbar-item' href="/map"> Map</Link> */}
           </div>
           <div className="navbar-end">
             <div className="navbar-item">

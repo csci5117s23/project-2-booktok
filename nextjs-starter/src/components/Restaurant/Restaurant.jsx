@@ -14,6 +14,7 @@ export default function Restaurant({data}) {
   // rating: rating
   // The data I am trying to get is photos but it's kind of weird to get this(failed)
 
+  console.log("photos", photos);
   return (
     <div className='box has-text-centered'>
       <section className='hero is-small'>
@@ -31,11 +32,11 @@ export default function Restaurant({data}) {
       {phone || "No phone number"} <br/> */}
 
       <FontAwesomeIcon icon={faStar} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-      rating: {rating} / 5<br />
+      Rating: {rating} / 5<br />
       
 
       <button className='button is-success is-light'>
-        <Link key={location.address1} href={`/addReview/${name}::${location.address1}`}>
+        <Link key={formatted_address} href={`/addReview/${name}::${formatted_address}`}>
           Add place
         </Link>
       </button>
