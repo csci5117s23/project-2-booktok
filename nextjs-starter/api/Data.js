@@ -1,30 +1,17 @@
-// api/Data.js
-import axios from 'axios';
+import axios from 'axios'
 
-export function getData(longitude,latitude,id) {
-  
-  const apiKey = process.env.NEXT_PUBLIC_YELP_API_KEY;
 
-  const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-  
-  const options = {
-    method: 'GET',
-    url: proxyUrl+'https://api.yelp.com/v3/businesses/search',
-    params: {
-      latitude: `${latitude}`,
-      longitude: `${longitude}`,
-      term: `${id}`,
-      sort_by: 'best_match',
-      limit: '16'
-    },
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'accept': 'application/json',
-      'x-requested-with': 'xmlhttprequest',
-      'Access-Control-Allow-Origin': '*',
-     
-    }
-  };
-
-  return axios.request(options);
+export async function getData(longitude, latitude, id) {
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
+  const url = 
+  `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=${id}&location=${latitude},${longitude}&radius=5000&key=${apiKey}`;
+  try {
+    const response = await axios.get(url);
+    const data = response.data;
+    // console.log(data);
+    return data;
+    
+  } catch (error) {
+    console.error(error);
+  }
 }
