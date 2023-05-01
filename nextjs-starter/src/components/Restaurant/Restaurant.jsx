@@ -5,11 +5,12 @@ import Link from 'next/link';
 
 
 export default function Restaurant({data}) {
-  const {image_url, name, vicinity, phone, rating,photos} = data;
+  console.log("data: ", data);
+  const {image_url, name, formatted_address, phone, rating, photos} = data;
 
   // Fyi, There is no image_url name from the json
   // name : restaurant name
-  // vicinity: location
+  // formatted_address: location
   // rating: rating
   // The data I am trying to get is photos but it's kind of weird to get this(failed)
 
@@ -20,16 +21,16 @@ export default function Restaurant({data}) {
           <p className="title">{name}</p>
           <p className="subtitle">
               <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b"}} /><span>&nbsp;&nbsp;</span>
-              {vicinity}
+              {formatted_address}
           </p>
         </div>
       </section>
-      <img src={image_url} alt={name} className={styles.image} /><br/>
+      {/* <img src={image_url} alt={name} className={styles.image} /><br/> */}
       
-      <FontAwesomeIcon icon={faPhone} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-      {phone || "No phone number"} <br/>
+      {/* <FontAwesomeIcon icon={faPhone} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
+      {phone || "No phone number"} <br/> */}
+
       <FontAwesomeIcon icon={faStar} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                
       rating: {rating} / 5<br />
       
 

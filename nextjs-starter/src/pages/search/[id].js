@@ -3,7 +3,7 @@ import homeStyles from '@/styles/Home.module.css'
 import { useEffect, useState } from 'react';
 // import { getData } from '../../../api/Data';
 import { useGeoLocation } from 'use-geo-location';
-// import Restaurant from '../../components/Restaurant/Restaurant';
+import Restaurant from '../../components/Restaurant/Restaurant';
 import styles from '../view/id.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPersonRunning } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +13,7 @@ import { faPersonRunning } from '@fortawesome/free-solid-svg-icons';
 
 export default function searchString() {
     const { latitude, longitude } = useGeoLocation();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [Restaurants, setRestaurant] = useState([]);
 
     const router = useRouter();
@@ -49,10 +49,12 @@ export default function searchString() {
     function callback(results, status) {
         console.log("callback")
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-        for (let i = 0; i < results.length; i++) {
-            console.log("#: ", i);
-            console.log("results: ", results[i]);
-        }
+            for (let i = 0; i < results.length; i++) {
+                console.log("#: ", i);
+                console.log("results: ", results[i]);
+            }
+            setRestaurant(results);
+            setLoading(false);
         }
     }
 
@@ -73,17 +75,29 @@ export default function searchString() {
 
     } 
 
-    return (<>
+    return (
         <div className={styles.container}>  
-        <h1>id page</h1>
-        {/* <SideNavbar className={styles.SideNav}/>
-        <ul className={styles.restaurants}>
+          <ul className={styles.restaurants}>
             {Restaurants.map((data) => (
-            <Restaurant key={data.place_id} data={data}/>
+              <Restaurant key={data.place_id} data={data}/>
             ))}
-        </ul> */}
+          </ul>
         </div>
+    )
 
-        {/* <div id="map"></div> */}
-        </>)
+    // return (<>
+    //     <div className={styles.container}>  
+    //     <h1>id page</h1>
+    //     {/* <SideNavbar className={styles.SideNav}/>
+    //     <ul className={styles.restaurants}>
+    //         {Restaurants.map((data) => (
+    //         <Restaurant key={data.place_id} data={data}/>
+    //         ))}
+    //     </ul> */}
+    //     </div>
+
+    //     {/* <div id="map"></div> */}
+    //     </>)
+
+    
 }

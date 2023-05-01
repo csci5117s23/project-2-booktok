@@ -4,9 +4,13 @@
 import { useRef, useEffect } from "react";
 import { useRouter } from 'next/router';
 import { BsSearch } from 'react-icons/bs';
+import Categories from '../components/Categories/Categories';
+import styles from '@/styles/Home.module.css';
 
 
 export default function AutoComplete() {
+    const categories = ['Burgers', 'Japanese', 'Korean', 'Chinese', 'Italian', 'Mexican', 'Thai', 'Pizza'];
+
     const router = useRouter()
 
     const autoCompleteRef = useRef();
@@ -39,11 +43,10 @@ export default function AutoComplete() {
 
     }, []);
 
-    return (
+    return (<>
         
-        <div className='field has-addons'>
+        {/* <div className='field has-addons'>
             <div className='control is-expanded'>
-                {/* <label>enter address :</label> */}
                 <input className="input is-success is-medium" ref={inputRef} placeholder="Search restaurant..."/>
             </div>
             <div className='control'>
@@ -51,6 +54,30 @@ export default function AutoComplete() {
                 <BsSearch />
                 </button>
             </div>
+        </div> */}
+
+
+        <div className='columns is-centered'>
+            <div className='column has-text-centered is-three-quarters'>
+            <h2 className={styles.searchInstruction}>Search restaurants to leave a review or add to wish list.</h2>
+
+            {/* search input */}
+            <div className='field has-addons'>
+                <div className='control is-expanded'>
+                    {/* <label>enter address :</label> */}
+                    <input className="input is-success is-medium" ref={inputRef} placeholder="Search restaurant..."/>
+                </div>
+                <div className='control'>
+                    <button className="button is-success is-medium">
+                    <BsSearch />
+                    </button>
+                </div>
+            </div>
+
+            <Categories categories={categories} />
+            </div>
         </div>
+
+        </>
     );
 }
