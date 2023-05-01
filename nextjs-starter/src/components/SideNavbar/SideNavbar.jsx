@@ -20,7 +20,7 @@ export default function SideNavbar() {
         Settings
       </p>
       <ul className="menu-list">
-        <li><Link href="/"><span>Profile</span></Link></li>
+        <li><Link href="/Profile"><span>Profile</span></Link></li>
         <li><Link href="/"><span>Security</span></Link></li>
       </ul>
     </aside>

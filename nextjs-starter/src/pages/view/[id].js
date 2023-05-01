@@ -18,20 +18,18 @@ const Post = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  function dataFetch() {
-    if (latitude && longitude) {
-      getData(longitude, latitude, id)
-        .then(function (response) {
-          console.log(response);
-          setRestaurant(response.data.businesses);
-          setLoading(false);
-        })
-        .catch(function (error) {
-          console.error(error);
-          setLoading(false);
-        });
+  async function dataFetch(){
+    if(latitude && longitude){
+      const data = await getData(longitude, latitude, id);
+      setRestaurant(data.results)
+
+      console.log("data checking...");
+      console.log(Restaurants);
+      setLoading(false);
+    
     }
   }
+
 
   useEffect(() => {
     dataFetch();
@@ -43,8 +41,6 @@ const Post = () => {
     <FontAwesomeIcon icon={faPersonRunning} bounce style={{color: "#139a54",}} />
     </span>;
 
-    // console.log("Restaurants check");
-    // console.log(Restaurants.businesses);
   } 
 
   return (
@@ -52,7 +48,7 @@ const Post = () => {
       <SideNavbar className={styles.SideNav}/>
       <ul className={styles.restaurants}>
         {Restaurants.map((data) => (
-          <Restaurant key={data.id} data={data}/>
+          <Restaurant key={data.place_id} data={data}/>
         ))}
       </ul>
     </div>

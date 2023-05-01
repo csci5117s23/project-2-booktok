@@ -26,10 +26,8 @@ const wishList = object({
   name: string().required(),
   note: string(),
   userId: string().required(),
-  imageName: string(),
-  imageContent: string(),
+  address: string(),
   // createdOn: date().default(() => new Date()),
-
   createdOn: date().default(Date.now),
 })
 

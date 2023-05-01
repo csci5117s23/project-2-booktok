@@ -1,33 +1,58 @@
-import ReviewForm from '../../components/Review/ReviewForm';
+import ReviewForm from '../../components/Review/SearchReview';
+import WishForm from '../../components/Wishlist/SearchWish';
 import { useRouter } from 'next/router';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faUtensils } from '@fortawesome/free-solid-svg-icons';
+
 import { useState, useEffect } from 'react';
-
-
-import { getData } from '../../../api/Data';
 
 
 export default function ReviewPage() { 
   
   const router = useRouter();
   const { id } = router.query;
-  const [restaurant, setRestaurant] = useState({});
-
+  const [name, address] = id.split('::');
   
   return (
     <>
-    {console.log(restaurant)}
-    <div className='columns'>
-        <div className='column'>
-          <h1>aaa review</h1>
-          {/* <h1>Add Review for {data.name} - {restaurant.location?.address1}</h1> */}
-          {/* {Restaurants.map((data) => (
-          <Restaurant key={data.id} data={data}/>
-        ))} */}
-      
+      <div className='columns'>
+      <section class="hero is-white is-small">
+        <div class="hero-body">
+          <p class="title">{name}</p>
+          <p class="subtitle">{address}</p>
         </div>
-        <div className='column'>
-            <ReviewForm></ReviewForm>
+      </section>
+  
+      <div className='column has-background-link-light'>
+        <section class="hero is-link-light is-small">
+          <div class="hero-body">
+            <p class="title has-text-link-dark">
+              Review<span>&nbsp;&nbsp;</span>
+              <FontAwesomeIcon icon={faUtensils} beat style={{color: "#3850b7",}} />
+            </p>
+          </div>
+        </section>
+        <br></br>
+        <div className='pb-5'>
+          <ReviewForm info={[name, address]}></ReviewForm>
         </div>
+      </div>
+
+      <div className='column has-background-warning-light'>
+        <section class="hero is-warning-light is-small">
+          <div class="hero-body">
+            <p class="title has-text-warning-dark">
+              Wish list<span>&nbsp;&nbsp;</span>
+              <FontAwesomeIcon icon={faHeart} bounce style={{color: "#ffc038",}} />
+            </p>
+          </div>
+        </section>
+        <br></br>
+        <div className='pb-5'>
+          <WishForm info={[name, address]}></WishForm>
+        </div>
+      </div>
     </div>
     </>
   );  

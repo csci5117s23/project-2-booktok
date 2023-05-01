@@ -4,20 +4,21 @@ import { Rating } from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 
-export default function ReviewPage() {
+export default function SearchReviewPage({info}) {
+    
+    const [sName, sAddress] = info;
 
     const [loading, setLoading] = useState(false);
     const [restaurants, setRestaurants] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
 
-    const [newName, setNewName] = useState("");
+    const [newName, setNewName] = useState(sName);
     const [newReview, setNewReview] = useState("");
     const [newRating, setNewRating] = useState(null);
     const [newDate, setNewDate] = useState("");
     const [newImage64, setNewImage64] = useState("")
     const [newImage, setNewImage] = useState("");
-    const [newAddress, setNewAddress] = useState("");
-
+    const [newAddress, setNewAddress] = useState(sAddress);
     
     
     async function add() {
@@ -34,13 +35,13 @@ export default function ReviewPage() {
         // once name and date are filled in, send data to database
         const token = await getToken({ template: "codehooks" });
         const newRestaurant = await addReview(token, newName, newReview, newRating, newDate, newImage64, newAddress, userId);
-        setNewName("");
+        setNewName(sName);
         setNewReview("");
         setNewRating("");
         setNewDate("");
         setNewImage("");
         setNewImage64("");
-        setNewAddress("");
+        setNewAddress(sAddress);
         setRestaurants(restaurants.concat(newRestaurant));
 
         document.getElementById("requiredInputWarning").innerHTML = "";
@@ -54,31 +55,23 @@ export default function ReviewPage() {
     else {
         return (
         <>  
+            {console.log(info)}
             {/* Review Form to add new restaurant to your timeline*/}
-            <div className="columns is-centered">
-                <div className="box mx-5">
+            <div className="container is-centered">
+                <div className="container mx-5">
                     <h4 id = "requiredInputWarning"></h4>
                     <div className="field">
-                        <label className="label">Restaurant:</label>
-                        <div className="control">
-                            <input
-                                className="input is-primary"
-                                type="text"
-                                id = "restaurant"
-                                placeholder="Restaurant Name"
-                                value={newName}
-                                onChange={(e) => setNewName(e.target.value)}
-                                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
-                            ></input>
+                        <label className="label">Restaurant</label>
+                        <div className="control has-text-link-dark has-text-weight-bold">
+                            {sName}
                         </div>
-                        <p className="help is-success">*This field is required</p>
                     </div>
 
                     <div className="field">
-                        <label className="label">Date of Visit:</label>
+                        <label className="label">Date of Visit</label>
                         <div className="control">
                             <input
-                                className="input is-primary"
+                                className="input is-link"
                                 id = "date"
                                 type="date"
                                 value={newDate}
@@ -86,26 +79,18 @@ export default function ReviewPage() {
                                 onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
                             ></input>
                         </div>
-                        <p className="help is-success">*This field is required</p>
+                        <p className="help is-link">*This field is required</p>
                     </div>
 
                     <div className="field">
-                        <label className="label">Address:</label>
-                        <div className="control">
-                            <input
-                                className="input"
-                                type="text"
-                                id = "address"
-                                placeholder="Restaurant Address"
-                                value={newAddress}
-                                onChange={(e) => setNewAddress(e.target.value)}
-                                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
-                            ></input>
+                        <label className="label">Address</label>
+                        <div className="control has-text-link-dark has-text-weight-bold">
+                            {sAddress}
                         </div>
                     </div>
 
                     <div className="field">
-                        <label className="label">Review:</label>
+                        <label className="label">Review</label>
                         <div className="control">
                             <textarea
                                 className="textarea"
@@ -121,7 +106,7 @@ export default function ReviewPage() {
                     </div>
 
                     <div className="field">
-                        <label className="label">Rating:</label>
+                        <label className="label">Rating</label>
                         <div className="control">
                             <Rating name="half-rating" 
                                 id = "rating"
@@ -169,15 +154,15 @@ export default function ReviewPage() {
                                     fileReader.readAsDataURL(imageFile);
                                 }}
                             }
+                            // onChange={(e) => setNewImage(e.target.value)}
+                            // onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
                         />}
                         </div>
                     </div>
                     
-                    
-
                     <div className="field is-grouped">
                         <div className="control">
-                            <button className="button is-success" onClick={add}>Add</button>
+                            <button className="button is-link" onClick={add}>Add</button>
                         </div>
                     </div>
                 </div>
