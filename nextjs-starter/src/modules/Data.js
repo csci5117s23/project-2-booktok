@@ -29,6 +29,26 @@ export async function addReview(authToken, restaurantName, restaurantReview, res
     return await result.json();
 }
 
+// edit new review
+export async function editReview(authToken, restaurantName, restaurantReview, restaurantRating, restaurantDate, restaurantImage, restaurantAddress, resId, userName) {
+    const result = await fetch(backend_base+"/home/"+resId,{
+        'method':'PATCH',
+        'headers': {
+            'Authorization': 'Bearer ' + authToken,
+            'Content-Type': 'application/json'
+        },
+        'body': JSON.stringify({
+            name: restaurantName, 
+            review: restaurantReview, 
+            rating: restaurantRating, 
+            userId: userName, 
+            imageContent: restaurantImage, 
+            dateVisited: restaurantDate,
+            address: restaurantAddress})
+    })
+    return await result.json();
+}
+
 // delete review
 export async function deleteReview(authToken, restaurantId) {
     const result = await fetch(backend_base+"/home/"+restaurantId, {
@@ -54,6 +74,27 @@ export async function addWishList(authToken, restaurantName, restaurantReview, r
     const today = new Date().toISOString().substring(0, 10);
     const result = await fetch(backend_base+"/wishlist",{
         'method':'POST',
+        'headers': {
+            'Authorization': 'Bearer ' + authToken,
+            'Content-Type': 'application/json'
+        },
+        'body': JSON.stringify({
+            name: restaurantName, 
+            note: restaurantReview, 
+            userId: userName,
+            address: restaurantAddress,
+            createdOn: today, 
+        })
+    })
+    return await result.json();
+}
+
+
+// edit new wish list
+export async function editWishList(authToken, restaurantName, restaurantReview, restaurantAddress, resId, userName) {
+    const today = new Date().toISOString().substring(0, 10);
+    const result = await fetch(backend_base+"/wishlist/"+resId,{
+        'method':'PATCH',
         'headers': {
             'Authorization': 'Bearer ' + authToken,
             'Content-Type': 'application/json'

@@ -1,11 +1,8 @@
 import ReviewForm from '../../components/Review/SearchReview';
 import WishForm from '../../components/Wishlist/SearchWish';
 import { useRouter } from 'next/router';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faUtensils } from '@fortawesome/free-solid-svg-icons';
-
-import { useState, useEffect } from 'react';
 
 
 export default function ReviewPage() { 

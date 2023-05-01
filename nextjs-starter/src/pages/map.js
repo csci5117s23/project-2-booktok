@@ -6,7 +6,6 @@ import GoogleMapReact from 'google-map-react';
 import { useGeoLocation } from 'use-geo-location';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPerson, faUtensils } from '@fortawesome/free-solid-svg-icons';
-import {faAddressBook} from '@fortawesome/free-regular-svg-icons';
 
 const mapKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
 
