@@ -33,9 +33,9 @@ export default function Restaurant({data}) {
       <FontAwesomeIcon icon={faStar} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
       rating: {rating} / 5<br />
       
-
+      <br></br>
       <button className='button is-success is-light'>
-        <Link key={location.address1} href={`/addReview/${name}::${location.address1}`}>
+        <Link key={location.address1} href={`/addReview/${name}::${location.address1}`} className='has-text-success-dark'>
           Add place
         </Link>
       </button>
