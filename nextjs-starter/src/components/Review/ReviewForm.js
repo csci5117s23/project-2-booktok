@@ -3,12 +3,14 @@ import { addReview } from "@/modules/Data";
 import { Rating } from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
+import Link from 'next/link';
 
 export default function ReviewPage() {
 
     const [loading, setLoading] = useState(false);
     const [restaurants, setRestaurants] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
+    const [submitted, setSubmitted] = useState(false);
 
     const [newName, setNewName] = useState("");
     const [newReview, setNewReview] = useState("");
@@ -42,6 +44,7 @@ export default function ReviewPage() {
         setNewImage64("");
         setNewAddress("");
         setRestaurants(restaurants.concat(newRestaurant));
+        setSubmitted(true);
 
         document.getElementById("requiredInputWarning").innerHTML = "";
     }
@@ -56,6 +59,7 @@ export default function ReviewPage() {
         <>  
             {/* Review Form to add new restaurant to your timeline*/}
             <div className="container is-centered">
+            {!submitted && (
                 <div className="box mx-5">
                     <h4 id = "requiredInputWarning"></h4>
                     <div className="field">
@@ -172,8 +176,6 @@ export default function ReviewPage() {
                         />}
                         </div>
                     </div>
-                    
-                    
 
                     <div className="field is-grouped">
                         <div className="control">
@@ -181,6 +183,15 @@ export default function ReviewPage() {
                         </div>
                     </div>
                 </div>
+            )}
+                {submitted && 
+                    <div className="box mx-5">
+                        <label className="label has-text-link">Successfully added!</label>
+                        <button className="button is-link is-light">
+                            <Link className="has-text-link" href="/home"> Go to your Timeline</Link>
+                        </button>
+                    </div>
+                }
             </div>
         </>
         );

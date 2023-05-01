@@ -1,9 +1,7 @@
-import styles from '@/styles/Home.module.css'
 import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen, faHeart, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 
 export default function WishForm() {
@@ -11,6 +9,7 @@ export default function WishForm() {
     const [loading, setLoading] = useState(true);
     const [wishList, setWishList] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
+    const [submitted, setSubmitted] = useState(false);
 
     const [newName, setNewName] = useState("");
     const [newNote, setNewNote] = useState("");
@@ -43,12 +42,14 @@ export default function WishForm() {
         setNewNote("");
         setNewAddress("");
         setWishList(wishList.concat(newWish));
+        setSubmitted(true);
     }
 
         return (
         <>  
             {/* Wish List Form to add new restaurant */}
             <div className="container is-centered">
+            {!submitted && (
                 <div className="box mx-5">
                     <h4 id = "requiredInputWarning"></h4>
                     <div className="field">
@@ -96,8 +97,6 @@ export default function WishForm() {
                             ></textarea>
                         </div>
                     </div>
-
-                   
                     
                     <div className="field is-grouped">
                         <div className="control">
@@ -105,6 +104,15 @@ export default function WishForm() {
                         </div>
                     </div>
                 </div>
+                )}
+                {submitted && 
+                    <div className="box mx-5">
+                        <label className="label has-text-link">Successfully added!</label>
+                        <button className="button is-link is-light">
+                            <Link className="has-text-link" href="/wishlist"> Go to your Wish List</Link>
+                        </button>
+                    </div>
+                }
             </div>
         </>
         );
