@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import homeStyles from '@/styles/Home.module.css'
 import { useEffect, useState } from 'react';
-import { getData } from '../../../api/Data';
+import { getData } from '../../../api/search';
 import { useGeoLocation } from 'use-geo-location';
 import Restaurant from '../../components/Restaurant/Restaurant';
 import styles from '../view/id.module.css';
@@ -22,6 +22,8 @@ const Post = () => {
     if(latitude && longitude){
       const data = await getData(longitude, latitude, id);  
       
+      console.log(data);
+
       setRestaurant(data.results)
       setLoading(false);
     }

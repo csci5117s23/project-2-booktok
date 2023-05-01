@@ -5,7 +5,7 @@ export default function SideNavbar() {
     <aside className='menu' style={{ flexDirection: 'column' }}>
       <p className='menu-label'>Suggested</p>
       <ul className="menu-list">
-        <li><Link href="/"><span>Open</span></Link></li>
+        <li><Link href="/AroundYou"><span>AroundMe</span></Link></li>
         <li><Link href="/"><span>Close</span></Link></li>
       </ul>
 
