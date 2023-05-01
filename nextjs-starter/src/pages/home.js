@@ -77,7 +77,7 @@ export default function TimelinePage() {
                         <section className="hero is-small">
                             <div className="hero-body">
                                 <p className="title">{restaurant.name}</p>
-                                <p class="subtitle">
+                                <p className="subtitle">
                                     {restaurant.address ? 
                                         <>
                                             <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} />
