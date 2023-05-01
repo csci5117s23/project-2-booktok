@@ -63,17 +63,27 @@ export default function Wishlist() {
                     <div className="hero-body">
                         <p className="title">{wishItem.name}</p>
                         <p className="subtitle">
-                            <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                            {wishItem.address}
+                            {wishItem.address ? 
+                                <>
+                                    <FontAwesomeIcon icon={faLocationDot} style={{color: "#ffc038",}} /><span>&nbsp;&nbsp;</span>
+                                    {wishItem.address}
+                                </>
+                            : ""}
                         </p>
                     </div>
                 </section>
 
-                <FontAwesomeIcon icon={faNoteSticky} style={{color: "#48c38b",}}/><span>&nbsp;&nbsp;</span>
-                <span id = {styles.restaurantReview}>{wishItem.note}</span>
-                <br></br>
-                <span id = {styles.restaurantReview}>{wishItem.createdOn}</span>
-                <br></br>
+                {wishItem.note ?
+                    <>
+                        <span id = {styles.restaurantReview}></span>
+                        <FontAwesomeIcon icon={faNoteSticky} style={{color: "#ffc038",}}/><span>&nbsp;&nbsp;</span>
+                        {wishItem.note}<br></br>
+                    </>
+                : ""}
+
+                <div className='tags is-right'>
+                    <span class="tag is-warning is-light">{wishItem.createdOn}</span>
+                </div>
                 <div className="buttons is-right">
                     <button className="button is-inverted is-small" onClick={() => {editWishList(wishItem);}}>
                         <FontAwesomeIcon icon={faPen} />
@@ -101,13 +111,9 @@ export default function Wishlist() {
                         <span>&nbsp;&nbsp;</span>
                         <FontAwesomeIcon icon={faHeart} bounce style={{color: "#ffc038",}} />
                     </h1>
-                        {console.log("timeline: ", wishList)}
                         {wishListItems}
                 </div>
             </div>
-            
-            {/* {console.log("delete: ", delName, "&&", delRating)} */}
-       
         </>
         );
     }  
