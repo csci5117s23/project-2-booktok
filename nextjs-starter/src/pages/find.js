@@ -37,10 +37,11 @@ export default function AutoComplete() {
                 router.push(`/search/${place.name}`);
                 // return;
             }
-
-            // if a suggestion is taken, push to a different page where only the selected restaurant info is shown
-            console.log(place.place_id);
-            router.push(`/viewrestaurant/${place.place_id}`)
+            else{
+                // if a suggestion is taken, push to a different page where only the selected restaurant info is shown
+                console.log(place.place_id);
+                router.push(`/viewrestaurant/${place.place_id}`)
+            }
         });
 
     }, []);
