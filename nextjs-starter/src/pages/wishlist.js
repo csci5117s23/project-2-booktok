@@ -1,12 +1,8 @@
-import WishForm from '../components/Wishlist/wishform';
-import WishList from '../components/Wishlist/wishlist';
+import WishList from '../components/Wishlist/WishlistTimeline';
 
 export default function WishListPage() { 
   return (
     <div className='columns'>
-        <div className='column'>
-            <WishForm></WishForm>
-        </div>
         <div className='column'>
             <WishList></WishList>
         </div>

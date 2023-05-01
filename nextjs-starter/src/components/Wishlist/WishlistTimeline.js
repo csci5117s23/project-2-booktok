@@ -3,7 +3,7 @@ import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen, faHeart, faLocationDot, faPersonRunning } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faHeart, faLocationDot, faPersonRunning, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 
 export default function Wishlist() {
 
@@ -58,11 +58,18 @@ export default function Wishlist() {
             {/* <li key={wishItem._id}>
                 {wishItem.name}
             </li> */}
-            <div className = "box">
-                {/* <span> {wishItem.selectedImage} </span> */}
-                <FontAwesomeIcon icon={faLocationDot} /><span>&nbsp;&nbsp;</span>
-                <span id = {styles.restaurantName}>{wishItem.name}</span>
-                <br></br>
+            <div className = "box has-text-centered">
+                <section className="hero is-small">
+                    <div className="hero-body">
+                        <p className="title">{wishItem.name}</p>
+                        <p className="subtitle">
+                            <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
+                            {wishItem.address}
+                        </p>
+                    </div>
+                </section>
+
+                <FontAwesomeIcon icon={faNoteSticky} style={{color: "#48c38b",}}/><span>&nbsp;&nbsp;</span>
                 <span id = {styles.restaurantReview}>{wishItem.note}</span>
                 <br></br>
                 <span id = {styles.restaurantReview}>{wishItem.createdOn}</span>

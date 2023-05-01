@@ -14,7 +14,7 @@ export default function WishForm() {
 
     const [newName, setNewName] = useState("");
     const [newNote, setNewNote] = useState("");
-    const [newImage, setNewImage] = useState("");
+    const [newAddress, setNewAddress] = useState("");
 
 
     // get restaurant wish list
@@ -32,20 +32,25 @@ export default function WishForm() {
 
     // add restaurant wish list
     async function add() {
-        // imageEncoding();
+        if(newName == ""){
+            document.getElementById("requiredInputWarning").innerHTML = "Restaurant name is required.";
+            return;
+        }
+
         const token = await getToken({ template: "codehooks" });
-        const newWish = await addWishList(token, newName, newNote, userId);
+        const newWish = await addWishList(token, newName, newNote, newAddress, userId);
         setNewName("");
         setNewNote("");
-        setNewImage("");
+        setNewAddress("");
         setWishList(wishList.concat(newWish));
     }
 
         return (
         <>  
             {/* Wish List Form to add new restaurant */}
-            <div className="columns is-centered">
+            <div className="container is-centered">
                 <div className="box mx-5">
+                    <h4 id = "requiredInputWarning"></h4>
                     <div className="field">
                         <label className="label">Restaurant</label>
                         <div className="control">
@@ -63,10 +68,25 @@ export default function WishForm() {
                     </div>
 
                     <div className="field">
+                        <label className="label">Address</label>
+                        <div className="control">
+                            <input
+                                className="input"
+                                type="text"
+                                id = "restaurant"
+                                placeholder="Restaurant Address"
+                                value={newAddress}
+                                onChange={(e) => setNewAddress(e.target.value)}
+                                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                            ></input>
+                        </div>
+                    </div>
+
+                    <div className="field">
                         <label className="label">Note</label>
                         <div className="control">
                             <textarea
-                                className="textarea is-primary"
+                                className="textarea"
                                 id = "review"
                                 type="textarea"
                                 rows="5"
@@ -77,33 +97,7 @@ export default function WishForm() {
                         </div>
                     </div>
 
-                    <div className="field">
-                        <label className="label">Image</label>
-                        <div className="control">
-                        {newImage ? (
-                            <div>
-                                <img
-                                    alt="not found"
-                                    width={"250px"}
-                                    src={URL.createObjectURL(newImage)}
-                                />
-                            <br />
-                            <button onClick={() => setNewImage(null)}>Remove</button>
-                            </div>    
-                        ):
-                        <input
-                            type="file"
-                            name="myImage"
-                            id="imageField"
-                            onChange={(e) => {
-                                console.log(e.target.files[0]);
-                                setNewImage(e.target.files[0])} 
-                            }
-                            // onChange={(e) => setNewImage(e.target.value)}
-                            // onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
-                        />}
-                        </div>
-                    </div>
+                   
                     
                     <div className="field is-grouped">
                         <div className="control">

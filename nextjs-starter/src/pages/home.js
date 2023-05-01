@@ -76,16 +76,12 @@ export default function TimelinePage() {
                         <section className="hero is-small">
                             <div className="hero-body">
                                 <p className="title">{restaurant.name}</p>
-                                {/* <p class="subtitle">
+                                <p class="subtitle">
                                     <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                                    address
-                                </p> */}
+                                    {restaurant.address}
+                                </p>
                             </div>
                         </section>
-
-                        <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                        <span>{restaurant.address}</span><span>&nbsp;&nbsp;</span>
-                        <br></br>
 
                         {/* image */}
                         {typeof restaurant.imageContent === "undefined" || restaurant.imageContent == "" ? console.log("No image available.") : addImage(restaurant.imageContent)}
