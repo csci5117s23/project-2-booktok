@@ -55,7 +55,7 @@ export default function ReviewPage() {
         return (
         <>  
             {/* Review Form to add new restaurant to your timeline*/}
-            <div className="columns is-centered">
+            <div className="container is-centered">
                 <div className="box mx-5">
                     <h4 id = "requiredInputWarning"></h4>
                     <div className="field">

@@ -76,30 +76,39 @@ export default function TimelinePage() {
                         <section className="hero is-small">
                             <div className="hero-body">
                                 <p className="title">{restaurant.name}</p>
-                                {/* <p class="subtitle">
-                                    <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                                    address
-                                </p> */}
+                                <p class="subtitle">
+                                    {restaurant.address ? 
+                                        <>
+                                            <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} />
+                                            <span>&nbsp;&nbsp;</span>{restaurant.address}
+                                        </>
+                                    : ""}
+                                </p>
                             </div>
                         </section>
 
-                        <FontAwesomeIcon icon={faLocationDot} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                        <span>{restaurant.address}</span><span>&nbsp;&nbsp;</span>
-                        <br></br>
-
                         {/* image */}
-                        {typeof restaurant.imageContent === "undefined" || restaurant.imageContent == "" ? console.log("No image available.") : addImage(restaurant.imageContent)}
+                        {typeof restaurant.imageContent === "undefined" || restaurant.imageContent == "" ? 
+                            console.log("No image available.") : addImage(restaurant.imageContent)}
 
                         {/* review */}
-                        <FontAwesomeIcon icon={faQuoteLeft} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                        <span id = {styles.restaurantReview}>{restaurant.review}</span><span>&nbsp;&nbsp;</span>
-                        <FontAwesomeIcon icon={faQuoteRight} style={{color: "#48c38b",}} />
-                        <br></br>
+                        {restaurant.review ? 
+                            <>
+                                <FontAwesomeIcon icon={faQuoteLeft} style={{color: "#48c38b",}} />
+                                <span>&nbsp;&nbsp;</span>{restaurant.review}<span>&nbsp;&nbsp;</span>
+                                <FontAwesomeIcon icon={faQuoteRight} style={{color: "#48c38b",}} />
+                                <br></br>
+                            </>
+                        : ""}
 
                         {/* rating */}
-                        <FontAwesomeIcon icon={faStar} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>
-                        <span id = {styles.restaurantRating}> {restaurant.rating} </span>
-                        <br></br>
+                        {restaurant.rating ? 
+                            <>
+                                <FontAwesomeIcon icon={faStar} style={{color: "#48c38b",}} />
+                                <span>&nbsp;&nbsp;</span>{restaurant.rating}
+                                <br></br>
+                            </>
+                        : ""}
 
                         {/* date visited */}
                         <FontAwesomeIcon icon={faCalendarDays} style={{color: "#48c38b",}} /><span>&nbsp;&nbsp;</span>

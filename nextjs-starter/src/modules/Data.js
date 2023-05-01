@@ -50,7 +50,7 @@ export async function getWishList(authToken, userName) {
 }
 
 // add new wish list
-export async function addWishList(authToken, restaurantName, restaurantReview, userName) {
+export async function addWishList(authToken, restaurantName, restaurantReview, restaurantAddress, userName) {
     const today = new Date().toISOString().substring(0, 10);
     const result = await fetch(backend_base+"/wishlist",{
         'method':'POST',
@@ -62,6 +62,7 @@ export async function addWishList(authToken, restaurantName, restaurantReview, u
             name: restaurantName, 
             note: restaurantReview, 
             userId: userName,
+            address: restaurantAddress,
             createdOn: today, 
         })
     })

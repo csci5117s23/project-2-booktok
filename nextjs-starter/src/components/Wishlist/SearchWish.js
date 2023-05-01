@@ -24,7 +24,6 @@ export default function WishForm({info}) {
         async function process() {
             if (userId) {
                 const token = await getToken({ template: "codehooks" });
-                // setWishList(await getWishList(token, userId));
                 setLoading(false);
             }
         }
@@ -36,7 +35,7 @@ export default function WishForm({info}) {
     async function add() {
         // imageEncoding();
         const token = await getToken({ template: "codehooks" });
-        const newWish = await addWishList(token, newName, newNote, userId);
+        const newWish = await addWishList(token, newName, newNote, newAddress, userId);
         setNewName(sName);
         setNewNote("");
         setNewAddress(sAddress);

@@ -3,7 +3,7 @@ import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen, faHeart, faLocationDot, faPersonRunning } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faHeart, faLocationDot, faPersonRunning, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 
 export default function Wishlist() {
 
@@ -58,15 +58,32 @@ export default function Wishlist() {
             {/* <li key={wishItem._id}>
                 {wishItem.name}
             </li> */}
-            <div className = "box">
-                {/* <span> {wishItem.selectedImage} </span> */}
-                <FontAwesomeIcon icon={faLocationDot} /><span>&nbsp;&nbsp;</span>
-                <span id = {styles.restaurantName}>{wishItem.name}</span>
-                <br></br>
-                <span id = {styles.restaurantReview}>{wishItem.note}</span>
-                <br></br>
-                <span id = {styles.restaurantReview}>{wishItem.createdOn}</span>
-                <br></br>
+            <div className = "box has-text-centered">
+                <section className="hero is-small">
+                    <div className="hero-body">
+                        <p className="title">{wishItem.name}</p>
+                        <p className="subtitle">
+                            {wishItem.address ? 
+                                <>
+                                    <FontAwesomeIcon icon={faLocationDot} style={{color: "#ffc038",}} /><span>&nbsp;&nbsp;</span>
+                                    {wishItem.address}
+                                </>
+                            : ""}
+                        </p>
+                    </div>
+                </section>
+
+                {wishItem.note ?
+                    <>
+                        <span id = {styles.restaurantReview}></span>
+                        <FontAwesomeIcon icon={faNoteSticky} style={{color: "#ffc038",}}/><span>&nbsp;&nbsp;</span>
+                        {wishItem.note}<br></br>
+                    </>
+                : ""}
+
+                <div className='tags is-right'>
+                    <span class="tag is-warning is-light">{wishItem.createdOn}</span>
+                </div>
                 <div className="buttons is-right">
                     <button className="button is-inverted is-small" onClick={() => {editWishList(wishItem);}}>
                         <FontAwesomeIcon icon={faPen} />
@@ -94,13 +111,9 @@ export default function Wishlist() {
                         <span>&nbsp;&nbsp;</span>
                         <FontAwesomeIcon icon={faHeart} bounce style={{color: "#ffc038",}} />
                     </h1>
-                        {console.log("timeline: ", wishList)}
                         {wishListItems}
                 </div>
             </div>
-            
-            {/* {console.log("delete: ", delName, "&&", delRating)} */}
-       
         </>
         );
     }  
