@@ -2,6 +2,8 @@ import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faUtensils } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function WishForm() {
@@ -51,12 +53,20 @@ export default function WishForm() {
             <div className="container is-centered">
             {!submitted && (
                 <div className="box mx-5">
+                    <section class="hero is-warning-light is-small">
+                    <div class="hero-body">
+                        <p class="title has-text-warning-dark">
+                        Wish list<span>&nbsp;&nbsp;</span>
+                        <FontAwesomeIcon icon={faHeart} bounce style={{color: "#ffc038",}} />
+                        </p>
+                    </div>
+                    </section>
                     <h4 id = "requiredInputWarning"></h4>
                     <div className="field">
                         <label className="label">Restaurant</label>
                         <div className="control">
                             <input
-                                className="input is-primary"
+                                className="input is-warning"
                                 type="text"
                                 id = "restaurant"
                                 placeholder="Restaurant Name"
@@ -65,7 +75,7 @@ export default function WishForm() {
                                 onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
                             ></input>
                         </div>
-                        <p className="help is-success">This field is required</p>
+                        <p className="help is-warning">This field is required</p>
                     </div>
 
                     <div className="field">
@@ -100,7 +110,7 @@ export default function WishForm() {
                     
                     <div className="field is-grouped">
                         <div className="control">
-                            <button className="button is-success" onClick={add}>Add</button>
+                            <button className="button is-warning" onClick={add}>Add</button>
                         </div>
                     </div>
                 </div>

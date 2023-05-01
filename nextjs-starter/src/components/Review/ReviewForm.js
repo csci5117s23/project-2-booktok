@@ -3,6 +3,8 @@ import { addReview } from "@/modules/Data";
 import { Rating } from "@mui/material";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faUtensils } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
 export default function ReviewPage() {
@@ -61,12 +63,20 @@ export default function ReviewPage() {
             <div className="container is-centered">
             {!submitted && (
                 <div className="box mx-5">
+                    <section class="hero is-link-light is-small">
+                    <div class="hero-body">
+                        <p class="title has-text-link-dark">
+                        Review<span>&nbsp;&nbsp;</span>
+                        <FontAwesomeIcon icon={faUtensils} beat style={{color: "#3850b7",}} />
+                        </p>
+                    </div>
+                    </section>
                     <h4 id = "requiredInputWarning"></h4>
                     <div className="field">
-                        <label className="label">Restaurant:</label>
+                        <label className="label">Restaurant</label>
                         <div className="control">
                             <input
-                                className="input is-primary"
+                                className="input is-link"
                                 type="text"
                                 id = "restaurant"
                                 placeholder="Restaurant Name"
@@ -75,14 +85,14 @@ export default function ReviewPage() {
                                 onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
                             ></input>
                         </div>
-                        <p className="help is-success">*This field is required</p>
+                        <p className="help is-link">*This field is required</p>
                     </div>
 
                     <div className="field">
-                        <label className="label">Date of Visit:</label>
+                        <label className="label">Date of Visit</label>
                         <div className="control">
                             <input
-                                className="input is-primary"
+                                className="input is-link"
                                 id = "date"
                                 type="date"
                                 value={newDate}
@@ -90,7 +100,7 @@ export default function ReviewPage() {
                                 onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
                             ></input>
                         </div>
-                        <p className="help is-success">*This field is required</p>
+                        <p className="help is-link">*This field is required</p>
                     </div>
 
                     <div className="field">
@@ -179,7 +189,7 @@ export default function ReviewPage() {
 
                     <div className="field is-grouped">
                         <div className="control">
-                            <button className="button is-success" onClick={add}>Add</button>
+                            <button className="button is-link" onClick={add}>Add</button>
                         </div>
                     </div>
                 </div>
