@@ -26,11 +26,12 @@ CSCI 5117, Spring 2022, [assignment description](https://canvas.umn.edu/courses/
 
 Which (if any) device integration(s) does your app support?
 
-* Our app utilizes the location services of a users.
+* Our app utilizes the location services of a user to be able to return restaurant suggestions near their location. 
 
 Which (if any) progressive web app feature(s) does your app support?
 
 * When the user enters a food-related keyword that they are interested in, related search terms will appear and help them find restaurants more easily.
+* Responsive Design
 
 
 
@@ -46,13 +47,14 @@ Figma Wireframe: https://www.figma.com/file/0xv3ZRWf61KXjlvsNLr7UL/BookTok-WireF
 * No
 
 ## Screenshots of Site (complete):
-Figure 1: Since there is no restaurant information on the Timeline, you need to add it. (This picture is Find Restaurants page).
+Figure 1: Since there is no restaurant information on the Timeline, a user needs to add to it. This picture shows the Find Restaurants page. 
 
 ![](/nextjs-starter/static/FindRestaurants.jpeg)
 
 Figure 2: This is the list of Korean restaurants that appeared after the user typed "Korean" in the search bar. Results are biased to your location, 
-but user's can also search "Korean in New York" to see restaurant suggestions from New York. Similarly, user's can search "near me" to see general 
-restaurants near their location. The search is very flexible and even keywords can be searched. 
+but user's can also search "Korean in New York" to see restaurant suggestions in New York. Similarly, user's can search "near me" to see general 
+restaurants near their location. The search is very flexible and even keywords can be searched. A user can either click on a suggestion that appears
+as they type or ignore the search bar suggestions and do a general search. 
 
 ![](/nextjs-starter/static/RestaurantLists.jpeg)
 
