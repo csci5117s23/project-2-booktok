@@ -21,11 +21,8 @@ CSCI 5117, Spring 2022, [assignment description](https://canvas.umn.edu/courses/
 **Describe the most challenging features you implemented
 (one sentence per bullet, maximum 4 bullets):**
 
-* At first, we attempted to retrieve the data using the Yelp API to search restaurants, but due to a CORS error, We ended up using the Google Maps search API, which I believe was the primary cause of our time being wasted.
-
-* 
-* 
-* 
+* At first, we attempted to retrieve the data using the Yelp API to search restaurants, but due to a CORS error, We ended up using the Google Places API, which I believe was the primary cause of our troubles.
+* We also experienced CORS errors using the Google Places API and later figured out that we had to use Google's Places Library, which is meant for client-side applications.
 
 Which (if any) device integration(s) does your app support?
 
@@ -53,7 +50,9 @@ Figure 1: Since there is no restaurant information on the Timeline, you need to 
 
 ![](/nextjs-starter/static/FindRestaurants.jpeg)
 
-Figure 2: This is the list of Korean restaurants that appeared after the user typed "Korean" in the search bar.
+Figure 2: This is the list of Korean restaurants that appeared after the user typed "Korean" in the search bar. Results are biased to your location, 
+but user's can also search "Korean in New York" to see restaurant suggestions from New York. Similarly, user's can search "near me" to see general 
+restaurants near their location.
 
 ![](/nextjs-starter/static/RestaurantLists.jpeg)
 
