@@ -48,13 +48,14 @@ Figma Wireframe: https://www.figma.com/file/0xv3ZRWf61KXjlvsNLr7UL/BookTok-WireF
 
 ## Screenshots of Site (complete):
 Figure 1: Since there is no restaurant information on the Timeline, a user needs to add to it. This picture shows the Find Restaurants page. 
+A user can either click on a suggestion that appears as they type or ignore the search bar suggestions and do a general search by pressint the
+enter key or the search button. 
 
 ![](/nextjs-starter/static/FindRestaurants.jpeg)
 
 Figure 2: This is the list of Korean restaurants that appeared after the user typed "Korean" in the search bar. Results are biased to your location, 
 but user's can also search "Korean in New York" to see restaurant suggestions in New York. Similarly, user's can search "near me" to see general 
-restaurants near their location. The search is very flexible and even keywords can be searched. A user can either click on a suggestion that appears
-as they type or ignore the search bar suggestions and do a general search. 
+restaurants near their location. The search is very flexible and even keywords can be searched. 
 
 ![](/nextjs-starter/static/RestaurantLists.jpeg)
 
