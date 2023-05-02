@@ -1,13 +1,13 @@
-import { useRouter } from 'next/router';
-import homeStyles from '@/styles/Home.module.css'
-import { useEffect, useState } from 'react';
-import { getData } from '../../../api/search';
-import { useGeoLocation } from 'use-geo-location';
-import Restaurant from '../../components/Restaurant/Restaurant';
-import styles from '../view/id.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPersonRunning } from '@fortawesome/free-solid-svg-icons';
-import SideNavbar from '@/components/SideNavbar/SideNavbar';
+// import { useRouter } from 'next/router';
+// import homeStyles from '@/styles/Home.module.css'
+// import { useEffect, useState } from 'react';
+// import { getData } from '../../../api/search';
+// import { useGeoLocation } from 'use-geo-location';
+// import Restaurant from '../../components/Restaurant/Restaurant';
+// import styles from '../view/id.module.css';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPersonRunning } from '@fortawesome/free-solid-svg-icons';
+// import SideNavbar from '@/components/SideNavbar/SideNavbar';
 
 
 const Post = () => {

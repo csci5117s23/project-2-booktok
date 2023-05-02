@@ -1,12 +1,12 @@
-import {useState,useEffect} from 'react';
-import { NearSearch } from '../../api/Near';
-import { useGeoLocation } from 'use-geo-location';
-import homeStyles from '@/styles/Home.module.css'
-import styles from '../pages/view/id.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPersonRunning } from '@fortawesome/free-solid-svg-icons';
-import Restaurant from '@/components/Restaurant/Restaurant';
-import SideNavbar from '@/components/SideNavbar/SideNavbar';
+// import {useState,useEffect} from 'react';
+// import { NearSearch } from '../../api/Near';
+// import { useGeoLocation } from 'use-geo-location';
+// import homeStyles from '@/styles/Home.module.css'
+// import styles from '../pages/view/id.module.css';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPersonRunning } from '@fortawesome/free-solid-svg-icons';
+// import Restaurant from '@/components/Restaurant/Restaurant';
+// import SideNavbar from '@/components/SideNavbar/SideNavbar';
 
 export default function AroundYou() {
 
