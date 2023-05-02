@@ -92,4 +92,4 @@ Please do not document required libraries (e.g., Vue, Vuefire, Firebase).**
 relied on external code, expertise, or anything else, please disclose that
 here:**
 
-* The autocompletion feature of the search bar utilized code from the following website: [https://www.telerik.com/blogs/integrating-google-places-autocomplete-api-react-app] (https://www.telerik.com/blogs/integrating-google-places-autocomplete-api-react-app)
+* The autocompletion feature of the search bar utilized code from the following website: [https://www.telerik.com/blogs/integrating-google-places-autocomplete-api-react-app](https://www.telerik.com/blogs/integrating-google-places-autocomplete-api-react-app)
