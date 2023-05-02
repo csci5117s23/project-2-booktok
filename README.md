@@ -21,12 +21,12 @@ CSCI 5117, Spring 2023, [assignment description](https://canvas.umn.edu/courses/
 **Describe the most challenging features you implemented
 (one sentence per bullet, maximum 4 bullets):**
 
-* At first, we attempted to retrieve the data using the Yelp API to search restaurants, but due to a CORS error, We ended up using the Google Places API, which I believe was the primary cause of our troubles.
-* We also experienced CORS errors using the Google Places API and later figured out that we had to use Google's Places Library, which is meant for client-side applications.
+* At first, we attempted to retrieve the data using the Yelp API to search restaurants, but due to a CORS error, we ended up using the Google Places API, which we believe was the primary cause of our troubles.
+* We also experienced CORS errors using the Google Places API and later figured out that we had to use Google's Places Library, which is meant for client-side applications. 
 
 Which (if any) device integration(s) does your app support?
 
-* Our app utilizes the location services of a user to be able to return restaurant suggestions near their location. 
+* Our app utilizes the location services of a user (geolocation) to be able to return restaurant suggestions near their location. 
 
 Which (if any) progressive web app feature(s) does your app support?
 
