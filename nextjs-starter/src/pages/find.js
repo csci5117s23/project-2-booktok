@@ -47,19 +47,6 @@ export default function AutoComplete() {
     }, []);
 
     return (<>
-        
-        {/* <div className='field has-addons'>
-            <div className='control is-expanded'>
-                <input className="input is-success is-medium" ref={inputRef} placeholder="Search restaurant..."/>
-            </div>
-            <div className='control'>
-                <button className="button is-success is-medium">
-                <BsSearch />
-                </button>
-            </div>
-        </div> */}
-
-
         <div className='columns is-centered'>
             <div className='column has-text-centered is-three-quarters'>
             <h2 className={styles.searchInstruction}>Search restaurants to leave a review or add to wish list.</h2>

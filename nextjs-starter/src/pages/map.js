@@ -52,8 +52,9 @@ export default function MapPage() {
       )
   }
 
-  return (
-    // Important! Always set the container height explicitly
+  return (<>
+    {/* Important! Always set the container height explicitly */}
+    <h1>Congrats, you found a hidden page!</h1>
     <div style={{ height: '80vh', width: '90%', margin:'auto' }}>
       {defaultProps.center.lat && defaultProps.center.lng && (
         <GoogleMapReact
@@ -80,7 +81,7 @@ export default function MapPage() {
         </GoogleMapReact>
       )}
     </div>
-  );
+    </>);
 }
 
 

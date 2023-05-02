@@ -49,17 +49,16 @@ export default function searchString() {
     function callback(results, status) {
         console.log("callback")
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            for (let i = 0; i < results.length; i++) {
-                console.log("#: ", i);
-                console.log("results: ", results[i]);
-            }
+            // for (let i = 0; i < results.length; i++) {
+            //     console.log("#: ", i);
+            //     console.log("results: ", results[i]);
+            // }
             setRestaurant(results);
             setLoading(false);
         }
     }
 
     useEffect(() => {
-        // dataFetch();
         initialize();
 
         console.log("lat: ", latitude);
@@ -83,21 +82,5 @@ export default function searchString() {
             ))}
           </ul>
         </div>
-    )
-
-    // return (<>
-    //     <div className={styles.container}>  
-    //     <h1>id page</h1>
-    //     {/* <SideNavbar className={styles.SideNav}/>
-    //     <ul className={styles.restaurants}>
-    //         {Restaurants.map((data) => (
-    //         <Restaurant key={data.place_id} data={data}/>
-    //         ))}
-    //     </ul> */}
-    //     </div>
-
-    //     {/* <div id="map"></div> */}
-    //     </>)
-
-    
+    )    
 }
