@@ -1,4 +1,4 @@
-// Code was used from the following website:
+// Code was used from the following website to implement autocomplete:
 // https://www.telerik.com/blogs/integrating-google-places-autocomplete-api-react-app
 
 import { useRef, useEffect } from "react";
