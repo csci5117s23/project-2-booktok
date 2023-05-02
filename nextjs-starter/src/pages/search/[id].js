@@ -1,14 +1,10 @@
 import { useRouter } from 'next/router';
 import homeStyles from '@/styles/Home.module.css'
 import { useEffect, useState } from 'react';
-// import { getData } from '../../../api/Data';
 import { useGeoLocation } from 'use-geo-location';
 import Restaurant from '../../components/Restaurant/Restaurant';
-import styles from '../view/id.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPersonRunning } from '@fortawesome/free-solid-svg-icons';
-// import SideNavbar from '@/components/SideNavbar/SideNavbar';
-
 
 
 export default function searchString() {
@@ -19,11 +15,12 @@ export default function searchString() {
     const router = useRouter();
     const { id } = router.query;
 
-    console.log("query: ", id);
+    // console.log("query: ", id);
 
     let service;
     let map;
 
+    // function to intialize getting data from Google Place Library
     function initialize() {
         let currentLocation = new google.maps.LatLng(latitude,longitude);
     
@@ -45,9 +42,8 @@ export default function searchString() {
         service.textSearch(request, callback);
     }
     
-    // gives result of string searched
+    // gives result of string/keyword searched
     function callback(results, status) {
-        console.log("callback")
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             // for (let i = 0; i < results.length; i++) {
             //     console.log("#: ", i);
@@ -61,8 +57,8 @@ export default function searchString() {
     useEffect(() => {
         initialize();
 
-        console.log("lat: ", latitude);
-        console.log("long: ", longitude);
+        // console.log("lat: ", latitude);
+        // console.log("long: ", longitude);
 
     }, [longitude, latitude]);
 
@@ -74,13 +70,14 @@ export default function searchString() {
 
     } 
 
+    // return search results/restaurant suggestions
     return (
-        <div className={styles.container}>  
-          <ul className={styles.restaurants}>
+        <div className='columns is-multiline'>
             {Restaurants.map((data) => (
-              <Restaurant key={data.place_id} data={data}/>
+                <div className='column is-half'>
+                    <Restaurant key={data.place_id} data={data}/>
+                </div>
             ))}
-          </ul>
         </div>
     )    
 }
