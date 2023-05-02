@@ -52,7 +52,7 @@ Figure 1: Since there is no restaurant information on the Timeline, you need to 
 
 Figure 2: This is the list of Korean restaurants that appeared after the user typed "Korean" in the search bar. Results are biased to your location, 
 but user's can also search "Korean in New York" to see restaurant suggestions from New York. Similarly, user's can search "near me" to see general 
-restaurants near their location.
+restaurants near their location. The search is very flexible and even keywords can be searched. 
 
 ![](/nextjs-starter/static/RestaurantLists.jpeg)
 
