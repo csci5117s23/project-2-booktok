@@ -87,13 +87,13 @@ export default function WishForm({info}) {
                 </div>
             )}
             {submitted && 
-                    <div className="box mx-5">
-                        <label className="label has-text-link">Successfully added!</label>
-                        <button className="button is-link is-light">
-                            <Link className="has-text-link" href="/wishlist"> Go to your Wish List</Link>
-                        </button>
-                    </div>
-                }
+                <div className="box mx-5">
+                    <label className="label has-text-link">Successfully added!</label>
+                    <button className="button is-link is-light">
+                        <Link className="has-text-link" href="/wishlist"> Go to your Wish List</Link>
+                    </button>
+                </div>
+            }
             </div>
         </>
         );
