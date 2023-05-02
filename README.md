@@ -48,7 +48,7 @@ Figma Wireframe: https://www.figma.com/file/0xv3ZRWf61KXjlvsNLr7UL/BookTok-WireF
 
 ## Screenshots of Site (complete):
 Figure 1: Since there is no restaurant information on the Timeline, a user needs to add to it. This picture shows the Find Restaurants page. 
-A user can either click on a suggestion that appears as they type or ignore the search bar suggestions and do a general search by pressint the
+A user can either click on a suggestion that appears as they type or ignore the search bar suggestions and do a general search by pressing the
 enter key or the search button. 
 
 ![](/nextjs-starter/static/FindRestaurants.jpeg)
