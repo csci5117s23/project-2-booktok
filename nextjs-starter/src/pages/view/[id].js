@@ -11,47 +11,47 @@ import SideNavbar from '@/components/SideNavbar/SideNavbar';
 
 
 const Post = () => {
-  const { latitude, longitude } = useGeoLocation();
-  const [loading, setLoading] = useState(true);
-  const [Restaurants, setRestaurant] = useState([]);
+  // const { latitude, longitude } = useGeoLocation();
+  // const [loading, setLoading] = useState(true);
+  // const [Restaurants, setRestaurant] = useState([]);
 
-  const router = useRouter();
-  const { id } = router.query;
+  // const router = useRouter();
+  // const { id } = router.query;
 
-  async function dataFetch(){
-    if(latitude && longitude){
-      const data = await getData(longitude, latitude, id);  
+  // async function dataFetch(){
+  //   if(latitude && longitude){
+  //     const data = await getData(longitude, latitude, id);  
       
-      console.log(data);
+  //     console.log(data);
 
-      setRestaurant(data.results)
-      setLoading(false);
-    }
-  }
+  //     setRestaurant(data.results)
+  //     setLoading(false);
+  //   }
+  // }
 
 
-  useEffect(() => {
-    dataFetch();
-  }, [longitude, latitude]);
+  // useEffect(() => {
+  //   dataFetch();
+  // }, [longitude, latitude]);
 
-  if (loading) {
-    return <span className={homeStyles.loading}> 
-    Loading your search... &nbsp;
-    <FontAwesomeIcon icon={faPersonRunning} bounce style={{color: "#139a54",}} />
-    </span>;
+  // if (loading) {
+  //   return <span className={homeStyles.loading}> 
+  //   Loading your search... &nbsp;
+  //   <FontAwesomeIcon icon={faPersonRunning} bounce style={{color: "#139a54",}} />
+  //   </span>;
 
-  } 
+  // } 
 
-  return (
-    <div className={styles.container}>  
-      <SideNavbar className={styles.SideNav}/>
-      <ul className={styles.restaurants}>
-        {Restaurants.map((data) => (
-          <Restaurant key={data.place_id} data={data}/>
-        ))}
-      </ul>
-    </div>
-  )
+  // return (
+  //   <div className={styles.container}>  
+  //     <SideNavbar className={styles.SideNav}/>
+  //     <ul className={styles.restaurants}>
+  //       {Restaurants.map((data) => (
+  //         <Restaurant key={data.place_id} data={data}/>
+  //       ))}
+  //     </ul>
+  //   </div>
+  // )
 };
 
 export default Post;

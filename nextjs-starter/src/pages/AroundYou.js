@@ -10,40 +10,40 @@ import SideNavbar from '@/components/SideNavbar/SideNavbar';
 
 export default function AroundYou() {
 
-  const { latitude, longitude } = useGeoLocation();
-  const [loading, setLoading] = useState(true);
-  const [NearRestaurants,setNearRestaurants] = useState([]);
+  // const { latitude, longitude } = useGeoLocation();
+  // const [loading, setLoading] = useState(true);
+  // const [NearRestaurants,setNearRestaurants] = useState([]);
 
-  async function NearFetch(){
-    if(latitude && latitude){
-      const data = await NearSearch(longitude,latitude)
+  // async function NearFetch(){
+  //   if(latitude && latitude){
+  //     const data = await NearSearch(longitude,latitude)
 
-      console.log(data);
-      setNearRestaurants(data.results)
-      setLoading(false);
-    }
-  }
+  //     console.log(data);
+  //     setNearRestaurants(data.results)
+  //     setLoading(false);
+  //   }
+  // }
 
-  useEffect(() => {
-    NearFetch();
-  }, [longitude, latitude]);
+  // useEffect(() => {
+  //   NearFetch();
+  // }, [longitude, latitude]);
 
-  if (loading) {
-    return <span className={homeStyles.loading}>
-      Loading your search... &nbsp;
-      <FontAwesomeIcon icon={faPersonRunning} bounce style={{ color: "#139a54", }} />
-    </span>;
-  }
+  // if (loading) {
+  //   return <span className={homeStyles.loading}>
+  //     Loading your search... &nbsp;
+  //     <FontAwesomeIcon icon={faPersonRunning} bounce style={{ color: "#139a54", }} />
+  //   </span>;
+  // }
 
-  return (
-    <div className={styles.container}>
-      <SideNavbar className={styles.SideNav} />
-      <ul className={styles.restaurants}>
-        {NearRestaurants.map((data) => (
-          <Restaurant key={data.place_id} data={data} />
-        ))}
-      </ul>
-    </div>
-  );
+  // return (
+  //   <div className={styles.container}>
+  //     <SideNavbar className={styles.SideNav} />
+  //     <ul className={styles.restaurants}>
+  //       {NearRestaurants.map((data) => (
+  //         <Restaurant key={data.place_id} data={data} />
+  //       ))}
+  //     </ul>
+  //   </div>
+  // );
 }
 
