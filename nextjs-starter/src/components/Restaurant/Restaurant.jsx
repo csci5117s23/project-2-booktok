@@ -5,14 +5,12 @@ import Link from 'next/link';
 
 export default function Restaurant({data}) {
   console.log("data: ", data);
-  const {image_url, name, formatted_address, phone, rating, photos} = data;
+  const {name, formatted_address, phone, rating, photos} = data;
 
-  // As we changed api from Yelp to Google, there is no image_url name from the json
   // name : restaurant name
   // formatted_address: location
   // rating: rating
 
-  console.log("photos", photos);
   return (
     <div className='box has-text-centered'>
       <section className='hero is-small'>
