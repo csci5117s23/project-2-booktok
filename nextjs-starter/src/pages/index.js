@@ -27,12 +27,24 @@ export default function Home() {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+
         <main className={styles.main}>
 
-        <h1 className={styles.title}>Welcome to YumYumTok!</h1>
-        <img src = '/SplashPage.jpeg' id = "background"></img> 
+          <div class="columns is-multiline is-centered is-narrow">
+            <div class="column is-one-quarter">
+              <img src = '/SplashPage.jpeg' class={styles.landingImage}></img> 
+            </div>
 
-        <SignIn path="/" routing="path" signUpUrl="/sign-up" redirectUrl='home'/>
+            <div class="column">
+              <h1 className={styles.title}>Welcome to YumYumTok!</h1>
+              <p className={styles.landingDescription}>An application to keep track of your visits to restaurants!</p>
+              <div class="columns is-centered">
+                <div class="column is-half">
+                  <SignIn path="/" routing="path" signUpUrl="/signup" redirectUrl='/home'/>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </main>
       </>

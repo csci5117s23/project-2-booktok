@@ -18,9 +18,30 @@
   font-size: 50px;
   font-style: bold;
   font-family: 'Ubuntu', sans-serif;
-  color: #afddc2;
-  margin-bottom: 10px;
+  color: #64cf90;
+  /* margin-bottom: 10px; */
   margin-top: 20px;
+  text-align: center;
+}
+
+.landingDescription {
+  font-size: 20px;
+  font-style: bold;
+  font-family: 'Ubuntu', sans-serif;
+  color: #526273;
+  margin-bottom: 10px;
+  /* margin-top: 20px; */
+  text-align: center;
+  
+}
+
+.landingImage{
+  margin: auto;
+}
+
+.clerkSign{
+  margin: auto;
+  width: 50%;
 }
 
 .titleTimeline {
@@ -31,6 +52,7 @@
   margin-bottom: 10px;
   text-align: center;
 }
+
 
 .searchInstruction {
   font-size: 18px;
