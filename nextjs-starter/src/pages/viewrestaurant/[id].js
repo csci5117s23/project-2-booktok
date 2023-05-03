@@ -1,14 +1,12 @@
 import { useRouter } from 'next/router';
 import homeStyles from '@/styles/Home.module.css'
 import { useEffect, useState } from 'react';
-// import { getData } from '../../../api/Data';
 import { useGeoLocation } from 'use-geo-location';
 import Restaurant from '../../components/Restaurant/Restaurant';
 import styles from '../view/id.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPersonRunning } from '@fortawesome/free-solid-svg-icons';
 // import SideNavbar from '@/components/SideNavbar/SideNavbar';
-
 
 
 export default function searchString() {
@@ -47,10 +45,6 @@ export default function searchString() {
     function callback(results, status) {
         console.log("callback")
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            // for (let i = 0; i < results.length; i++) {
-            //     console.log("#: ", i);
-            //     console.log("results: ", results[i]);
-            // }
             setRestaurant(results);
             setLoading(false);
         }
@@ -72,9 +66,7 @@ export default function searchString() {
     return (
         <div className={styles.container}>  
           <ul className={styles.restaurants}>
-            {/* {Restaurants.map((data) => ( */}
               <Restaurant key={Restaurants.place_id} data={Restaurants}/>
-            {/* ))} */}
           </ul>
         </div>
     )

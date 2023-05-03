@@ -1,3 +1,4 @@
+// Wishlist timeline shows all wishlist items
 import styles from '@/styles/Home.module.css'
 import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
 import { useAuth } from "@clerk/nextjs";
@@ -19,7 +20,7 @@ export default function Wishlist() {
     const [editing, setEditing] = useState(false);
     const [editInfo, setEditInfo] = useState([]);
 
-    // get restaurant wish list
+    // get restaurant wishlist
     useEffect(() => {
         async function process() {
             if (userId) {
@@ -31,7 +32,7 @@ export default function Wishlist() {
         process();
     }, [isLoaded]);
     
-    // delete restaurant wish list from list
+    // delete restaurant wishlist from list
     async function delWishList(wishItem) {
         const token = await getToken({ template: "codehooks" });
         try {
@@ -42,7 +43,7 @@ export default function Wishlist() {
         setWishList(await getWishList(token, userId));
     }
 
-    // edit restaurant wish list
+    // edit restaurant wishlist
     async function edit(wishItem){
         setEditing(true);
         setEditInfo([wishItem.name, wishItem.address, wishItem.note, wishItem._id]);
@@ -59,9 +60,6 @@ export default function Wishlist() {
         const wishListItems = wishList.map((wishItem) => {
             if(wishItem.userId == userId) {
             return <>
-            {/* <li key={wishItem._id}>
-                {wishItem.name}
-            </li> */}
             <div className = "box has-text-centered">
                 <section className="hero is-small">
                     <div className="hero-body">
@@ -92,7 +90,6 @@ export default function Wishlist() {
                     <button className="button is-inverted is-small" onClick={() => {edit(wishItem);}}>
                         <FontAwesomeIcon icon={faPen} />
                     </button>
-                    {/* Edit function is not made */}
                     <button className="button is-inverted is-small" onClick={() => {delWishList(wishItem);}}>
                         <FontAwesomeIcon icon={faTrashCan} />
                     </button>
@@ -107,7 +104,7 @@ export default function Wishlist() {
         return (
         <>     
             <div className="columns is-centered">
-            {/* Loading review timeline */}
+            {/* Loading wishlist timeline */}
             {!editing && (
                 <div className="column is-half">
                     <h1 className={styles.titleTimeline}>
@@ -118,6 +115,7 @@ export default function Wishlist() {
                         {wishListItems}
                 </div>
             )}
+            {/* Go to wishlist edit page */}
             {editing &&
                 <div>
                     <EditWishForm info={editInfo}></EditWishForm>

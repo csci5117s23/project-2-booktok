@@ -12,8 +12,6 @@ export default function Navbar() {
         <div className="navbar-brand mr-5">
           <Link className="navbar-item has-text-weight-bold is-size-5" href="/">
             YumYumTok
-            {/* NOTE: Have to make a new logo or just use word */}
-            {/* <img src="/BookTokLogo.png" alt="BookTok" className='navbar__logo' /> */}
           </Link>
           <a role="button" onClick={() => {setClick(!clicked);}} className={`navbar-burger burger ${clicked ? "is-active" : ""}`} aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
@@ -27,7 +25,6 @@ export default function Navbar() {
           <div className="navbar-start">
             <Link className='navbar-item' href="/find"> Find Restaurants</Link>
             <Link className='navbar-item' href="/wishlist"> Wish List</Link>
-            {/* <Link className='navbar-item' href="/map"> Map</Link> */}
           </div>
           <div className="navbar-end">
             <div className="navbar-item">

@@ -29,7 +29,7 @@ export async function addReview(authToken, restaurantName, restaurantReview, res
     return await result.json();
 }
 
-// edit new review
+// edit review
 export async function editReview(authToken, restaurantName, restaurantReview, restaurantRating, restaurantDate, restaurantImage, restaurantAddress, resId, userName) {
     const result = await fetch(backend_base+"/home/"+resId,{
         'method':'PATCH',
@@ -90,7 +90,7 @@ export async function addWishList(authToken, restaurantName, restaurantReview, r
 }
 
 
-// edit new wish list
+// edit wish list
 export async function editWishList(authToken, restaurantName, restaurantReview, restaurantAddress, resId, userName) {
     const today = new Date().toISOString().substring(0, 10);
     const result = await fetch(backend_base+"/wishlist/"+resId,{
@@ -110,7 +110,7 @@ export async function editWishList(authToken, restaurantName, restaurantReview, 
     return await result.json();
 }
 
-// delete review
+// delete wish list
 export async function deleteWishList(authToken, restaurantId) {
     const result = await fetch(backend_base+"/wishlist/"+restaurantId, {
         'method':'DELETE',
@@ -120,17 +120,3 @@ export async function deleteWishList(authToken, restaurantId) {
     })
     return await result.json();
 }
-
-
-
-// update/edit review
-// export async function completeTodos(authToken, taskName) {
-//     const result = await fetch(backend_base+"/todos/"+taskName._id,{
-//         'method':'PATCH',
-//         'headers': {'Authorization': 'Bearer ' + authToken,
-//         'Content-Type': 'application/json'},
-//         'body': JSON.stringify({
-//             completed: true})
-//     });
-//     return await result.json();
-// }

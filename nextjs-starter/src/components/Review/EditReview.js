@@ -1,3 +1,4 @@
+// Review form to edit saved review
 import styles from '@/styles/Home.module.css'
 import { addReview, editReview } from "@/modules/Data";
 import { Rating } from "@mui/material";
@@ -8,12 +9,8 @@ import React, { useState, useEffect, useCallback } from "react";
 
 export default function EditReviewPage({info}) {
 
+    // bring saved review contents
     const [currName, currAddress, currReview, currRating, currDate, currImage, resId] = info;
-
-    const [loading, setLoading] = useState(false);
-    const [restaurants, setRestaurants] = useState([]);
-    const { isLoaded, userId, sessionId, getToken } = useAuth();
-    const [submitted, setSubmitted] = useState(false);
 
     const [newName, setNewName] = useState(currName);
     const [newReview, setNewReview] = useState(currReview);
@@ -22,6 +19,11 @@ export default function EditReviewPage({info}) {
     const [newImage64, setNewImage64] = useState(currImage);
     const [newImage, setNewImage] = useState("");
     const [newAddress, setNewAddress] = useState(currAddress);
+
+    const [loading, setLoading] = useState(false);
+    const [restaurants, setRestaurants] = useState([]);
+    const { isLoaded, userId, sessionId, getToken } = useAuth();
+    const [submitted, setSubmitted] = useState(false);
     
     
     async function saveEdit() {
@@ -51,9 +53,8 @@ export default function EditReviewPage({info}) {
     else {
         return (
         <>  
-            {console.log("info=",{info})} 
-
-            {/* Review Form to add new restaurant to your timeline*/}
+            {/* call review form for editing*/}
+            {/* input box will be filled with previously saved contents if any */}
             <div className="container is-centered">
             {!submitted && (
                 <div className="container mx-5">
@@ -180,6 +181,8 @@ export default function EditReviewPage({info}) {
                     </div>
                 </div>
             )}
+
+            {/* when the edit request is submitted and saved */}
             {submitted && 
                 <div className="box mx-5">
                     <label className="label has-text-link">Successfully edited!</label>

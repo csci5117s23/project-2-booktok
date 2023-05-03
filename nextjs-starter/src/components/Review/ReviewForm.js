@@ -1,3 +1,4 @@
+// Review form
 import styles from '@/styles/Home.module.css'
 import { addReview } from "@/modules/Data";
 import { Rating } from "@mui/material";
@@ -51,7 +52,6 @@ export default function ReviewPage() {
         document.getElementById("requiredInputWarning").innerHTML = "";
     }
     
-    // we can delete the if/else part of this
     if (loading) {
         console.log(loading);
         return <span className={styles.loading}> loading your reviews... </span>;
@@ -59,7 +59,7 @@ export default function ReviewPage() {
     else {
         return (
         <>  
-            {/* Review Form to add new restaurant to your timeline*/}
+            {/* review form to add new restaurant to your timeline*/}
             <div className="container is-centered">
             {!submitted && (
                 <div className="box mx-5">
@@ -194,6 +194,8 @@ export default function ReviewPage() {
                     </div>
                 </div>
             )}
+
+            {/* when the form is submitted and saved */}
             {submitted && 
                 <div className="box mx-5">
                     <label className="label has-text-link">Successfully added!</label>
