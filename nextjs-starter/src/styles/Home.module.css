@@ -44,6 +44,10 @@
   width: 50%;
 }
 
+.keepNewlines{
+  white-space: pre-wrap;
+}
+
 .titleTimeline {
   font-size: 40px;
   font-style: bold;

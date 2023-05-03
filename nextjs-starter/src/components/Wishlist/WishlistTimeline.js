@@ -79,7 +79,7 @@ export default function Wishlist() {
                     <>
                         <span id = {styles.restaurantReview}></span>
                         <FontAwesomeIcon icon={faNoteSticky} style={{color: "#ffc038",}}/><span>&nbsp;&nbsp;</span>
-                        {wishItem.note}<br></br>
+                        <span className={styles.keepNewlines}>{wishItem.note}</span><br></br>
                     </>
                 : ""}
 

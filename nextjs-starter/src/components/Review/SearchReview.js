@@ -105,7 +105,7 @@ export default function SearchReviewPage({info}) {
                                 rows="5"
                                 value={newReview}
                                 onChange={(e) => setNewReview(e.target.value)}
-                                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                                // onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
                             ></textarea>
                         </div>
                     </div>

@@ -91,7 +91,7 @@ export default function WishForm() {
                                 rows="5"
                                 value={newNote}
                                 onChange={(e) => setNewNote(e.target.value)}
-                                onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
+                                // onKeyDown = {(e)=>{if (e.key === 'Enter'){add()}}}
                             ></textarea>
                         </div>
                     </div>

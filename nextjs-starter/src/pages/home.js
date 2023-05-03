@@ -94,7 +94,7 @@ export default function TimelinePage() {
                         {restaurant.review ? 
                             <>
                                 <FontAwesomeIcon icon={faQuoteLeft} style={{color: "#48c38b",}} />
-                                <span>&nbsp;&nbsp;</span>{restaurant.review}<span>&nbsp;&nbsp;</span>
+                                <span>&nbsp;&nbsp;</span><span className={styles.keepNewlines}>{restaurant.review}</span><span>&nbsp;&nbsp;</span>
                                 <FontAwesomeIcon icon={faQuoteRight} style={{color: "#48c38b",}} />
                                 <br></br>
                             </>
