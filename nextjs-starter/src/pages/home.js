@@ -53,7 +53,7 @@ export default function TimelinePage() {
     }
 
     if (loading) {
-        console.log(loading);
+        // console.log(loading);
         return <span className={styles.loading}> 
         Loading your reviews... &nbsp;
         <FontAwesomeIcon icon={faPersonRunning} bounce style={{color: "#139a54",}} />

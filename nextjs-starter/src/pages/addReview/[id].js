@@ -14,18 +14,18 @@ export default function ReviewPage() {
   return (
     <>
       <div className='columns'>
-      <section class="hero is-white is-small">
-        <div class="hero-body">
-          <p class="title">{name}</p>
-          <p class="subtitle">{address}</p>
+      <section className="hero is-white is-small">
+        <div className="hero-body">
+          <p className="title">{name}</p>
+          <p className="subtitle">{address}</p>
         </div>
       </section>
   
       {/* Review form */}
       <div className='column has-background-link-light is-one-third'>
-        <section class="hero is-link-light is-small">
-          <div class="hero-body">
-            <p class="title has-text-link-dark">
+        <section className="hero is-link-light is-small">
+          <div className="hero-body">
+            <p className="title has-text-link-dark">
               Review<span>&nbsp;&nbsp;</span>
               <FontAwesomeIcon icon={faUtensils} beat style={{color: "#3850b7",}} />
             </p>
@@ -39,9 +39,9 @@ export default function ReviewPage() {
 
       {/* Wishlist form */}
       <div className='column has-background-warning-light is-one-third'>
-        <section class="hero is-warning-light is-small">
-          <div class="hero-body">
-            <p class="title has-text-warning-dark">
+        <section className="hero is-warning-light is-small">
+          <div className="hero-body">
+            <p className="title has-text-warning-dark">
               Wish list<span>&nbsp;&nbsp;</span>
               <FontAwesomeIcon icon={faHeart} bounce style={{color: "#ffc038",}} />
             </p>

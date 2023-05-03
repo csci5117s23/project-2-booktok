@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 
 export default function Restaurant({data}) {
-  console.log("data: ", data);
+  // console.log("data: ", data);
   const {name, formatted_address, phone, rating, photos} = data;
 
   // name : restaurant name
