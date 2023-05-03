@@ -16,7 +16,7 @@ export default function TimelinePage() {
     const [editing, setEditing] = useState(false);
     const [editInfo, setEditInfo] = useState([]);
 
-    // get only user's restaurant review list
+    // get user's restaurant review
     useEffect(() => {
         async function process() {
             if (userId) {

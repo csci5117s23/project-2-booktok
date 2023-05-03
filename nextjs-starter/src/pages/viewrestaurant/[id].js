@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPersonRunning } from '@fortawesome/free-solid-svg-icons';
 
 
-
 export default function searchString() {
     const { latitude, longitude } = useGeoLocation();
     const [loading, setLoading] = useState(true);
@@ -45,10 +44,6 @@ export default function searchString() {
     function callback(results, status) {
         // console.log("callback")
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            // for (let i = 0; i < results.length; i++) {
-            //     console.log("#: ", i);
-            //     console.log("results: ", results[i]);
-            // }
             setRestaurant(results);
             setLoading(false);
         }

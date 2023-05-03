@@ -12,56 +12,6 @@ body{
   font-size: 30px;
 }
   
-/* .Webcam{
-  padding-top: 50px;
-  display: flex;
-  justify-content: center;
-}
-.Captured{
-  padding-top: 50px;
-    display: flex;
-    justify-content: center;
-} */
-  
 #requiredInputWarning {
   color:red;
 }
-  /* @media screen and (max-width: 768px){
-    .navbar{
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 8px 24px;
-    }
-    .navbar__menu{
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-    .navbar__menu li{
-      width:100%;
-      text-align: center;
-    }
-  
-    .navbar__icons{
-      justify-content: center;
-      width: 100%;
-    }
-  } */
-  
-  
-  
-  /* body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  } */
-  
-  

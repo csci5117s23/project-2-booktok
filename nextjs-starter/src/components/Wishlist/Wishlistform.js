@@ -1,3 +1,4 @@
+// Wishlist form
 import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
 import { useAuth } from "@clerk/nextjs";
 import React, { useState, useEffect, useCallback } from "react";
@@ -15,24 +16,11 @@ export default function WishForm() {
 
     const [newName, setNewName] = useState("");
     const [newNote, setNewNote] = useState("");
-    const [newAddress, setNewAddress] = useState("");
-
-
-    // get restaurant wish list
-    useEffect(() => {
-        async function process() {
-            if (userId) {
-                const token = await getToken({ template: "codehooks" });
-                // setWishList(await getWishList(token, userId));
-                setLoading(false);
-            }
-        }
-        process();
-    }, [isLoaded]);
-    
+    const [newAddress, setNewAddress] = useState("");    
 
     // add restaurant wish list
     async function add() {
+        // name is required input
         if(newName == ""){
             document.getElementById("requiredInputWarning").innerHTML = "Restaurant name is required.";
             return;
@@ -49,7 +37,7 @@ export default function WishForm() {
 
         return (
         <>  
-            {/* Wish List Form to add new restaurant */}
+            {/* Wishlist Form to add new restaurant */}
             <div className="container is-centered">
             {!submitted && (
                 <div className="box mx-5">
@@ -115,6 +103,8 @@ export default function WishForm() {
                     </div>
                 </div>
                 )}
+
+                {/* when the form is submitted and saved */}
                 {submitted && 
                     <div className="box mx-5">
                         <label className="label has-text-link">Successfully added!</label>

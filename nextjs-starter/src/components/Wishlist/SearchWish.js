@@ -1,3 +1,4 @@
+// Wishlist form to save restaurant found through search
 import styles from '@/styles/Home.module.css'
 import { getWishList, addWishList, deleteWishList } from "@/modules/Data";
 import { useAuth } from "@clerk/nextjs";
@@ -9,6 +10,8 @@ import { faTrashCan, faPen, faHeart, faLocationDot } from '@fortawesome/free-sol
 
 export default function WishForm({info}) {
 
+    // bring name and address of the restaurant found through search
+    // so name and address will be automatically filled for wishlist
     const [sName, sAddress] = info;
     
     const [loading, setLoading] = useState(true);
@@ -20,18 +23,6 @@ export default function WishForm({info}) {
     const [newNote, setNewNote] = useState("");
     const [newAddress, setNewAddress] = useState(sAddress);
 
-
-    // get restaurant wish list
-    useEffect(() => {
-        async function process() {
-            if (userId) {
-                const token = await getToken({ template: "codehooks" });
-                setLoading(false);
-            }
-        }
-        process();
-    }, [isLoaded]);
-    
 
     // add restaurant wish list
     async function add() {
@@ -47,7 +38,7 @@ export default function WishForm({info}) {
 
         return (
         <>  
-            {/* Wish List Form to add new restaurant */}
+            {/* Wishlist Form to add new restaurant */}
             <div className="container is-centered">
             {!submitted && (
                 <div className="container mx-5">
@@ -86,6 +77,8 @@ export default function WishForm({info}) {
                     </div>
                 </div>
             )}
+
+            {/* when the form is submitted and saved */}
             {submitted && 
                 <div className="box mx-5">
                     <label className="label has-text-link">Successfully added!</label>

@@ -1,3 +1,4 @@
+// Wishlist form to edit saved wishlist
 import styles from '@/styles/Home.module.css'
 import { editWishList } from "@/modules/Data";
 import { Rating } from "@mui/material";
@@ -8,19 +9,21 @@ import React, { useState, useEffect, useCallback } from "react";
 
 export default function EditWishlistPage({info}) {
 
+    // bring saved wishlist contents
     const [currName, currAddress, currNote, resId] = info;
+    const [newName, setNewName] = useState(currName);
+    const [newNote, setNewNote] = useState(currNote);
+    const [newAddress, setNewAddress] = useState(currAddress);
+    
 
     const [loading, setLoading] = useState(false);
     const [restaurants, setRestaurants] = useState([]);
     const { isLoaded, userId, sessionId, getToken } = useAuth();
     const [submitted, setSubmitted] = useState(false);
 
-    const [newName, setNewName] = useState(currName);
-    const [newNote, setNewNote] = useState(currNote);
-    const [newAddress, setNewAddress] = useState(currAddress);
-    
     
     async function saveEdit() {
+        // name is required input
         if(newName == ""){
             document.getElementById("requiredInputWarning").innerHTML = "Restaurant name is required.";
             return;
@@ -41,8 +44,9 @@ export default function EditWishlistPage({info}) {
     else {
         return (
         <>  
-            {console.log("info=",{info})} 
-
+            {/* call wishlist form for editing*/}
+            {/* input box will be filled with previously saved contents if any */}
+            
             <div className="container is-centered">
             {!submitted && (
                 <div className="box mx-5">
@@ -100,6 +104,8 @@ export default function EditWishlistPage({info}) {
                     </div>
                 </div>
             )}
+
+            {/* when the form is submitted and saved */}
             {submitted && 
                 <div className="box mx-5">
                     <label className="label has-text-link">Successfully edited!</label>

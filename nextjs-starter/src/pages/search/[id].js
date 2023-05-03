@@ -15,8 +15,6 @@ export default function searchString() {
     const router = useRouter();
     const { id } = router.query;
 
-    // console.log("query: ", id);
-
     let service;
     let map;
 
@@ -45,21 +43,13 @@ export default function searchString() {
     // gives result of string/keyword searched
     function callback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            // for (let i = 0; i < results.length; i++) {
-            //     console.log("#: ", i);
-            //     console.log("results: ", results[i]);
-            // }
             setRestaurant(results);
             setLoading(false);
         }
     }
 
     useEffect(() => {
-        initialize();
-
-        // console.log("lat: ", latitude);
-        // console.log("long: ", longitude);
-
+        initialize()
     }, [longitude, latitude]);
 
     if (loading) {

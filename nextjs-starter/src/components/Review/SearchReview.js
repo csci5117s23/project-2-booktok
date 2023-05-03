@@ -1,3 +1,4 @@
+// Review form to save restaurant found through search
 import styles from '@/styles/Home.module.css'
 import { addReview } from "@/modules/Data";
 import { Rating } from "@mui/material";
@@ -7,6 +8,8 @@ import React, { useState, useEffect, useCallback } from "react";
 
 export default function SearchReviewPage({info}) {
     
+    // bring name and address of the restaurant found through search
+    // so name and address will be automatically filled for review
     const [sName, sAddress] = info;
 
     const [loading, setLoading] = useState(false);
@@ -50,7 +53,6 @@ export default function SearchReviewPage({info}) {
         document.getElementById("requiredInputWarning").innerHTML = "";
     }
     
-    // we can delete the if/else part of this
     if (loading) {
         console.log(loading);
         return <span className={styles.loading}> loading your reviews... </span>;
@@ -58,7 +60,7 @@ export default function SearchReviewPage({info}) {
     else {
         return (
         <>  
-            {/* Review Form to add new restaurant to your timeline*/}
+            {/* review form to add new restaurant to your timeline */}
             <div className="container is-centered">
             {!submitted && (
                 <div className="container mx-5">
@@ -156,10 +158,7 @@ export default function SearchReviewPage({info}) {
                                     };
                                     fileReader.readAsDataURL(imageFile);
                                 }}
-                            }
-                            // onChange={(e) => setNewImage(e.target.value)}
-                            // onKeyDown={(e) => {if(e.key === 'Enter'){add()}}}/>
-                        />}
+                            }/>}
                         </div>
                     </div>
                     
@@ -170,6 +169,8 @@ export default function SearchReviewPage({info}) {
                     </div>
                 </div>
             )}
+
+            {/* when the form is submitted and saved */}
             {submitted && 
                 <div className="box mx-5">
                     <label className="label has-text-link">Successfully added!</label>

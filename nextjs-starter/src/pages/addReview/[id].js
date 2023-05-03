@@ -21,7 +21,8 @@ export default function ReviewPage() {
         </div>
       </section>
   
-      <div className='column has-background-link-light'>
+      {/* Review form */}
+      <div className='column has-background-link-light is-one-third'>
         <section class="hero is-link-light is-small">
           <div class="hero-body">
             <p class="title has-text-link-dark">
@@ -36,7 +37,8 @@ export default function ReviewPage() {
         </div>
       </div>
 
-      <div className='column has-background-warning-light'>
+      {/* Wishlist form */}
+      <div className='column has-background-warning-light is-one-third'>
         <section class="hero is-warning-light is-small">
           <div class="hero-body">
             <p class="title has-text-warning-dark">
