@@ -65,10 +65,10 @@ export default function searchString() {
 
     // return the single restaurant that was clicked from the autocomplete search suggestion
     return (
-        <div className={styles.container}>  
-          <ul className={styles.restaurants}>
+        <div className='columns is-multiline is-centered'> 
+          <div className='column is-two-thirds'>
               <Restaurant key={Restaurants.place_id} data={Restaurants}/>
-          </ul>
+          </div>
         </div>
     )
 }
