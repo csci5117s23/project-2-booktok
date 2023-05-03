@@ -21,6 +21,7 @@ export default function App({ Component, pageProps }) {
       {/* load client-side google places library */}
       <script async src={placesLibrary}></script>
 
+      {/* if page isn't public redirect to sign in page if not logged in */}
       {isPublicPage ? (
         <Component {...pageProps} />
       ) : (

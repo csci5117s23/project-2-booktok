@@ -8,12 +8,6 @@ export default function Restaurant({data}) {
   console.log("data: ", data);
   const {image_url, name, formatted_address, phone, rating, photos} = data;
 
-  // Fyi, There is no image_url name from the json
-  // name : restaurant name
-  // formatted_address: location
-  // rating: rating
-  // The data I am trying to get is photos but it's kind of weird to get this(failed)
-
   console.log("photos", photos);
   return (
     <div className='box has-text-centered'>

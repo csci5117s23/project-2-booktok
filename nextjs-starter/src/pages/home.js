@@ -30,8 +30,6 @@ export default function TimelinePage() {
     
     // if image exists for a review, add it to the review timeline
     function addImage(imageString64) {
-        // console.log("adding image...");
-
         return <>
             <img src={imageString64} alt="restaurant image" width="300"></img><br></br>
         </>
@@ -64,7 +62,7 @@ export default function TimelinePage() {
     else {
         // sort restaurant reviews in descending order (latest date to oldest date)
         restaurants.sort((p1, p2) => (p1.dateVisited > p2.dateVisited) ? -1 : (p1.dateVisited < p2.dateVisited) ? 1 : 0);
-        console.log("Sorted timeline: ", restaurants);
+        // console.log("Sorted timeline: ", restaurants);
 
         // return review data (restaurant name, image, review, rating, date visited) for timeline page
         const restaurantListItems = restaurants.map((restaurant) => {
@@ -148,7 +146,7 @@ export default function TimelinePage() {
                         {restaurantListItems}
                 </div>
             )}
-            {console.log(editInfo)}
+            {/* {console.log(editInfo)} */}
             {editing &&
                 <div>
                     <EditReviewForm info={editInfo}></EditReviewForm>

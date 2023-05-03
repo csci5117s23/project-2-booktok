@@ -24,8 +24,8 @@ export default function searchString() {
     function initialize() {
         let currentLocation = new google.maps.LatLng(latitude,longitude);
     
-        // map div was placed in app.js (only way we could get search results without using autocompletion)
-        // we don't actually care about the map only the results given
+        // a map div was placed in app.js (only way we could retrieve search results)
+        // we don't insert a map only interested in the results given
         map = new google.maps.Map(document.getElementById('map'), {
             center: currentLocation,
             zoom: 15

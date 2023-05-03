@@ -17,6 +17,7 @@ export default function AutoComplete() {
     const autoCompleteRef = useRef();
     const inputRef = useRef();
 
+    // only returns restaurants and the data specified in 'fields'
     const options = {
         componentRestrictions: { country: "us" },
         fields: ["name", "formatted_address", "photos", "rating", "website", "geometry", "place_id"],
@@ -33,13 +34,12 @@ export default function AutoComplete() {
 
             if (!place.geometry) {
                 // user entered the name of a restaurant and pressed the enter key (they didn't take any of the suggestions)
-                console.log('You entered: ' + place.name);
+                // console.log('You entered: ' + place.name);
                 router.push(`/search/${place.name}`);
-                // return;
             }
             else{
-                // if a suggestion is taken, push to a different page where only the selected restaurant info is shown
-                console.log(place.place_id);
+                // if a suggestion is taken, push to a different page where only the selected restaurant info is shown (autocomplete)
+                // console.log(place.place_id);
                 router.push(`/viewrestaurant/${place.place_id}`)
             }
         });
@@ -54,7 +54,6 @@ export default function AutoComplete() {
             {/* search input */}
             <div className='field has-addons'>
                 <div className='control is-expanded'>
-                    {/* <label>enter address :</label> */}
                     <input className="input is-success is-medium" ref={inputRef} placeholder="Search restaurant..."/>
                 </div>
                 <div className='control'>
@@ -64,12 +63,14 @@ export default function AutoComplete() {
                 </div>
             </div>
 
+            {/* manually add a restaurant button */}
             <button className='button is-success-light has-text-success-dark is-light'>
                 <Link href="/review">
                     *Manually add a review or to your wish list.
                 </Link>
             </button>
 
+            {/* suggested category buttons */}
             <Categories categories={categories} />
             </div>
         </div>
